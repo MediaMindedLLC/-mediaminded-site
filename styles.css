@@ -170,14 +170,25 @@ h3 {
 }
 
 .nav-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
     font-size: 1.4rem;
     font-weight: 800;
     letter-spacing: -0.03em;
     word-spacing: -0.15em;
 }
 
-.nav-logo span {
-    letter-spacing: -0.03em;
+.nav-logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.logo-text {
+    font-size: 0.75rem;
+    letter-spacing: -0.02em;
 }
 
 .logo-media {
