@@ -117,6 +117,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Phone number auto-formatting ---
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', (e) => {
+            let digits = e.target.value.replace(/\D/g, '');
+            if (digits.length > 10) digits = digits.slice(0, 10);
+            if (digits.length > 6) {
+                e.target.value = digits.slice(0, 3) + '-' + digits.slice(3, 6) + '-' + digits.slice(6);
+            } else if (digits.length > 3) {
+                e.target.value = digits.slice(0, 3) + '-' + digits.slice(3);
+            } else {
+                e.target.value = digits;
+            }
+        });
+    }
+
     // --- Contact form submission ---
     const contactForm = document.getElementById('contactForm');
     const formSuccess = document.getElementById('formSuccess');
