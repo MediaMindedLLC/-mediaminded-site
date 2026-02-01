@@ -172,8 +172,8 @@ h3 {
 .nav-logo {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 4px;
+    align-items: flex-start;
+    gap: 2px;
     font-size: 1.4rem;
     font-weight: 800;
     letter-spacing: -0.03em;
@@ -181,14 +181,14 @@ h3 {
 }
 
 .nav-logo-img {
-    width: 40px;
-    height: 40px;
+    width: 28px;
+    height: 28px;
     object-fit: contain;
 }
 
 .logo-text {
-    font-size: 0.75rem;
-    letter-spacing: -0.02em;
+    font-size: 1.4rem;
+    letter-spacing: -0.03em;
 }
 
 .logo-media {
