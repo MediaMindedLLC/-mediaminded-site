@@ -9,6 +9,85 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Inline form styles to prevent caching issues */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border-radius: 20px !important;
+            padding: 44px !important;
+            box-sizing: border-box !important;
+        }
+        .form-group {
+            margin-bottom: 24px !important;
+            display: block !important;
+        }
+        .form-group label {
+            display: block !important;
+            font-size: 0.9rem !important;
+            font-weight: 600 !important;
+            color: #F9FAFB !important;
+            margin-bottom: 10px !important;
+        }
+        .form-group .required { color: #818CF8 !important; }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form input[type="tel"],
+        .contact-form textarea {
+            display: block !important;
+            width: 100% !important;
+            padding: 16px 20px !important;
+            background: rgba(17, 24, 39, 0.9) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            border-radius: 10px !important;
+            color: #F9FAFB !important;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 1rem !important;
+            line-height: 1.5 !important;
+            outline: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            box-sizing: border-box !important;
+            transition: all 0.3s ease !important;
+        }
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #6B7280 !important;
+            opacity: 0.6 !important;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #4F46E5 !important;
+            background: rgba(79, 70, 229, 0.1) !important;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2) !important;
+        }
+        .contact-form textarea {
+            resize: vertical !important;
+            min-height: 160px !important;
+        }
+        .form-row {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 20px !important;
+        }
+        .btn-full {
+            width: 100% !important;
+            padding: 18px 36px !important;
+            font-size: 1.05rem !important;
+            margin-top: 8px !important;
+        }
+        #formSuccess {
+            display: none !important;
+        }
+        #formSuccess.show {
+            display: block !important;
+        }
+        @media (max-width: 768px) {
+            .form-row { grid-template-columns: 1fr !important; }
+            .contact-form { padding: 28px !important; }
+        }
+    </style>
 </head>
 <body>
 
