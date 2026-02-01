@@ -195,14 +195,15 @@ h3 {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 18px;
 }
 
 .nav-links a {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: var(--text-secondary);
     position: relative;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
