@@ -2082,6 +2082,336 @@
   color: var(--iao-navy);
 }
 
+/* ---------- Nova Map ---------- */
+.iao-theme .iao-map-layout {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.iao-theme .iao-map-container {
+  flex: 1 1 60%;
+  min-width: 0;
+  border: 1px solid var(--iao-gray-300);
+  border-radius: var(--iao-radius-md);
+  overflow: hidden;
+  background: var(--iao-white);
+}
+
+.iao-theme .iao-map-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: var(--iao-gray-50);
+  border-bottom: 1px solid var(--iao-gray-200);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--iao-navy);
+}
+
+.iao-theme .iao-map-toolbar-title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.iao-theme .iao-map-toolbar-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.iao-theme .iao-map-view {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background:
+    linear-gradient(90deg, var(--iao-gray-200) 1px, transparent 1px),
+    linear-gradient(var(--iao-gray-200) 1px, transparent 1px),
+    var(--iao-gray-50);
+  background-size: 40px 40px;
+  overflow: hidden;
+}
+
+.iao-theme .iao-map-zone {
+  position: absolute;
+  border-radius: var(--iao-radius-sm);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 4px 8px;
+}
+
+.iao-theme .iao-zone-label {
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.7;
+}
+
+.iao-theme .iao-zone-north {
+  background: rgba(12, 95, 175, 0.08);
+  border: 1px dashed rgba(12, 95, 175, 0.25);
+}
+.iao-theme .iao-zone-north .iao-zone-label { color: var(--iao-blue); }
+
+.iao-theme .iao-zone-central {
+  background: rgba(46, 125, 50, 0.08);
+  border: 1px dashed rgba(46, 125, 50, 0.25);
+}
+.iao-theme .iao-zone-central .iao-zone-label { color: var(--iao-green-dark); }
+
+.iao-theme .iao-zone-south {
+  background: rgba(212, 168, 67, 0.08);
+  border: 1px dashed rgba(212, 168, 67, 0.25);
+}
+.iao-theme .iao-zone-south .iao-zone-label { color: var(--iao-gold); }
+
+.iao-theme .iao-map-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.iao-theme .iao-map-pin {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  font-size: 0.55rem;
+  font-weight: 800;
+  color: var(--iao-white);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 2;
+}
+
+.iao-theme .iao-pin-blue { background: var(--iao-blue); }
+.iao-theme .iao-pin-green { background: var(--iao-green-dark); }
+.iao-theme .iao-pin-gold { background: var(--iao-gold); }
+
+.iao-theme .iao-map-hq {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+}
+
+.iao-theme .iao-hq-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.iao-theme .iao-hq-label {
+  font-size: 0.5rem;
+  font-weight: 800;
+  color: var(--iao-navy);
+  background: var(--iao-white);
+  padding: 0 3px;
+  border-radius: 2px;
+  border: 1px solid var(--iao-gray-300);
+  line-height: 1.4;
+}
+
+.iao-theme .iao-map-legend {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 6px 10px;
+  background: var(--iao-white);
+  border-top: 1px solid var(--iao-gray-200);
+  font-size: 0.6rem;
+  color: var(--iao-gray-600);
+}
+
+.iao-theme .iao-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.iao-theme .iao-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.iao-theme .iao-dot-blue { background: var(--iao-blue); }
+.iao-theme .iao-dot-green { background: var(--iao-green-dark); }
+.iao-theme .iao-dot-gold { background: var(--iao-gold); }
+
+/* Route Details Panel */
+.iao-theme .iao-route-panel {
+  flex: 0 0 38%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  max-height: 420px;
+}
+
+.iao-theme .iao-route-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iao-theme .iao-route-panel-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--iao-navy);
+  margin: 0;
+}
+
+.iao-theme .iao-route-panel-badge {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--iao-blue);
+  background: var(--iao-blue-pale);
+  padding: 2px 8px;
+  border-radius: var(--iao-radius-pill);
+}
+
+.iao-theme .iao-route-card {
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-md);
+  overflow: hidden;
+  background: var(--iao-white);
+}
+
+.iao-theme .iao-route-blue { border-left: 3px solid var(--iao-blue); }
+.iao-theme .iao-route-green { border-left: 3px solid var(--iao-green-dark); }
+.iao-theme .iao-route-gold { border-left: 3px solid var(--iao-gold); }
+
+.iao-theme .iao-route-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: var(--iao-gray-50);
+  border-bottom: 1px solid var(--iao-gray-200);
+}
+
+.iao-theme .iao-route-name {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--iao-navy);
+}
+
+.iao-theme .iao-route-badge {
+  font-size: 0.55rem;
+  font-weight: 600;
+  background: var(--iao-gray-200);
+  padding: 1px 6px;
+  border-radius: var(--iao-radius-pill);
+  color: var(--iao-gray-600);
+}
+
+.iao-theme .iao-route-meta {
+  display: flex;
+  gap: 12px;
+  padding: 4px 10px;
+  font-size: 0.6rem;
+  color: var(--iao-gray-600);
+  border-bottom: 1px solid var(--iao-gray-100);
+}
+
+.iao-theme .iao-route-stops {
+  padding: 4px 10px 6px;
+}
+
+.iao-theme .iao-route-stop {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+  font-size: 0.6rem;
+  color: var(--iao-gray-800);
+}
+
+.iao-theme .iao-stop-num {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--iao-gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: var(--iao-gray-600);
+}
+
+.iao-theme .iao-route-blue .iao-stop-num { background: var(--iao-blue-pale); color: var(--iao-blue); }
+.iao-theme .iao-route-green .iao-stop-num { background: rgba(46,125,50,0.1); color: var(--iao-green-dark); }
+.iao-theme .iao-route-gold .iao-stop-num { background: var(--iao-gold-light); color: #8B7028; }
+
+.iao-theme .iao-stop-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.iao-theme .iao-stop-time {
+  flex-shrink: 0;
+  font-size: 0.55rem;
+  color: var(--iao-gray-600);
+  font-weight: 500;
+}
+
+.iao-theme .iao-route-efficiency {
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-md);
+  background: var(--iao-white);
+  overflow: hidden;
+}
+
+.iao-theme .iao-efficiency-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--iao-navy);
+  padding: 8px 10px;
+  margin: 0;
+  background: var(--iao-gray-50);
+  border-bottom: 1px solid var(--iao-gray-200);
+}
+
+.iao-theme .iao-efficiency-rows {
+  padding: 6px 10px;
+}
+
+.iao-theme .iao-efficiency-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+  font-size: 0.62rem;
+  color: var(--iao-gray-600);
+}
+
+.iao-theme .iao-eff-val {
+  font-weight: 700;
+  color: var(--iao-navy);
+}
+
+.iao-theme .iao-eff-highlight {
+  color: var(--iao-green-dark);
+}
+
 /* ==========================================================================
    RESPONSIVE -- 768px (sidebar collapses to icon rail)
    ========================================================================== */
@@ -2196,6 +2526,31 @@
   .iao-theme .iao-btn-sm {
     padding: 2px 6px;
     font-size: 0.58rem;
+  }
+
+  /* Nova Map responsive */
+  .iao-theme .iao-map-layout {
+    flex-direction: column;
+  }
+
+  .iao-theme .iao-map-view {
+    height: 200px;
+  }
+
+  .iao-theme .iao-map-pin {
+    width: 16px;
+    height: 16px;
+    font-size: 0.45rem;
+  }
+
+  .iao-theme .iao-route-panel {
+    flex: 0 0 auto;
+    max-height: 200px;
+  }
+
+  .iao-theme .iao-map-legend {
+    gap: 8px;
+    font-size: 0.55rem;
   }
 }
 
@@ -2326,5 +2681,34 @@
 
   .iao-theme .iao-funnel-bar {
     height: 18px;
+  }
+
+  /* Nova Map responsive */
+  .iao-theme .iao-map-view {
+    height: 160px;
+  }
+
+  .iao-theme .iao-map-pin {
+    width: 14px;
+    height: 14px;
+    font-size: 0.4rem;
+  }
+
+  .iao-theme .iao-map-legend {
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 0.5rem;
+  }
+
+  .iao-theme .iao-route-panel {
+    max-height: 180px;
+  }
+
+  .iao-theme .iao-map-toolbar-actions {
+    display: none;
+  }
+
+  .iao-theme .iao-route-stops {
+    display: none;
   }
 }
