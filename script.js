@@ -117,6 +117,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Contact form submission ---
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    contactForm.style.display = 'none';
+                    formSuccess.classList.add('show');
+                } else {
+                    submitBtn.textContent = 'Error — Try Again';
+                    submitBtn.disabled = false;
+                    setTimeout(() => { submitBtn.textContent = originalText; }, 3000);
+                }
+            } catch (err) {
+                submitBtn.textContent = 'Error — Try Again';
+                submitBtn.disabled = false;
+                setTimeout(() => { submitBtn.textContent = originalText; }, 3000);
+            }
+        });
+    }
+
     // --- Staggered scroll animations ---
     const staggerContainers = [
         '.problems-grid',
