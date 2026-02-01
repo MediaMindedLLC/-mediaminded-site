@@ -173,6 +173,11 @@ h3 {
     font-size: 1.4rem;
     font-weight: 800;
     letter-spacing: -0.03em;
+    word-spacing: -0.15em;
+}
+
+.nav-logo span {
+    letter-spacing: -0.03em;
 }
 
 .logo-media {
