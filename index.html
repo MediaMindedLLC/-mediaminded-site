@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="styles.css?v=7">
-    <link rel="stylesheet" href="iao-demo.css?v=2">
+    <link rel="stylesheet" href="iao-demo.css?v=3">
 </head>
 <body>
 
@@ -672,157 +672,211 @@
                               <!-- TAB 8: Analytics -->
                               <!-- TAB 9: Nova Map -->
                               <div class="iao-tab-panel" id="iao-panel-novamap">
-                                <div class="iao-page-header">
-                                  <div class="iao-page-header-left">
-                                    <span class="iao-page-icon">&#128205;</span>
+                                <!-- Sub-tab bar -->
+                                <div class="iao-nm-tabbar">
+                                  <button class="iao-nm-tab active" data-nm-view="mainmap">MAIN MAP</button>
+                                  <button class="iao-nm-tab" data-nm-view="schedule">SCHEDULE</button>
+                                </div>
+
+                                <!-- Main Map View -->
+                                <div class="iao-nm-view active" id="nm-mainmap">
+                                  <div class="iao-nm-layout">
+                                    <div class="iao-nm-sidebar">
+                                      <div class="iao-nm-search">
+                                        <span class="iao-nm-search-label">&#128269; SEARCH LOCATION</span>
+                                        <div class="iao-nm-search-bar">
+                                          <input type="text" placeholder="Address, Zip, or Area..." disabled>
+                                          <button class="iao-nm-go">GO</button>
+                                        </div>
+                                      </div>
+                                      <div class="iao-nm-stats">
+                                        <div class="iao-nm-stat-box">
+                                          <span class="iao-nm-stat-num iao-nm-num-blue">44</span>
+                                          <span class="iao-nm-stat-lbl">SALES REPS</span>
+                                        </div>
+                                        <div class="iao-nm-stat-box">
+                                          <span class="iao-nm-stat-num iao-nm-num-green">248</span>
+                                          <span class="iao-nm-stat-lbl">APPOINTMENTS</span>
+                                        </div>
+                                      </div>
+                                      <div class="iao-nm-actions">
+                                        <span class="iao-nm-section-title">QUICK ACTIONS</span>
+                                        <div class="iao-nm-action">&#128101; <strong>View All Reps</strong></div>
+                                        <div class="iao-nm-action">&#127968; Go to HQ</div>
+                                      </div>
+                                      <div class="iao-nm-pending">
+                                        <span class="iao-nm-section-title">&#128197; PENDING APPOINTMENTS <span class="iao-nm-link">(CLICK TO SEARCH)</span></span>
+                                        <span class="iao-nm-pending-empty">No pending appointments</span>
+                                      </div>
+                                    </div>
+                                    <div class="iao-nm-map">
+                                      <div class="iao-nm-zoom">
+                                        <button class="iao-nm-zoom-btn">+</button>
+                                        <button class="iao-nm-zoom-btn">&#8722;</button>
+                                      </div>
+                                      <span class="iao-nm-state" style="top:20%;left:10%">ILLINOIS</span>
+                                      <span class="iao-nm-state" style="top:12%;left:28%">OHIO</span>
+                                      <span class="iao-nm-state" style="top:5%;left:55%">PENNSYLVANIA</span>
+                                      <span class="iao-nm-state" style="top:5%;left:80%">NEW YORK</span>
+                                      <span class="iao-nm-state" style="top:28%;left:50%">WEST VIRGINIA</span>
+                                      <span class="iao-nm-state" style="top:22%;left:75%">MARYLAND</span>
+                                      <span class="iao-nm-state" style="top:38%;left:68%">VIRGINIA</span>
+                                      <span class="iao-nm-state" style="top:48%;left:18%">KENTUCKY</span>
+                                      <span class="iao-nm-state" style="top:55%;left:48%">NORTH CAROLINA</span>
+                                      <span class="iao-nm-state" style="top:70%;left:42%">SOUTH CAROLINA</span>
+                                      <span class="iao-nm-state" style="top:78%;left:18%">GEORGIA</span>
+                                      <span class="iao-nm-state" style="top:62%;left:8%">TENNESSEE</span>
+                                      <span class="iao-nm-state" style="top:8%;left:90%">MASSACHUSETTS</span>
+                                      <span class="iao-nm-state" style="top:16%;left:88%">CONNECTICUT</span>
+                                      <span class="iao-nm-state" style="top:82%;left:30%">ATLANTA</span>
+                                      <span class="iao-nm-state" style="top:92%;left:12%">MISSISSIPPI</span>
+                                      <span class="iao-nm-state" style="top:88%;left:42%">GEORGIA</span>
+                                      <!-- HQ pin -->
+                                      <div class="iao-nm-pin iao-nm-pin-hq" style="top:18%;left:62%">
+                                        <span class="iao-nm-pin-icon">&#127968;</span>
+                                      </div>
+                                      <!-- Branch pins (yellow) -->
+                                      <div class="iao-nm-pin iao-nm-pin-branch" style="top:16%;left:30%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-branch" style="top:60%;left:22%"></div>
+                                      <!-- Sales Rep pins (purple) -->
+                                      <div class="iao-nm-pin iao-nm-pin-rep" style="top:14%;left:42%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-rep" style="top:18%;left:47%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-rep" style="top:22%;left:38%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-rep" style="top:20%;left:44%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-rep" style="top:10%;left:64%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-rep" style="top:14%;left:70%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-rep" style="top:20%;left:68%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-rep" style="top:16%;left:76%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-rep" style="top:22%;left:80%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-rep" style="top:58%;left:28%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-rep" style="top:56%;left:24%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-rep" style="top:62%;left:32%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-rep" style="top:68%;left:38%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-rep" style="top:72%;left:48%"></div>
+                                      <!-- Star reps -->
+                                      <div class="iao-nm-pin iao-nm-pin-star" style="top:16%;left:74%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-star" style="top:58%;left:26%"></div>
+                                      <!-- Appointment pins (teal) -->
+                                      <div class="iao-nm-pin iao-nm-pin-appt" style="top:18%;left:50%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-appt" style="top:22%;left:55%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-appt" style="top:60%;left:38%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-appt" style="top:64%;left:42%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-appt" style="top:66%;left:50%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-appt" style="top:56%;left:34%"></div>
+                                      <div class="iao-nm-pin iao-nm-pin-appt" style="top:72%;left:56%"></div>
+                                      <!-- Legend overlay -->
+                                      <div class="iao-nm-legend">
+                                        <span class="iao-nm-legend-title">LEGEND</span>
+                                        <div class="iao-nm-legend-row"><span class="iao-nm-ldot iao-ldot-hq"></span> HQ</div>
+                                        <div class="iao-nm-legend-row"><span class="iao-nm-ldot iao-ldot-branch"></span> Branch</div>
+                                        <div class="iao-nm-legend-row"><span class="iao-nm-ldot iao-ldot-rep"></span> Sales Rep</div>
+                                        <div class="iao-nm-legend-row"><span class="iao-nm-ldot iao-ldot-appt"></span> Appointment</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <!-- Schedule View -->
+                                <div class="iao-nm-view" id="nm-schedule">
+                                  <div class="iao-sched-header">
                                     <div>
-                                      <h2 class="iao-page-title">Nova Map</h2>
-                                      <p class="iao-page-subtitle">Intelligent route optimization &amp; daily appointment scheduling</p>
+                                      <h2 class="iao-sched-title">Schedule Board</h2>
+                                      <p class="iao-sched-subtitle">Reps grouped by area &mdash; Drag appointments to assign</p>
+                                    </div>
+                                    <div class="iao-sched-counters">
+                                      <div class="iao-sched-counter"><span class="iao-sched-num iao-sched-blue">248</span><span class="iao-sched-num-label">SCHEDULED</span></div>
+                                      <div class="iao-sched-counter"><span class="iao-sched-num">0</span><span class="iao-sched-num-label">UNASSIGNED</span></div>
                                     </div>
                                   </div>
-                                  <div class="iao-page-header-right">
-                                    <select class="iao-filter-select" disabled><option>Today — Mon, Jan 27</option></select>
-                                    <button class="iao-btn iao-btn-primary">Optimize Routes</button>
+                                  <div class="iao-sched-info">
+                                    <span>Reps: <strong>107</strong></span>
+                                    <span>Appointments: <strong>248</strong></span>
+                                    <span>Last Sync: <strong>7:28:14 AM</strong></span>
                                   </div>
-                                </div>
-
-                                <div class="iao-stats-bar">
-                                  <div class="iao-stat-card"><span class="iao-stat-value">18</span><span class="iao-stat-label">Appointments Today</span></div>
-                                  <div class="iao-stat-card"><span class="iao-stat-value">3</span><span class="iao-stat-label">Optimized Routes</span></div>
-                                  <div class="iao-stat-card"><span class="iao-stat-value">47 mi</span><span class="iao-stat-label">Total Distance</span></div>
-                                  <div class="iao-stat-card"><span class="iao-stat-value">32%</span><span class="iao-stat-label">Miles Saved</span></div>
-                                </div>
-
-                                <div class="iao-map-layout">
-                                  <!-- Map Visualization -->
-                                  <div class="iao-map-container">
-                                    <div class="iao-map-toolbar">
-                                      <span class="iao-map-toolbar-title">&#127758; Territory Overview</span>
-                                      <div class="iao-map-toolbar-actions">
-                                        <button class="iao-btn iao-btn-sm iao-btn-outline">Satellite</button>
-                                        <button class="iao-btn iao-btn-sm iao-btn-outline">Traffic</button>
-                                        <button class="iao-btn iao-btn-sm iao-btn-outline">Zones</button>
+                                  <div class="iao-sched-board">
+                                    <div class="iao-sched-cols">
+                                      <div class="iao-sched-col iao-sched-col-rep">REP / AREA</div>
+                                      <div class="iao-sched-col iao-sched-col-am">MORNING (8A-12P)</div>
+                                      <div class="iao-sched-col iao-sched-col-pm">AFTERNOON (12P-5P)</div>
+                                      <div class="iao-sched-col iao-sched-col-eve">EVENING (5P-9P)</div>
+                                    </div>
+                                    <div class="iao-sched-group">
+                                      <span class="iao-sched-group-name">DEFAULT &nbsp;<small>82 reps</small></span>
+                                      <span class="iao-sched-group-ct">248 appointments</span>
+                                    </div>
+                                    <!-- Row 1 -->
+                                    <div class="iao-sched-row">
+                                      <div class="iao-sched-rep-cell">
+                                        <span class="iao-sched-avatar" style="background:#7B1FA2">DN</span>
+                                        <div class="iao-sched-rep-info"><span class="iao-sched-rep-name">DBA, Nova...</span><span class="iao-sched-rep-id">ID: 3</span></div>
+                                        <span class="iao-sched-rep-badge">3</span>
+                                      </div>
+                                      <div class="iao-sched-cell">
+                                        <div class="iao-sched-appt iao-appt-green"><div class="iao-appt-head"><span class="iao-appt-status">Cnf</span><span class="iao-appt-set">SET BY<br>&#8212;</span></div><div class="iao-appt-body"><span>Name: Not on Schedule</span><span>Product:</span><span>SubSource:</span></div></div>
+                                      </div>
+                                      <div class="iao-sched-cell">
+                                        <div class="iao-sched-appt iao-appt-green"><div class="iao-appt-head"><span class="iao-appt-status">Cnf</span><span class="iao-appt-set">SET BY<br>&#8212;</span></div><div class="iao-appt-body"><span>Name: Not on Schedule</span><span>Product:</span><span>SubSource:</span></div></div>
+                                      </div>
+                                      <div class="iao-sched-cell">
+                                        <div class="iao-sched-appt iao-appt-red"><div class="iao-appt-head"><span class="iao-appt-status">Cnf</span><span class="iao-appt-set">SET BY<br>&#8212;</span></div><div class="iao-appt-body"><span>Name: Not on Schedule</span><span>Product:</span><span>SubSource:</span></div></div>
                                       </div>
                                     </div>
-                                    <div class="iao-map-view">
-                                      <!-- Territory zones -->
-                                      <div class="iao-map-zone iao-zone-north" style="top:2%;left:5%;width:85%;height:30%">
-                                        <span class="iao-zone-label">North Territory</span>
+                                    <!-- Row 2 -->
+                                    <div class="iao-sched-row">
+                                      <div class="iao-sched-rep-cell">
+                                        <span class="iao-sched-avatar" style="background:#7B1FA2">DM</span>
+                                        <div class="iao-sched-rep-info"><span class="iao-sched-rep-name">DE Harnett,...</span><span class="iao-sched-rep-id">ID: 98</span></div>
+                                        <span class="iao-sched-rep-badge">1</span>
                                       </div>
-                                      <div class="iao-map-zone iao-zone-central" style="top:35%;left:3%;width:88%;height:28%">
-                                        <span class="iao-zone-label">Central Territory</span>
+                                      <div class="iao-sched-cell">
+                                        <div class="iao-sched-slot"><span class="iao-slot-label">Morning</span></div>
                                       </div>
-                                      <div class="iao-map-zone iao-zone-south" style="top:66%;left:5%;width:85%;height:32%">
-                                        <span class="iao-zone-label">South Territory</span>
+                                      <div class="iao-sched-cell">
+                                        <div class="iao-sched-slot"><span class="iao-slot-label">Afternoon</span></div>
                                       </div>
-
-                                      <!-- Route lines SVG -->
-                                      <svg class="iao-map-svg" viewBox="0 0 500 350" preserveAspectRatio="none">
-                                        <polyline points="70,55 140,80 210,50 280,90 340,65 410,50" fill="none" stroke="#0C5FAF" stroke-width="2.5" stroke-dasharray="6,3" opacity="0.8"/>
-                                        <polyline points="60,170 150,195 230,170 310,205 400,180" fill="none" stroke="#2E7D32" stroke-width="2.5" stroke-dasharray="6,3" opacity="0.8"/>
-                                        <polyline points="55,265 120,290 185,268 245,300 305,275 365,305 435,280" fill="none" stroke="#D4A843" stroke-width="2.5" stroke-dasharray="6,3" opacity="0.8"/>
-                                      </svg>
-
-                                      <!-- Route 1 pins (Blue — North) -->
-                                      <div class="iao-map-pin iao-pin-blue" style="top:15.7%;left:14%"><span>1</span></div>
-                                      <div class="iao-map-pin iao-pin-blue" style="top:22.9%;left:28%"><span>2</span></div>
-                                      <div class="iao-map-pin iao-pin-blue" style="top:14.3%;left:42%"><span>3</span></div>
-                                      <div class="iao-map-pin iao-pin-blue" style="top:25.7%;left:56%"><span>4</span></div>
-                                      <div class="iao-map-pin iao-pin-blue" style="top:18.6%;left:68%"><span>5</span></div>
-                                      <div class="iao-map-pin iao-pin-blue" style="top:14.3%;left:82%"><span>6</span></div>
-
-                                      <!-- Route 2 pins (Green — Central) -->
-                                      <div class="iao-map-pin iao-pin-green" style="top:48.6%;left:12%"><span>1</span></div>
-                                      <div class="iao-map-pin iao-pin-green" style="top:55.7%;left:30%"><span>2</span></div>
-                                      <div class="iao-map-pin iao-pin-green" style="top:48.6%;left:46%"><span>3</span></div>
-                                      <div class="iao-map-pin iao-pin-green" style="top:58.6%;left:62%"><span>4</span></div>
-                                      <div class="iao-map-pin iao-pin-green" style="top:51.4%;left:80%"><span>5</span></div>
-
-                                      <!-- Route 3 pins (Gold — South) -->
-                                      <div class="iao-map-pin iao-pin-gold" style="top:75.7%;left:11%"><span>1</span></div>
-                                      <div class="iao-map-pin iao-pin-gold" style="top:82.9%;left:24%"><span>2</span></div>
-                                      <div class="iao-map-pin iao-pin-gold" style="top:76.6%;left:37%"><span>3</span></div>
-                                      <div class="iao-map-pin iao-pin-gold" style="top:85.7%;left:49%"><span>4</span></div>
-                                      <div class="iao-map-pin iao-pin-gold" style="top:78.6%;left:61%"><span>5</span></div>
-                                      <div class="iao-map-pin iao-pin-gold" style="top:87.1%;left:73%"><span>6</span></div>
-                                      <div class="iao-map-pin iao-pin-gold" style="top:80%;left:87%"><span>7</span></div>
-
-                                      <!-- HQ Start marker -->
-                                      <div class="iao-map-hq" style="top:46%;left:1%">
-                                        <span class="iao-hq-icon">&#127968;</span>
-                                        <span class="iao-hq-label">HQ</span>
+                                      <div class="iao-sched-cell">
+                                        <div class="iao-sched-appt iao-appt-red"><div class="iao-appt-head"><span class="iao-appt-status">Cnf</span><span class="iao-appt-set">SET BY<br>&#8212;</span></div><div class="iao-appt-body"><span>Name: Not on Schedule</span><span>Product:</span><span>SubSource:</span></div></div>
                                       </div>
                                     </div>
-                                    <div class="iao-map-legend">
-                                      <span class="iao-legend-item"><span class="iao-legend-dot iao-dot-blue"></span>Route 1 — North (6)</span>
-                                      <span class="iao-legend-item"><span class="iao-legend-dot iao-dot-green"></span>Route 2 — Central (5)</span>
-                                      <span class="iao-legend-item"><span class="iao-legend-dot iao-dot-gold"></span>Route 3 — South (7)</span>
-                                    </div>
-                                  </div>
-
-                                  <!-- Route Details Panel -->
-                                  <div class="iao-route-panel">
-                                    <div class="iao-route-panel-header">
-                                      <h3 class="iao-route-panel-title">Today's Routes</h3>
-                                      <span class="iao-route-panel-badge">18 total stops</span>
-                                    </div>
-
-                                    <div class="iao-route-card iao-route-blue">
-                                      <div class="iao-route-card-header">
-                                        <span class="iao-route-name">&#128309; Route 1 — North</span>
-                                        <span class="iao-route-badge">6 stops</span>
+                                    <!-- Row 3 -->
+                                    <div class="iao-sched-row">
+                                      <div class="iao-sched-rep-cell">
+                                        <span class="iao-sched-avatar" style="background:#1565C0">DL</span>
+                                        <div class="iao-sched-rep-info"><span class="iao-sched-rep-name">DE Kelley, Lamar</span><span class="iao-sched-rep-id">ID: 54835</span></div>
                                       </div>
-                                      <div class="iao-route-meta"><span>&#128337; 8:00 AM – 12:30 PM</span><span>&#128663; 14.2 mi</span></div>
-                                      <div class="iao-route-stops">
-                                        <div class="iao-route-stop"><span class="iao-stop-num">1</span><span class="iao-stop-name">Homeowner Lead</span><span class="iao-stop-time">8:00a</span></div>
-                                        <div class="iao-route-stop"><span class="iao-stop-num">2</span><span class="iao-stop-name">New Lead — Media</span><span class="iao-stop-time">9:00a</span></div>
-                                        <div class="iao-route-stop"><span class="iao-stop-num">3</span><span class="iao-stop-name">Follow-Up Lead</span><span class="iao-stop-time">10:00a</span></div>
-                                        <div class="iao-route-stop"><span class="iao-stop-num">4</span><span class="iao-stop-name">Referral Lead</span><span class="iao-stop-time">10:45a</span></div>
-                                        <div class="iao-route-stop"><span class="iao-stop-num">5</span><span class="iao-stop-name">Warm Lead</span><span class="iao-stop-time">11:30a</span></div>
-                                        <div class="iao-route-stop"><span class="iao-stop-num">6</span><span class="iao-stop-name">New Lead — Hatch</span><span class="iao-stop-time">12:15p</span></div>
+                                      <div class="iao-sched-cell">
+                                        <div class="iao-sched-slot"><span class="iao-slot-label">Morning</span></div>
+                                      </div>
+                                      <div class="iao-sched-cell">
+                                        <div class="iao-sched-slot"><span class="iao-slot-label">Afternoon</span></div>
+                                      </div>
+                                      <div class="iao-sched-cell">
+                                        <div class="iao-sched-slot"><span class="iao-slot-label">Evening</span></div>
                                       </div>
                                     </div>
-
-                                    <div class="iao-route-card iao-route-green">
-                                      <div class="iao-route-card-header">
-                                        <span class="iao-route-name">&#128994; Route 2 — Central</span>
-                                        <span class="iao-route-badge">5 stops</span>
+                                    <!-- Row 4 -->
+                                    <div class="iao-sched-row">
+                                      <div class="iao-sched-rep-cell">
+                                        <span class="iao-sched-avatar" style="background:#7B1FA2">DC</span>
+                                        <div class="iao-sched-rep-info"><span class="iao-sched-rep-name">DE Longat...</span><span class="iao-sched-rep-id">ID: 8</span></div>
+                                        <span class="iao-sched-rep-badge iao-badge-many">15</span>
                                       </div>
-                                      <div class="iao-route-meta"><span>&#128337; 8:30 AM – 12:00 PM</span><span>&#128663; 16.8 mi</span></div>
-                                      <div class="iao-route-stops">
-                                        <div class="iao-route-stop"><span class="iao-stop-num">1</span><span class="iao-stop-name">Hot Lead — Hatch</span><span class="iao-stop-time">8:30a</span></div>
-                                        <div class="iao-route-stop"><span class="iao-stop-num">2</span><span class="iao-stop-name">New Lead — Canvass</span><span class="iao-stop-time">9:30a</span></div>
-                                        <div class="iao-route-stop"><span class="iao-stop-num">3</span><span class="iao-stop-name">Callback Lead</span><span class="iao-stop-time">10:15a</span></div>
-                                        <div class="iao-route-stop"><span class="iao-stop-num">4</span><span class="iao-stop-name">Warm Lead</span><span class="iao-stop-time">11:00a</span></div>
-                                        <div class="iao-route-stop"><span class="iao-stop-num">5</span><span class="iao-stop-name">Follow-Up Lead</span><span class="iao-stop-time">11:45a</span></div>
+                                      <div class="iao-sched-cell">
+                                        <div class="iao-sched-appt iao-appt-green"><div class="iao-appt-head"><span class="iao-appt-status">Cnf</span><span class="iao-appt-set">SET BY<br>&#8212;</span></div><div class="iao-appt-body"><span>Name: Dispo: NH-NA</span><span>Product:</span><span>SubSource:</span></div></div>
+                                        <div class="iao-sched-appt iao-appt-teal"><div class="iao-appt-head"><span class="iao-appt-status">Cnf</span><span class="iao-appt-set">SET BY<br>&#8212;</span></div><div class="iao-appt-body"><span>Name: DE - Aston, PA</span><span>Product:</span><span>SubSource:</span></div></div>
+                                        <div class="iao-sched-appt iao-appt-teal"><div class="iao-appt-head"><span class="iao-appt-status">Cnf</span><span class="iao-appt-set">SET BY<br>&#8212;</span></div><div class="iao-appt-body"><span>Name: 10:00am NH-NA</span><span>Product:</span><span>SubSource:</span></div></div>
+                                        <div class="iao-sched-appt iao-appt-green"><div class="iao-appt-head"><span class="iao-appt-status">Cnf</span><span class="iao-appt-set">SET BY<br>&#8212;</span></div><div class="iao-appt-body"><span>Name: Name: Marino</span><span>Product:</span><span>SubSource:</span></div></div>
+                                        <div class="iao-sched-appt iao-appt-teal"><div class="iao-appt-head"><span class="iao-appt-status">Cnf</span><span class="iao-appt-set">SET BY<br>&#8212;</span></div><div class="iao-appt-body"><span>Name: Product: Win (A,00)</span><span>Product:</span><span>SubSource:</span></div></div>
                                       </div>
-                                    </div>
-
-                                    <div class="iao-route-card iao-route-gold">
-                                      <div class="iao-route-card-header">
-                                        <span class="iao-route-name">&#128992; Route 3 — South</span>
-                                        <span class="iao-route-badge">7 stops</span>
+                                      <div class="iao-sched-cell">
+                                        <div class="iao-sched-appt iao-appt-green"><div class="iao-appt-head"><span class="iao-appt-status">Cnf</span><span class="iao-appt-set">SET BY<br>&#8212;</span></div><div class="iao-appt-body"><span>Name: Grade: AA(24 mi / 33 min)</span><span>Product:</span><span>SubSource:</span></div></div>
+                                        <div class="iao-sched-appt iao-appt-green"><div class="iao-appt-head"><span class="iao-appt-status">Cnf</span><span class="iao-appt-set">SET BY<br>&#8212;</span></div><div class="iao-appt-body"><span>Name: 2:00pm Demo Miss</span><span>Product:</span><span>SubSource:</span></div></div>
+                                        <div class="iao-sched-appt iao-appt-green"><div class="iao-appt-head"><span class="iao-appt-status">Cnf</span><span class="iao-appt-set">SET BY<br>&#8212;</span></div><div class="iao-appt-body"><span>Name: SubSource: SFU Reset</span><span>Product:</span><span>SubSource:</span></div></div>
+                                        <div class="iao-sched-appt iao-appt-green"><div class="iao-appt-head"><span class="iao-appt-status">Cnf</span><span class="iao-appt-set">SET BY<br>&#8212;</span></div><div class="iao-appt-body"><span>Name: Dispo: Demo Miss</span><span>Product:</span><span>SubSource:</span></div></div>
+                                        <div class="iao-sched-appt iao-appt-green"><div class="iao-appt-head"><span class="iao-appt-status">Cnf</span><span class="iao-appt-set">SET BY<br>&#8212;</span></div><div class="iao-appt-body"><span>Name: Name: Nieves</span><span>Product:</span><span>SubSource:</span></div></div>
                                       </div>
-                                      <div class="iao-route-meta"><span>&#128337; 9:00 AM – 2:00 PM</span><span>&#128663; 16.0 mi</span></div>
-                                      <div class="iao-route-stops">
-                                        <div class="iao-route-stop"><span class="iao-stop-num">1</span><span class="iao-stop-name">New Lead — Media</span><span class="iao-stop-time">9:00a</span></div>
-                                        <div class="iao-route-stop"><span class="iao-stop-num">2</span><span class="iao-stop-name">Hot Lead — Hatch</span><span class="iao-stop-time">9:45a</span></div>
-                                        <div class="iao-route-stop"><span class="iao-stop-num">3</span><span class="iao-stop-name">Homeowner Lead</span><span class="iao-stop-time">10:30a</span></div>
-                                        <div class="iao-route-stop"><span class="iao-stop-num">4</span><span class="iao-stop-name">Referral Lead</span><span class="iao-stop-time">11:15a</span></div>
-                                        <div class="iao-route-stop"><span class="iao-stop-num">5</span><span class="iao-stop-name">Warm Lead — Canvass</span><span class="iao-stop-time">12:00p</span></div>
-                                        <div class="iao-route-stop"><span class="iao-stop-num">6</span><span class="iao-stop-name">Callback Lead</span><span class="iao-stop-time">12:45p</span></div>
-                                        <div class="iao-route-stop"><span class="iao-stop-num">7</span><span class="iao-stop-name">New Lead — Media</span><span class="iao-stop-time">1:30p</span></div>
-                                      </div>
-                                    </div>
-
-                                    <div class="iao-route-efficiency">
-                                      <h4 class="iao-efficiency-title">&#9889; Route Optimization</h4>
-                                      <div class="iao-efficiency-rows">
-                                        <div class="iao-efficiency-row"><span>Original Distance</span><span class="iao-eff-val">69.2 mi</span></div>
-                                        <div class="iao-efficiency-row"><span>Optimized Distance</span><span class="iao-eff-val iao-eff-highlight">47.0 mi</span></div>
-                                        <div class="iao-efficiency-row"><span>Miles Saved</span><span class="iao-eff-val iao-eff-highlight">22.2 mi (32%)</span></div>
-                                        <div class="iao-efficiency-row"><span>Time Saved</span><span class="iao-eff-val iao-eff-highlight">~45 min</span></div>
-                                        <div class="iao-efficiency-row"><span>Lead Coverage</span><span class="iao-eff-val iao-eff-highlight">100%</span></div>
+                                      <div class="iao-sched-cell">
+                                        <div class="iao-sched-appt iao-appt-red"><div class="iao-appt-head"><span class="iao-appt-status">Cnf</span><span class="iao-appt-set">SET BY<br>&#8212;</span></div><div class="iao-appt-body"><span>Name: Not on Schedule</span><span>Product:</span><span>SubSource:</span></div></div>
                                       </div>
                                     </div>
                                   </div>
@@ -988,6 +1042,6 @@
         </div>
     </footer>
 
-    <script src="script.js?v=6"></script>
+    <script src="script.js?v=7"></script>
 </body>
 </html>

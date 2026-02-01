@@ -192,6 +192,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Nova Map sub-tab switching (Main Map / Schedule) ---
+    const nmTabs = document.querySelectorAll('.iao-nm-tab');
+    const nmViews = document.querySelectorAll('.iao-nm-view');
+
+    if (nmTabs.length) {
+        nmTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.getAttribute('data-nm-view');
+
+                nmTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                nmViews.forEach(v => v.classList.remove('active'));
+                const targetView = document.getElementById('nm-' + target);
+                if (targetView) {
+                    targetView.classList.add('active');
+                }
+            });
+        });
+    }
+
     // --- Staggered scroll animations ---
     const staggerContainers = [
         '.problems-grid',
