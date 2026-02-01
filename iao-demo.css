@@ -1,0 +1,2330 @@
+/* ==========================================================================
+   Install America: Online -- IAO Demo Widget Styles
+   Scoped under .iao-theme to avoid conflicts with the marketing site.
+   Class names match demo-window.html exactly.
+   ========================================================================== */
+
+/* ---------- Design Tokens ---------- */
+.iao-theme {
+  --iao-navy:         #0C2340;
+  --iao-navy-light:   #112d50;
+  --iao-blue:         #0C5FAF;
+  --iao-blue-bright:  #1976D2;
+  --iao-blue-pale:    #E3F0FC;
+  --iao-gold:         #D4A843;
+  --iao-gold-light:   #F5E6B8;
+  --iao-green:        #95CA53;
+  --iao-green-dark:   #2E7D32;
+  --iao-red:          #D32F2F;
+  --iao-red-light:    #FDECEA;
+  --iao-yellow:       #F9A825;
+  --iao-yellow-light: #FFF8E1;
+  --iao-white:        #FFFFFF;
+  --iao-gray-50:      #FAFAFA;
+  --iao-gray-100:     #F5F5F5;
+  --iao-gray-200:     #EEEEEE;
+  --iao-gray-300:     #E0E0E0;
+  --iao-gray-400:     #BDBDBD;
+  --iao-gray-600:     #757575;
+  --iao-gray-800:     #424242;
+  --iao-console-bg:   #1a1a1a;
+  --iao-console-fg:   #95CA53;
+  --iao-font:         'Inter', 'Segoe UI', system-ui, sans-serif;
+  --iao-mono:         'Fira Code', 'Consolas', monospace;
+  --iao-radius-sm:    4px;
+  --iao-radius-md:    8px;
+  --iao-radius-lg:    12px;
+  --iao-radius-pill:  999px;
+  --iao-shadow-sm:    0 1px 3px rgba(0,0,0,.12);
+  --iao-shadow-md:    0 4px 12px rgba(0,0,0,.15);
+  --iao-transition:   .18s ease;
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes iaoFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes iaoBlink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* ---------- Scope Reset ---------- */
+.iao-theme .iao-app-body h2,
+.iao-theme .iao-app-body h3,
+.iao-theme .iao-app-body h4,
+.iao-theme .iao-app-body p,
+.iao-theme .iao-app-body ul,
+.iao-theme .iao-app-body li,
+.iao-theme .iao-app-body table {
+  all: unset;
+  display: revert;
+  box-sizing: border-box;
+}
+
+/* ---------- Global Box-Sizing ---------- */
+.iao-theme *,
+.iao-theme *::before,
+.iao-theme *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.iao-theme {
+  font-family: var(--iao-font);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--iao-gray-800);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   APP HEADER
+   ========================================================================== */
+
+.iao-theme .iao-app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: var(--iao-navy);
+  color: var(--iao-white);
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.iao-theme .iao-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iao-theme .iao-brand-icon {
+  font-size: 1.1rem;
+  color: var(--iao-gold);
+}
+
+.iao-theme .iao-brand-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--iao-white);
+  letter-spacing: .01em;
+  white-space: nowrap;
+}
+
+.iao-theme .iao-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iao-theme .iao-header-btn {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,.7);
+  cursor: pointer;
+  transition: color var(--iao-transition);
+}
+
+.iao-theme .iao-header-btn:hover {
+  color: var(--iao-white);
+}
+
+.iao-theme .iao-header-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--iao-blue);
+  color: var(--iao-white);
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   APP BODY (sidebar + content layout)
+   ========================================================================== */
+
+.iao-theme .iao-app-body {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   SIDEBAR
+   ========================================================================== */
+
+.iao-theme .iao-sidebar {
+  flex: 0 0 180px;
+  width: 180px;
+  background: var(--iao-navy);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.15) transparent;
+}
+
+.iao-theme .iao-sidebar::-webkit-scrollbar        { width: 4px; }
+.iao-theme .iao-sidebar::-webkit-scrollbar-track   { background: transparent; }
+.iao-theme .iao-sidebar::-webkit-scrollbar-thumb   { background: rgba(255,255,255,.15); border-radius: 4px; }
+
+/* Sidebar Brand */
+.iao-theme .iao-sidebar-brand {
+  padding: 14px 12px 10px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  flex-shrink: 0;
+}
+
+.iao-theme .iao-sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.iao-theme .iao-logo-icon {
+  font-size: 1rem;
+  color: var(--iao-gold);
+}
+
+.iao-theme .iao-sidebar-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--iao-white);
+  line-height: 1.25;
+  letter-spacing: .01em;
+}
+
+.iao-theme .iao-sidebar-subtitle {
+  font-size: 0.58rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.45);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-top: 2px;
+}
+
+/* Sidebar Nav */
+.iao-theme .iao-nav {
+  list-style: none;
+  padding: 6px 0;
+  flex: 1 1 auto;
+}
+
+.iao-theme .iao-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px 7px 14px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.72);
+  text-decoration: none;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: background var(--iao-transition), color var(--iao-transition), border-color var(--iao-transition);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.iao-theme .iao-nav-item:hover {
+  background: rgba(255,255,255,.06);
+  color: var(--iao-white);
+}
+
+.iao-theme .iao-nav-item.active {
+  background: var(--iao-blue);
+  color: var(--iao-white);
+  border-left-color: var(--iao-gold);
+}
+
+.iao-theme .iao-nav-icon {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  opacity: .85;
+}
+
+.iao-theme .iao-nav-item.active .iao-nav-icon {
+  opacity: 1;
+}
+
+.iao-theme .iao-nav-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Sidebar Footer */
+.iao-theme .iao-sidebar-footer {
+  padding: 10px 12px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  flex-shrink: 0;
+}
+
+.iao-theme .iao-sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iao-theme .iao-user-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--iao-blue);
+  color: var(--iao-white);
+  font-size: 0.58rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.iao-theme .iao-user-name {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   CONTENT AREA
+   ========================================================================== */
+
+.iao-theme .iao-content {
+  flex: 1 1 0%;
+  min-width: 0;
+  background: var(--iao-gray-50);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--iao-gray-300) transparent;
+}
+
+.iao-theme .iao-content::-webkit-scrollbar        { width: 5px; }
+.iao-theme .iao-content::-webkit-scrollbar-track   { background: transparent; }
+.iao-theme .iao-content::-webkit-scrollbar-thumb   { background: var(--iao-gray-300); border-radius: 4px; }
+
+/* ==========================================================================
+   TAB PANELS
+   ========================================================================== */
+
+.iao-theme .iao-tab-panel {
+  display: none;
+  padding: 14px 18px;
+}
+
+.iao-theme .iao-tab-panel.active {
+  display: block;
+  animation: iaoFadeIn .25s ease;
+}
+
+/* ==========================================================================
+   PAGE HEADER
+   ========================================================================== */
+
+.iao-theme .iao-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.iao-theme .iao-page-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iao-theme .iao-page-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.iao-theme .iao-page-icon {
+  font-size: 1.15rem;
+  color: var(--iao-blue);
+}
+
+.iao-theme .iao-page-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--iao-navy);
+  line-height: 1.25;
+}
+
+.iao-theme .iao-page-subtitle {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--iao-gray-600);
+  margin-top: 1px;
+}
+
+/* Header Badge */
+.iao-theme .iao-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  border-radius: var(--iao-radius-pill);
+  white-space: nowrap;
+}
+
+.iao-theme .iao-badge-live {
+  background: #E8F5E9;
+  color: var(--iao-green-dark);
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.iao-theme .iao-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 12px;
+  font-family: var(--iao-font);
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.4;
+  border: none;
+  border-radius: var(--iao-radius-sm);
+  cursor: default;
+  transition: background var(--iao-transition), box-shadow var(--iao-transition);
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Allow pointer events ONLY on nav items (sidebar) */
+.iao-theme .iao-nav-item {
+  pointer-events: auto;
+}
+
+/* Primary */
+.iao-theme .iao-btn-primary {
+  background: var(--iao-blue);
+  color: var(--iao-white);
+}
+
+/* Outline */
+.iao-theme .iao-btn-outline {
+  background: transparent;
+  color: var(--iao-blue);
+  border: 1px solid var(--iao-gray-300);
+}
+
+/* Success */
+.iao-theme .iao-btn-success {
+  background: var(--iao-green-dark);
+  color: var(--iao-white);
+}
+
+/* Danger */
+.iao-theme .iao-btn-danger {
+  background: var(--iao-red);
+  color: var(--iao-white);
+}
+
+/* Small */
+.iao-theme .iao-btn-sm {
+  padding: 3px 8px;
+  font-size: 0.64rem;
+  border-radius: 3px;
+}
+
+/* Icon-only */
+.iao-theme .iao-btn-icon {
+  padding: 4px;
+  width: 26px;
+  height: 26px;
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   STATS BAR
+   ========================================================================== */
+
+.iao-theme .iao-stats-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.iao-theme .iao-stat-card {
+  flex: 1 1 80px;
+  min-width: 80px;
+  text-align: center;
+  padding: 10px 8px;
+  background: var(--iao-white);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-md);
+}
+
+.iao-theme .iao-stat-value {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--iao-blue);
+  line-height: 1.15;
+}
+
+.iao-theme .iao-stat-label {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--iao-gray-600);
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   DASHBOARD LAYOUT
+   ========================================================================== */
+
+.iao-theme .iao-dashboard-layout {
+  display: flex;
+  gap: 14px;
+}
+
+.iao-theme .iao-dashboard-main {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+.iao-theme .iao-dashboard-aside {
+  flex: 0 0 240px;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   TAB BAR (sub-tabs within panels)
+   ========================================================================== */
+
+.iao-theme .iao-tab-bar {
+  display: flex;
+  gap: 0;
+  background: var(--iao-white);
+  border-bottom: 2px solid var(--iao-gray-200);
+  margin-bottom: 12px;
+  overflow-x: auto;
+}
+
+.iao-theme .iao-tab {
+  padding: 8px 14px;
+  font-family: var(--iao-font);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--iao-gray-600);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color var(--iao-transition), border-color var(--iao-transition);
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+}
+
+.iao-theme .iao-tab:hover {
+  color: var(--iao-blue);
+}
+
+.iao-theme .iao-tab.active {
+  color: var(--iao-blue);
+  border-bottom-color: var(--iao-gold);
+}
+
+/* ==========================================================================
+   SEARCH BAR
+   ========================================================================== */
+
+.iao-theme .iao-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: var(--iao-white);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-md);
+  margin-bottom: 10px;
+}
+
+.iao-theme .iao-search-icon {
+  font-size: 0.85rem;
+  color: var(--iao-gray-400);
+  flex-shrink: 0;
+}
+
+.iao-theme .iao-search-input {
+  flex: 1 1 auto;
+  border: none;
+  outline: none;
+  font-family: var(--iao-font);
+  font-size: 0.72rem;
+  color: var(--iao-gray-800);
+  background: transparent;
+}
+
+.iao-theme .iao-search-input::placeholder {
+  color: var(--iao-gray-400);
+}
+
+.iao-theme .iao-filter-select {
+  padding: 4px 8px;
+  font-family: var(--iao-font);
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--iao-gray-600);
+  background: var(--iao-gray-100);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-sm);
+  cursor: default;
+  appearance: auto;
+}
+
+/* ==========================================================================
+   TABLES
+   ========================================================================== */
+
+.iao-theme .iao-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-md);
+  background: var(--iao-white);
+}
+
+.iao-theme .iao-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.74rem;
+}
+
+.iao-theme .iao-table thead th {
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--iao-navy);
+  background: var(--iao-gold-light);
+  border-bottom: 2px solid var(--iao-gold);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.iao-theme .iao-table tbody tr {
+  border-bottom: 1px solid var(--iao-gray-200);
+  transition: background var(--iao-transition);
+}
+
+.iao-theme .iao-table tbody tr:nth-child(even) {
+  background: var(--iao-gray-50);
+}
+
+.iao-theme .iao-table tbody tr:hover {
+  background: var(--iao-blue-pale);
+}
+
+.iao-theme .iao-table tbody td {
+  padding: 7px 10px;
+  vertical-align: middle;
+  color: var(--iao-gray-800);
+}
+
+/* ==========================================================================
+   CELL TYPES
+   ========================================================================== */
+
+.iao-theme .iao-contact-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iao-theme .iao-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--iao-blue);
+  color: var(--iao-white);
+  font-weight: 700;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  font-size: 0.68rem;
+}
+
+.iao-theme .iao-avatar-sm {
+  width: 26px;
+  height: 26px;
+  font-size: 0.58rem;
+}
+
+.iao-theme .iao-cell-name {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--iao-navy);
+  white-space: nowrap;
+}
+
+.iao-theme .iao-cell-phone {
+  font-size: 0.66rem;
+  color: var(--iao-gray-600);
+}
+
+.iao-theme .iao-cell-muted {
+  font-size: 0.68rem;
+  color: var(--iao-gray-600);
+}
+
+.iao-theme .iao-cell-mono {
+  font-family: var(--iao-mono);
+  font-size: 0.7rem;
+  color: var(--iao-gray-800);
+}
+
+.iao-theme .iao-msg-preview {
+  font-size: 0.7rem;
+  color: var(--iao-gray-600);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-width: 260px;
+}
+
+/* ==========================================================================
+   SOURCE TAGS
+   ========================================================================== */
+
+.iao-theme .iao-source-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  border-radius: var(--iao-radius-pill);
+  white-space: nowrap;
+}
+
+.iao-theme .iao-tag-hatch {
+  background: #E8F5E9;
+  color: var(--iao-green-dark);
+}
+
+.iao-theme .iao-tag-media {
+  background: var(--iao-blue-pale);
+  color: var(--iao-blue);
+}
+
+.iao-theme .iao-tag-canvass {
+  background: #FFF3E0;
+  color: #E65100;
+}
+
+/* ==========================================================================
+   STATUS DOTS
+   ========================================================================== */
+
+.iao-theme .iao-status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 3px;
+}
+
+.iao-theme .iao-status-unread {
+  background: var(--iao-blue);
+}
+
+.iao-theme .iao-status-sent {
+  background: var(--iao-green-dark);
+}
+
+.iao-theme .iao-status-optout {
+  background: var(--iao-red);
+}
+
+.iao-theme .iao-status-read {
+  background: var(--iao-gray-400);
+}
+
+.iao-theme .iao-status-active {
+  background: var(--iao-green);
+}
+
+/* ==========================================================================
+   STATUS PILLS
+   ========================================================================== */
+
+.iao-theme .iao-status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  border-radius: var(--iao-radius-pill);
+  white-space: nowrap;
+}
+
+.iao-theme .iao-pill-ringing {
+  background: var(--iao-yellow-light);
+  color: #E65100;
+}
+
+.iao-theme .iao-pill-connected {
+  background: #E8F5E9;
+  color: var(--iao-green-dark);
+}
+
+.iao-theme .iao-pill-queued {
+  background: var(--iao-blue-pale);
+  color: var(--iao-blue);
+}
+
+.iao-theme .iao-pill-failed {
+  background: var(--iao-red-light);
+  color: var(--iao-red);
+}
+
+.iao-theme .iao-pill-processed {
+  background: #E8F5E9;
+  color: var(--iao-green-dark);
+}
+
+/* ==========================================================================
+   WIDGET (dashboard sidebar widgets)
+   ========================================================================== */
+
+.iao-theme .iao-widget {
+  background: var(--iao-white);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-md);
+  overflow: hidden;
+}
+
+.iao-theme .iao-widget-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  background: var(--iao-navy);
+  color: var(--iao-white);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.iao-theme .iao-widget-icon {
+  font-size: 0.85rem;
+  color: var(--iao-gold);
+}
+
+.iao-theme .iao-widget-status {
+  margin-left: auto;
+  font-size: 0.6rem;
+  font-weight: 600;
+}
+
+.iao-theme .iao-widget-status.iao-status-active {
+  color: var(--iao-green);
+  background: transparent;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  display: inline;
+}
+
+.iao-theme .iao-widget-body {
+  padding: 10px;
+}
+
+.iao-theme .iao-widget-footer {
+  padding: 8px 10px;
+  border-top: 1px solid var(--iao-gray-200);
+  text-align: center;
+}
+
+/* ==========================================================================
+   TERMINAL MINI (dashboard widget)
+   ========================================================================== */
+
+.iao-theme .iao-terminal-mini {
+  background: var(--iao-console-bg);
+  border-radius: var(--iao-radius-sm);
+  padding: 8px 10px;
+  font-family: var(--iao-mono);
+  font-size: 0.62rem;
+  line-height: 1.65;
+  color: var(--iao-console-fg);
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.iao-theme .iao-terminal-line {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.iao-theme .iao-terminal-mini .iao-line-info {
+  color: var(--iao-blue-bright);
+}
+
+.iao-theme .iao-terminal-mini .iao-line-success {
+  color: var(--iao-green);
+}
+
+.iao-theme .iao-terminal-mini .iao-line-warn {
+  color: var(--iao-yellow);
+}
+
+/* ==========================================================================
+   QUICK STATS
+   ========================================================================== */
+
+.iao-theme .iao-quick-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--iao-gray-200);
+}
+
+.iao-theme .iao-quick-stat:last-child {
+  border-bottom: none;
+}
+
+.iao-theme .iao-qs-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--iao-gray-600);
+}
+
+.iao-theme .iao-qs-value {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--iao-blue);
+}
+
+/* ==========================================================================
+   QUEUE COUNTERS
+   ========================================================================== */
+
+.iao-theme .iao-queue-counters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.iao-theme .iao-queue-counter {
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: var(--iao-radius-md);
+  min-width: 80px;
+}
+
+.iao-theme .iao-counter-queued {
+  background: var(--iao-blue-pale);
+  border: 1px solid rgba(12,95,175,.15);
+}
+
+.iao-theme .iao-counter-active {
+  background: #E8F5E9;
+  border: 1px solid rgba(46,125,50,.15);
+}
+
+.iao-theme .iao-counter-number {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.iao-theme .iao-counter-queued .iao-counter-number {
+  color: var(--iao-blue);
+}
+
+.iao-theme .iao-counter-active .iao-counter-number {
+  color: var(--iao-green-dark);
+}
+
+.iao-theme .iao-counter-label {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--iao-gray-600);
+  margin-top: 2px;
+}
+
+.iao-theme .iao-queue-status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.iao-theme .iao-qs-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  border-radius: var(--iao-radius-pill);
+  white-space: nowrap;
+}
+
+/* Reuse pill colors for qs-pill */
+.iao-theme .iao-qs-pill.iao-pill-connected {
+  background: #E8F5E9;
+  color: var(--iao-green-dark);
+}
+
+.iao-theme .iao-qs-pill.iao-pill-failed {
+  background: var(--iao-red-light);
+  color: var(--iao-red);
+}
+
+.iao-theme .iao-qs-pill.iao-pill-processed {
+  background: #E8F5E9;
+  color: var(--iao-green-dark);
+}
+
+/* ==========================================================================
+   FILTER TABS
+   ========================================================================== */
+
+.iao-theme .iao-filter-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.iao-theme .iao-filter-tab {
+  padding: 4px 10px;
+  font-family: var(--iao-font);
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--iao-gray-600);
+  background: var(--iao-gray-100);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-pill);
+  cursor: pointer;
+  transition: background var(--iao-transition), color var(--iao-transition);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.iao-theme .iao-filter-tab.active {
+  background: var(--iao-blue);
+  color: var(--iao-white);
+  border-color: var(--iao-blue);
+}
+
+/* Filter Row (for select dropdowns) */
+.iao-theme .iao-filter-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   PRODUCT TAG
+   ========================================================================== */
+
+.iao-theme .iao-product-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  background: var(--iao-gray-100);
+  color: var(--iao-gray-800);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-sm);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   EVENT TAGS
+   ========================================================================== */
+
+.iao-theme .iao-event-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  border-radius: var(--iao-radius-pill);
+  white-space: nowrap;
+}
+
+.iao-theme .iao-event-created {
+  background: #E8F5E9;
+  color: var(--iao-green-dark);
+}
+
+.iao-theme .iao-event-ai {
+  background: var(--iao-blue-pale);
+  color: var(--iao-blue);
+}
+
+/* ==========================================================================
+   TOGGLE GROUP
+   ========================================================================== */
+
+.iao-theme .iao-toggle-group {
+  display: inline-flex;
+  border: 1px solid var(--iao-gray-300);
+  border-radius: var(--iao-radius-sm);
+  overflow: hidden;
+}
+
+.iao-theme .iao-toggle {
+  padding: 4px 12px;
+  font-family: var(--iao-font);
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--iao-gray-600);
+  background: var(--iao-white);
+  border: none;
+  cursor: pointer;
+  transition: background var(--iao-transition), color var(--iao-transition);
+  pointer-events: none;
+}
+
+.iao-theme .iao-toggle + .iao-toggle {
+  border-left: 1px solid var(--iao-gray-300);
+}
+
+.iao-theme .iao-toggle.active {
+  background: var(--iao-blue);
+  color: var(--iao-white);
+}
+
+/* ==========================================================================
+   KANBAN BOARD
+   ========================================================================== */
+
+.iao-theme .iao-kanban {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--iao-gray-300) transparent;
+}
+
+.iao-theme .iao-kanban::-webkit-scrollbar       { height: 5px; }
+.iao-theme .iao-kanban::-webkit-scrollbar-track  { background: transparent; }
+.iao-theme .iao-kanban::-webkit-scrollbar-thumb  { background: var(--iao-gray-300); border-radius: 4px; }
+
+.iao-theme .iao-kanban-col {
+  flex: 1 1 0%;
+  min-width: 170px;
+  background: var(--iao-gray-100);
+  border-radius: var(--iao-radius-md);
+  display: flex;
+  flex-direction: column;
+  max-height: 380px;
+}
+
+.iao-theme .iao-kanban-header {
+  padding: 8px 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--iao-radius-md) var(--iao-radius-md) 0 0;
+}
+
+.iao-theme .iao-kanban-hot {
+  background: var(--iao-red);
+  color: var(--iao-white);
+}
+
+.iao-theme .iao-kanban-warm {
+  background: var(--iao-yellow);
+  color: var(--iao-navy);
+}
+
+.iao-theme .iao-kanban-wip {
+  background: var(--iao-blue);
+  color: var(--iao-white);
+}
+
+.iao-theme .iao-kanban-cold {
+  background: var(--iao-gray-400);
+  color: var(--iao-navy);
+}
+
+.iao-theme .iao-kanban-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.iao-theme .iao-kanban-count {
+  font-size: 0.72rem;
+  font-weight: 800;
+  opacity: .9;
+}
+
+.iao-theme .iao-kanban-cards {
+  flex: 1 1 auto;
+  padding: 6px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  scrollbar-width: thin;
+}
+
+/* ==========================================================================
+   LEAD CARDS
+   ========================================================================== */
+
+.iao-theme .iao-lead-card {
+  background: var(--iao-white);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-sm);
+  padding: 8px 9px;
+  transition: box-shadow var(--iao-transition);
+}
+
+.iao-theme .iao-lead-card:hover {
+  box-shadow: var(--iao-shadow-sm);
+}
+
+.iao-theme .iao-lead-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.iao-theme .iao-lead-card-product {
+  margin-bottom: 4px;
+}
+
+.iao-theme .iao-lead-card-status {
+  font-size: 0.64rem;
+  color: var(--iao-gray-600);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.iao-theme .iao-lead-card-tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+/* Integration Tags */
+.iao-theme .iao-integration-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  border-radius: var(--iao-radius-pill);
+  white-space: nowrap;
+}
+
+.iao-theme .iao-integration-tag.iao-tag-hatch {
+  background: #E8F5E9;
+  color: var(--iao-green-dark);
+}
+
+.iao-theme .iao-tag-vapi {
+  background: #F3E5F5;
+  color: #7B1FA2;
+}
+
+/* ==========================================================================
+   CALENDAR
+   ========================================================================== */
+
+.iao-theme .iao-calendar-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.iao-theme .iao-calendar-range {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--iao-navy);
+}
+
+.iao-theme .iao-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: var(--iao-gray-200);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-md);
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.iao-theme .iao-calendar-day {
+  background: var(--iao-white);
+  min-height: 80px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.iao-theme .iao-day-header {
+  text-align: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--iao-gray-600);
+  padding: 4px 2px 2px;
+}
+
+.iao-theme .iao-day-num {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--iao-navy);
+}
+
+.iao-theme .iao-day-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 auto;
+}
+
+.iao-theme .iao-day-today {
+  background: var(--iao-blue-pale);
+}
+
+.iao-theme .iao-day-today .iao-day-num {
+  color: var(--iao-blue);
+}
+
+/* Calendar Events */
+.iao-theme .iao-cal-event {
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 0.56rem;
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.iao-theme .iao-cal-appt {
+  background: var(--iao-blue-pale);
+  color: var(--iao-blue);
+}
+
+.iao-theme .iao-cal-callback {
+  background: var(--iao-gold-light);
+  color: #8D6E1F;
+}
+
+.iao-theme .iao-cal-ai {
+  background: #E8F5E9;
+  color: var(--iao-green-dark);
+}
+
+.iao-theme .iao-cal-time {
+  font-size: 0.52rem;
+  font-weight: 700;
+  opacity: .9;
+}
+
+.iao-theme .iao-cal-title {
+  font-size: 0.55rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.iao-theme .iao-cal-desc {
+  font-size: 0.5rem;
+  opacity: .75;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Calendar Bottom (callbacks & warm leads) */
+.iao-theme .iao-calendar-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.iao-theme .iao-cal-section {
+  background: var(--iao-white);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-md);
+  padding: 10px 12px;
+}
+
+.iao-theme .iao-section-title {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--iao-navy);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 8px;
+}
+
+.iao-theme .iao-cal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.iao-theme .iao-cal-list-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iao-theme .iao-cal-list-info {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+/* ==========================================================================
+   TERMINAL STATION
+   ========================================================================== */
+
+.iao-theme .iao-terminal-panel {
+  margin-top: 4px;
+}
+
+.iao-theme .iao-terminal-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.iao-theme .iao-terminal-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--iao-green-dark);
+}
+
+.iao-theme .iao-terminal-info {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  background: var(--iao-white);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-md);
+  margin-bottom: 10px;
+}
+
+.iao-theme .iao-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.iao-theme .iao-info-label {
+  font-size: 0.58rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--iao-gray-600);
+}
+
+.iao-theme .iao-info-value {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--iao-navy);
+}
+
+/* ==========================================================================
+   CONSOLE
+   ========================================================================== */
+
+.iao-theme .iao-console {
+  background: var(--iao-console-bg);
+  border-radius: var(--iao-radius-md);
+  padding: 12px 14px;
+  font-family: var(--iao-mono);
+  font-size: 0.68rem;
+  line-height: 1.65;
+  color: var(--iao-console-fg);
+  overflow-y: auto;
+  max-height: 200px;
+  margin-bottom: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.12) transparent;
+}
+
+.iao-theme .iao-console::-webkit-scrollbar       { width: 4px; }
+.iao-theme .iao-console::-webkit-scrollbar-track  { background: transparent; }
+.iao-theme .iao-console::-webkit-scrollbar-thumb  { background: rgba(255,255,255,.12); border-radius: 4px; }
+
+.iao-theme .iao-console-line {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.iao-theme .iao-console-line.iao-line-system {
+  color: rgba(255,255,255,.4);
+}
+
+.iao-theme .iao-console-line.iao-line-info {
+  color: var(--iao-blue-bright);
+}
+
+.iao-theme .iao-console-line.iao-line-success {
+  color: var(--iao-green);
+}
+
+.iao-theme .iao-console-line.iao-line-warn {
+  color: var(--iao-yellow);
+}
+
+.iao-theme .iao-console-cursor {
+  color: var(--iao-console-fg);
+  animation: iaoBlink 1s step-end infinite;
+}
+
+/* ==========================================================================
+   TERMINAL HELP
+   ========================================================================== */
+
+.iao-theme .iao-terminal-help {
+  margin-top: 10px;
+}
+
+.iao-theme .iao-help-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.iao-theme .iao-help-item {
+  background: var(--iao-white);
+  border: 1px solid var(--iao-gray-200);
+  border-left: 3px solid var(--iao-blue);
+  border-radius: var(--iao-radius-sm);
+  padding: 8px 10px;
+}
+
+.iao-theme .iao-help-item strong {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--iao-navy);
+  margin-bottom: 3px;
+}
+
+.iao-theme .iao-help-item p {
+  font-size: 0.64rem;
+  color: var(--iao-gray-600);
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   METRIC CARDS (Lead Portal)
+   ========================================================================== */
+
+.iao-theme .iao-metric-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.iao-theme .iao-metric-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--iao-white);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-md);
+}
+
+.iao-theme .iao-metric-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--iao-radius-sm);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.iao-theme .iao-mi-blue {
+  background: var(--iao-blue-pale);
+  color: var(--iao-blue);
+}
+
+.iao-theme .iao-mi-green {
+  background: #E8F5E9;
+  color: var(--iao-green-dark);
+}
+
+.iao-theme .iao-mi-gold {
+  background: var(--iao-gold-light);
+  color: #8D6E1F;
+}
+
+.iao-theme .iao-mi-purple {
+  background: #F3E5F5;
+  color: #7B1FA2;
+}
+
+.iao-theme .iao-metric-data {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.iao-theme .iao-metric-value {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--iao-navy);
+  line-height: 1.15;
+}
+
+.iao-theme .iao-metric-label {
+  font-size: 0.58rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--iao-gray-600);
+}
+
+.iao-theme .iao-metric-trend {
+  margin-left: auto;
+  font-size: 0.64rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.iao-theme .iao-trend-up {
+  color: var(--iao-green-dark);
+}
+
+.iao-theme .iao-trend-down {
+  color: var(--iao-red);
+}
+
+/* ==========================================================================
+   PORTAL GRID
+   ========================================================================== */
+
+.iao-theme .iao-portal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.iao-theme .iao-portal-section {
+  background: var(--iao-white);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-md);
+  padding: 12px 14px;
+}
+
+.iao-theme .iao-portal-full {
+  grid-column: 1 / -1;
+}
+
+/* ==========================================================================
+   REVENUE
+   ========================================================================== */
+
+.iao-theme .iao-revenue-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.iao-theme .iao-revenue-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.iao-theme .iao-rev-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--iao-gray-800);
+  flex: 0 0 80px;
+}
+
+.iao-theme .iao-rev-value {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--iao-navy);
+  flex: 0 0 72px;
+  text-align: right;
+}
+
+.iao-theme .iao-rev-bar {
+  flex: 1 1 auto;
+  height: 8px;
+  background: var(--iao-gray-100);
+  border-radius: var(--iao-radius-pill);
+  overflow: hidden;
+}
+
+.iao-theme .iao-rev-fill {
+  height: 100%;
+  background: var(--iao-blue);
+  border-radius: var(--iao-radius-pill);
+  transition: width .5s ease;
+}
+
+/* ==========================================================================
+   FUNNEL
+   ========================================================================== */
+
+.iao-theme .iao-funnel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.iao-theme .iao-funnel-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iao-theme .iao-funnel-label {
+  flex: 0 0 100px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--iao-gray-800);
+  text-align: right;
+}
+
+.iao-theme .iao-funnel-bar {
+  flex: 1 1 auto;
+  height: 22px;
+  background: var(--iao-gray-100);
+  border-radius: var(--iao-radius-sm);
+  overflow: hidden;
+}
+
+.iao-theme .iao-funnel-fill {
+  height: 100%;
+  background: var(--iao-blue);
+  border-radius: var(--iao-radius-sm);
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--iao-white);
+  transition: width .5s ease;
+}
+
+/* ==========================================================================
+   DISPOSITIONS
+   ========================================================================== */
+
+.iao-theme .iao-dispositions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.iao-theme .iao-disp-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 72px;
+  padding: 10px 8px;
+  background: var(--iao-gray-50);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-md);
+  text-align: center;
+}
+
+.iao-theme .iao-disp-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 0.82rem;
+}
+
+.iao-theme .iao-disp-sold {
+  background: #E8F5E9;
+  color: var(--iao-green-dark);
+}
+
+.iao-theme .iao-disp-appt {
+  background: var(--iao-blue-pale);
+  color: var(--iao-blue);
+}
+
+.iao-theme .iao-disp-callback {
+  background: var(--iao-gold-light);
+  color: #8D6E1F;
+}
+
+.iao-theme .iao-disp-noans {
+  background: var(--iao-gray-200);
+  color: var(--iao-gray-600);
+}
+
+.iao-theme .iao-disp-dnc {
+  background: var(--iao-red-light);
+  color: var(--iao-red);
+}
+
+.iao-theme .iao-disp-notqual {
+  background: var(--iao-gray-200);
+  color: var(--iao-gray-800);
+}
+
+.iao-theme .iao-disp-nurture {
+  background: var(--iao-yellow-light);
+  color: #E65100;
+}
+
+.iao-theme .iao-disp-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--iao-gray-600);
+  white-space: nowrap;
+}
+
+.iao-theme .iao-disp-value {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--iao-navy);
+}
+
+/* ==========================================================================
+   KPI CARDS (Analytics)
+   ========================================================================== */
+
+.iao-theme .iao-kpi-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.iao-theme .iao-kpi-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--iao-white);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-md);
+}
+
+.iao-theme .iao-kpi-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--iao-radius-sm);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.iao-theme .iao-kpi-blue {
+  background: var(--iao-blue-pale);
+  color: var(--iao-blue);
+}
+
+.iao-theme .iao-kpi-gold {
+  background: var(--iao-gold-light);
+  color: #8D6E1F;
+}
+
+.iao-theme .iao-kpi-green {
+  background: #E8F5E9;
+  color: var(--iao-green-dark);
+}
+
+.iao-theme .iao-kpi-purple {
+  background: #F3E5F5;
+  color: #7B1FA2;
+}
+
+.iao-theme .iao-kpi-value {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--iao-navy);
+  line-height: 1.15;
+}
+
+.iao-theme .iao-kpi-label {
+  font-size: 0.58rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--iao-gray-600);
+}
+
+.iao-theme .iao-kpi-trend {
+  margin-left: auto;
+  font-size: 0.64rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Reuse trend colors for kpi-trend */
+.iao-theme .iao-kpi-trend.iao-trend-up {
+  color: var(--iao-green-dark);
+}
+
+.iao-theme .iao-kpi-trend.iao-trend-down {
+  color: var(--iao-red);
+}
+
+/* ==========================================================================
+   GOALS (Analytics)
+   ========================================================================== */
+
+.iao-theme .iao-analytics-section {
+  background: var(--iao-white);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-md);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+
+.iao-theme .iao-goals {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.iao-theme .iao-goal {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.iao-theme .iao-goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.iao-theme .iao-goal-name {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--iao-gray-800);
+}
+
+.iao-theme .iao-goal-numbers {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--iao-gray-600);
+}
+
+.iao-theme .iao-progress-bar {
+  height: 10px;
+  background: var(--iao-gray-200);
+  border-radius: var(--iao-radius-pill);
+  overflow: hidden;
+}
+
+.iao-theme .iao-progress-fill {
+  height: 100%;
+  border-radius: var(--iao-radius-pill);
+  transition: width .6s ease;
+}
+
+.iao-theme .iao-progress-gold {
+  background: var(--iao-gold);
+}
+
+.iao-theme .iao-progress-blue {
+  background: var(--iao-blue);
+}
+
+.iao-theme .iao-progress-green {
+  background: var(--iao-green-dark);
+}
+
+.iao-theme .iao-progress-purple {
+  background: #7B1FA2;
+}
+
+.iao-theme .iao-goal-pct {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--iao-blue);
+  text-align: right;
+}
+
+/* ==========================================================================
+   SUMMARY CARDS (Analytics)
+   ========================================================================== */
+
+.iao-theme .iao-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.iao-theme .iao-summary-card {
+  background: var(--iao-white);
+  border: 1px solid var(--iao-gray-200);
+  border-radius: var(--iao-radius-md);
+  padding: 10px 12px;
+}
+
+.iao-theme .iao-summary-title {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--iao-navy);
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--iao-gray-200);
+}
+
+.iao-theme .iao-summary-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.iao-theme .iao-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+  font-size: 0.68rem;
+  color: var(--iao-gray-600);
+}
+
+.iao-theme .iao-summary-val {
+  font-weight: 700;
+  color: var(--iao-navy);
+}
+
+/* ==========================================================================
+   RESPONSIVE -- 768px (sidebar collapses to icon rail)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Sidebar: collapse to icon-only rail */
+  .iao-theme .iao-sidebar {
+    flex: 0 0 46px;
+    width: 46px;
+  }
+
+  .iao-theme .iao-sidebar-title,
+  .iao-theme .iao-sidebar-subtitle,
+  .iao-theme .iao-nav-label,
+  .iao-theme .iao-user-name {
+    display: none;
+  }
+
+  .iao-theme .iao-sidebar-brand {
+    padding: 10px 6px;
+    text-align: center;
+  }
+
+  .iao-theme .iao-sidebar-logo {
+    justify-content: center;
+  }
+
+  .iao-theme .iao-nav-item {
+    justify-content: center;
+    padding: 9px 6px;
+    border-left-width: 2px;
+  }
+
+  .iao-theme .iao-nav-icon {
+    flex: 0 0 20px;
+    font-size: 0.9rem;
+  }
+
+  .iao-theme .iao-sidebar-footer {
+    padding: 8px 4px;
+  }
+
+  .iao-theme .iao-sidebar-user {
+    justify-content: center;
+  }
+
+  /* Tighten tab panels */
+  .iao-theme .iao-tab-panel {
+    padding: 10px 12px;
+  }
+
+  .iao-theme .iao-page-title {
+    font-size: 0.82rem;
+  }
+
+  /* Dashboard aside stacks below */
+  .iao-theme .iao-dashboard-layout {
+    flex-direction: column;
+  }
+
+  .iao-theme .iao-dashboard-aside {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  /* Tables */
+  .iao-theme .iao-table {
+    font-size: 0.68rem;
+  }
+
+  .iao-theme .iao-table thead th {
+    font-size: 0.58rem;
+    padding: 6px 8px;
+  }
+
+  .iao-theme .iao-table tbody td {
+    padding: 5px 8px;
+  }
+
+  /* Calendar bottom stacks */
+  .iao-theme .iao-calendar-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  /* Portal grid stacks */
+  .iao-theme .iao-portal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Summary cards stack */
+  .iao-theme .iao-summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* Help grid to 2 columns */
+  .iao-theme .iao-help-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Kanban */
+  .iao-theme .iao-kanban-col {
+    flex: 0 0 160px;
+    min-width: 150px;
+  }
+
+  /* Reduce button size */
+  .iao-theme .iao-btn {
+    padding: 4px 9px;
+    font-size: 0.64rem;
+  }
+
+  .iao-theme .iao-btn-sm {
+    padding: 2px 6px;
+    font-size: 0.58rem;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE -- 480px (sidebar becomes horizontal scroll row)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  .iao-theme .iao-app-body {
+    flex-direction: column;
+  }
+
+  .iao-theme .iao-sidebar {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .iao-theme .iao-sidebar-brand {
+    display: none;
+  }
+
+  .iao-theme .iao-sidebar-footer {
+    display: none;
+  }
+
+  .iao-theme .iao-nav {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    gap: 0;
+    flex: 1 1 auto;
+  }
+
+  .iao-theme .iao-nav-item {
+    border-left: none;
+    border-bottom: 2px solid transparent;
+    padding: 8px 10px;
+    justify-content: center;
+  }
+
+  .iao-theme .iao-nav-item.active {
+    border-left-color: transparent;
+    border-bottom-color: var(--iao-gold);
+    background: rgba(255,255,255,.08);
+  }
+
+  .iao-theme .iao-nav-label {
+    display: none;
+  }
+
+  .iao-theme .iao-content {
+    flex: 1 1 auto;
+  }
+
+  .iao-theme .iao-tab-panel {
+    padding: 8px 10px;
+  }
+
+  .iao-theme .iao-stats-bar {
+    gap: 4px;
+  }
+
+  .iao-theme .iao-stat-card {
+    padding: 7px 5px;
+    min-width: 60px;
+  }
+
+  .iao-theme .iao-stat-value {
+    font-size: 1rem;
+  }
+
+  .iao-theme .iao-metric-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .iao-theme .iao-kpi-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .iao-theme .iao-help-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .iao-theme .iao-calendar-grid {
+    font-size: 0.5rem;
+  }
+
+  .iao-theme .iao-calendar-day {
+    min-height: 54px;
+    padding: 2px;
+  }
+
+  .iao-theme .iao-cal-event {
+    font-size: 0.48rem;
+  }
+
+  .iao-theme .iao-console {
+    font-size: 0.6rem;
+    max-height: 150px;
+    padding: 8px 10px;
+  }
+
+  .iao-theme .iao-terminal-info {
+    gap: 8px;
+  }
+
+  .iao-theme .iao-queue-counters {
+    gap: 6px;
+  }
+
+  .iao-theme .iao-queue-counter {
+    padding: 8px 12px;
+    min-width: 60px;
+  }
+
+  .iao-theme .iao-counter-number {
+    font-size: 1.15rem;
+  }
+
+  .iao-theme .iao-funnel-label {
+    flex: 0 0 70px;
+    font-size: 0.6rem;
+  }
+
+  .iao-theme .iao-funnel-bar {
+    height: 18px;
+  }
+}

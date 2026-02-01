@@ -171,20 +171,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Interactive Demo Tab Switching ---
-    const demoSidebar = document.querySelector('.demo-sidebar');
-    if (demoSidebar) {
-        const demoNavItems = demoSidebar.querySelectorAll('.demo-nav-item');
-        const demoTabs = document.querySelectorAll('.demo-tab');
+    const iaoSidebar = document.querySelector('.iao-sidebar');
+    if (iaoSidebar) {
+        const navItems = iaoSidebar.querySelectorAll('.iao-nav-item');
+        const panels = document.querySelectorAll('.iao-tab-panel');
 
-        demoNavItems.forEach(button => {
-            button.addEventListener('click', () => {
-                const targetTab = button.getAttribute('data-tab');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const targetTab = item.getAttribute('data-tab');
 
-                demoNavItems.forEach(item => item.classList.remove('active'));
-                button.classList.add('active');
+                navItems.forEach(n => n.classList.remove('active'));
+                item.classList.add('active');
 
-                demoTabs.forEach(tab => tab.classList.remove('active'));
-                const targetPanel = document.getElementById('demo-tab-' + targetTab);
+                panels.forEach(p => p.classList.remove('active'));
+                const targetPanel = document.getElementById('iao-panel-' + targetTab);
                 if (targetPanel) {
                     targetPanel.classList.add('active');
                 }

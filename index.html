@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logo.png">
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="iao-demo.css?v=1">
 </head>
 <body>
 
@@ -276,224 +277,421 @@
                             <div class="demo-titlebar-spacer"></div>
                         </div>
                         <div class="demo-body">
-                            <nav class="demo-sidebar">
-                                <button class="demo-nav-item active" data-tab="dashboard">
-                                    <svg class="demo-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                                    <span class="demo-nav-label">Dashboard</span>
-                                </button>
-                                <button class="demo-nav-item" data-tab="terminal">
-                                    <svg class="demo-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-                                    <span class="demo-nav-label">Terminal Station</span>
-                                </button>
-                                <button class="demo-nav-item" data-tab="novaqueue">
-                                    <svg class="demo-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-                                    <span class="demo-nav-label">NovaQueue</span>
-                                </button>
-                                <button class="demo-nav-item" data-tab="phonebooth">
-                                    <svg class="demo-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                                    <span class="demo-nav-label">Phone Booth</span>
-                                </button>
-                                <button class="demo-nav-item" data-tab="inbound">
-                                    <svg class="demo-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
-                                    <span class="demo-nav-label">Inbound Queue</span>
-                                </button>
-                                <button class="demo-nav-item" data-tab="leadmax">
-                                    <svg class="demo-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                                    <span class="demo-nav-label">LeadMax Center</span>
-                                </button>
-                                <button class="demo-nav-item" data-tab="calendar">
-                                    <svg class="demo-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                                    <span class="demo-nav-label">Calendar</span>
-                                </button>
-                                <button class="demo-nav-item" data-tab="novamap">
-                                    <svg class="demo-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                    <span class="demo-nav-label">Nova Map</span>
-                                </button>
-                                <button class="demo-nav-item" data-tab="leadportal">
-                                    <svg class="demo-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                                    <span class="demo-nav-label">Lead Portal</span>
-                                </button>
-                                <button class="demo-nav-item" data-tab="campaigns">
-                                    <svg class="demo-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                                    <span class="demo-nav-label">Campaigns</span>
-                                </button>
-                                <button class="demo-nav-item" data-tab="analytics">
-                                    <svg class="demo-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                                    <span class="demo-nav-label">Analytics</span>
-                                </button>
-                            </nav>
-                            <div class="demo-content">
-                                <!-- Dashboard -->
-                                <div class="demo-tab active" id="demo-tab-dashboard">
-                                    <h3 class="demo-tab-title">NovaStack Dashboard</h3>
-                                    <p class="demo-tab-desc">Your business command center. All KPIs, team activity, and pipeline status in one real-time view — no switching between apps.</p>
-                                    <div class="demo-visual demo-visual--dashboard">
-                                        <div class="demo-metric"><span class="demo-metric-label">Active Leads</span><span class="demo-metric-value">247</span></div>
-                                        <div class="demo-metric"><span class="demo-metric-label">Jobs Scheduled</span><span class="demo-metric-value">38</span></div>
-                                        <div class="demo-metric"><span class="demo-metric-label">Close Rate</span><span class="demo-metric-value">34%</span></div>
-                                        <div class="demo-metric"><span class="demo-metric-label">Revenue MTD</span><span class="demo-metric-value">$182K</span></div>
-                                    </div>
-                                </div>
-                                <!-- Terminal Station -->
-                                <div class="demo-tab" id="demo-tab-terminal">
-                                    <h3 class="demo-tab-title">Terminal Station</h3>
-                                    <p class="demo-tab-desc">Central operations hub with automated tools that work around the clock so your team doesn't have to.</p>
-                                    <div class="demo-visual demo-visual--terminal">
-                                        <div class="demo-terminal-section">
-                                            <div class="demo-terminal-badge demo-terminal-badge--inbounder">Inbounder</div>
-                                            <span class="demo-terminal-detail">Automatically calls and texts new leads the instant they come in — no delay, no missed opportunities.</span>
-                                        </div>
-                                        <div class="demo-terminal-section">
-                                            <div class="demo-terminal-badge demo-terminal-badge--outbounder">Outbounder</div>
-                                            <span class="demo-terminal-detail">Re-engages cold leads with automated follow-up sequences — calls, texts, and emails on a schedule you define.</span>
-                                        </div>
-                                        <div class="demo-terminal-section">
-                                            <div class="demo-terminal-badge demo-terminal-badge--tasks">Task Manager</div>
-                                            <span class="demo-terminal-detail">Tracks every daily task, follow-up, and action item across your team so nothing slips through the cracks.</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- NovaQueue -->
-                                <div class="demo-tab" id="demo-tab-novaqueue">
-                                    <h3 class="demo-tab-title">NovaQueue</h3>
-                                    <p class="demo-tab-desc">Intelligent lead queue that automatically prioritizes and distributes incoming leads to your team based on availability, skill, and territory.</p>
-                                    <div class="demo-visual demo-visual--queue">
-                                        <div class="demo-queue-item"><span class="demo-queue-priority demo-queue-priority--high"></span><span class="demo-queue-name">New Lead — Window Install</span><span class="demo-queue-time">Just now</span></div>
-                                        <div class="demo-queue-item"><span class="demo-queue-priority demo-queue-priority--high"></span><span class="demo-queue-name">New Lead — Siding Estimate</span><span class="demo-queue-time">2m ago</span></div>
-                                        <div class="demo-queue-item"><span class="demo-queue-priority demo-queue-priority--med"></span><span class="demo-queue-name">Callback — Roof Consult</span><span class="demo-queue-time">8m ago</span></div>
-                                        <div class="demo-queue-item"><span class="demo-queue-priority demo-queue-priority--low"></span><span class="demo-queue-name">Follow-up — Door Quote</span><span class="demo-queue-time">15m ago</span></div>
-                                    </div>
-                                </div>
-                                <!-- Phone Booth -->
-                                <div class="demo-tab" id="demo-tab-phonebooth">
-                                    <h3 class="demo-tab-title">Phone Booth</h3>
-                                    <p class="demo-tab-desc">Built-in calling system with click-to-call, call recording, voicemail drops, and automated follow-up — all without leaving the platform.</p>
-                                    <div class="demo-visual demo-visual--phone">
-                                        <div class="demo-phone-features">
-                                            <div class="demo-phone-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.574 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Click-to-Call Dialer</div>
-                                            <div class="demo-phone-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>Call Recording & Playback</div>
-                                            <div class="demo-phone-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Pre-recorded Voicemail Drops</div>
-                                            <div class="demo-phone-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Live Call Analytics</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Inbound Queue -->
-                                <div class="demo-tab" id="demo-tab-inbound">
-                                    <h3 class="demo-tab-title">Inbound Queue</h3>
-                                    <p class="demo-tab-desc">New leads land here the moment they come in from any source — web forms, phone calls, ads. Instantly routed and responded to.</p>
-                                    <div class="demo-visual demo-visual--inbound">
-                                        <div class="demo-inbound-item"><span class="demo-inbound-dot"></span><span class="demo-inbound-source">Google Ads</span><span class="demo-inbound-name">Sarah M. — Window Replacement</span><span class="demo-inbound-status">Auto-texted</span></div>
-                                        <div class="demo-inbound-item"><span class="demo-inbound-dot"></span><span class="demo-inbound-source">Web Form</span><span class="demo-inbound-name">James T. — Door Install</span><span class="demo-inbound-status">Calling...</span></div>
-                                        <div class="demo-inbound-item"><span class="demo-inbound-dot demo-inbound-dot--done"></span><span class="demo-inbound-source">Referral</span><span class="demo-inbound-name">Lisa K. — Full Home</span><span class="demo-inbound-status">Scheduled</span></div>
-                                    </div>
-                                </div>
-                                <!-- LeadMax Center -->
-                                <div class="demo-tab" id="demo-tab-leadmax">
-                                    <h3 class="demo-tab-title">LeadMax Center</h3>
-                                    <p class="demo-tab-desc">Complete lead lifecycle management — track every interaction, score leads, and move them through your pipeline from first touch to closed deal.</p>
-                                    <div class="demo-visual demo-visual--leads">
-                                        <div class="demo-pipeline">
-                                            <div class="demo-pipeline-stage"><span class="demo-pipeline-label">New</span><div class="demo-pipeline-bar" style="--fill: 85%"></div><span class="demo-pipeline-count">64</span></div>
-                                            <div class="demo-pipeline-stage"><span class="demo-pipeline-label">Contacted</span><div class="demo-pipeline-bar" style="--fill: 68%"></div><span class="demo-pipeline-count">51</span></div>
-                                            <div class="demo-pipeline-stage"><span class="demo-pipeline-label">Qualified</span><div class="demo-pipeline-bar" style="--fill: 50%"></div><span class="demo-pipeline-count">38</span></div>
-                                            <div class="demo-pipeline-stage"><span class="demo-pipeline-label">Proposal</span><div class="demo-pipeline-bar" style="--fill: 35%"></div><span class="demo-pipeline-count">26</span></div>
-                                            <div class="demo-pipeline-stage"><span class="demo-pipeline-label">Closed</span><div class="demo-pipeline-bar" style="--fill: 22%"></div><span class="demo-pipeline-count">16</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Calendar -->
-                                <div class="demo-tab" id="demo-tab-calendar">
-                                    <h3 class="demo-tab-title">Calendar</h3>
-                                    <p class="demo-tab-desc">Team scheduling, appointment setting, and installation calendar — synced across your entire operation with drag-and-drop simplicity.</p>
-                                    <div class="demo-visual demo-visual--scheduling">
-                                        <div class="demo-calendar">
-                                            <div class="demo-cal-header"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div>
-                                            <div class="demo-cal-row">
-                                                <div class="demo-cal-slot">9am - Install</div>
-                                                <div class="demo-cal-slot demo-cal-slot--accent">10am - Consult</div>
-                                                <div class="demo-cal-slot">8am - Install</div>
-                                                <div class="demo-cal-slot demo-cal-slot--accent">1pm - Follow-up</div>
-                                                <div class="demo-cal-slot">11am - Survey</div>
-                                            </div>
-                                            <div class="demo-cal-row">
-                                                <div class="demo-cal-slot demo-cal-slot--accent">2pm - Estimate</div>
-                                                <div class="demo-cal-slot">1pm - Install</div>
-                                                <div class="demo-cal-slot demo-cal-slot--accent">3pm - Consult</div>
-                                                <div class="demo-cal-slot">10am - Survey</div>
-                                                <div class="demo-cal-slot">2pm - Install</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Nova Map -->
-                                <div class="demo-tab" id="demo-tab-novamap">
-                                    <h3 class="demo-tab-title">Nova Map</h3>
-                                    <p class="demo-tab-desc">Visual map of all your leads, jobs, and team locations. Optimize routes, plan territories, and see your entire operation geographically.</p>
-                                    <div class="demo-visual demo-visual--map">
-                                        <div class="demo-map-container">
-                                            <div class="demo-map-grid">
-                                                <div class="demo-map-pin" style="top:20%;left:30%"><span class="demo-map-pin-dot"></span></div>
-                                                <div class="demo-map-pin" style="top:45%;left:55%"><span class="demo-map-pin-dot demo-map-pin-dot--active"></span></div>
-                                                <div class="demo-map-pin" style="top:35%;left:70%"><span class="demo-map-pin-dot"></span></div>
-                                                <div class="demo-map-pin" style="top:60%;left:25%"><span class="demo-map-pin-dot demo-map-pin-dot--active"></span></div>
-                                                <div class="demo-map-pin" style="top:70%;left:60%"><span class="demo-map-pin-dot"></span></div>
-                                                <div class="demo-map-pin" style="top:30%;left:45%"><span class="demo-map-pin-dot demo-map-pin-dot--team"></span></div>
-                                            </div>
-                                            <div class="demo-map-legend">
-                                                <span><span class="demo-map-pin-dot"></span> Leads</span>
-                                                <span><span class="demo-map-pin-dot demo-map-pin-dot--active"></span> Active Jobs</span>
-                                                <span><span class="demo-map-pin-dot demo-map-pin-dot--team"></span> Team</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Lead Portal -->
-                                <div class="demo-tab" id="demo-tab-leadportal">
-                                    <h3 class="demo-tab-title">Lead Portal</h3>
-                                    <p class="demo-tab-desc">Deep-dive into individual leads — full contact history, communications log, documents, notes, and next steps all in one place.</p>
-                                    <div class="demo-visual demo-visual--portal">
-                                        <div class="demo-portal-card">
-                                            <div class="demo-portal-header">
-                                                <div class="demo-portal-avatar">JD</div>
-                                                <div class="demo-portal-info"><span class="demo-portal-name">John Doe</span><span class="demo-portal-meta">Window Replacement &bull; Qualified Lead</span></div>
-                                            </div>
-                                            <div class="demo-portal-details">
-                                                <div class="demo-portal-detail"><span class="demo-portal-label">Last Contact</span><span>Called 2 hrs ago</span></div>
-                                                <div class="demo-portal-detail"><span class="demo-portal-label">Next Step</span><span>Send proposal</span></div>
-                                                <div class="demo-portal-detail"><span class="demo-portal-label">Est. Value</span><span>$8,400</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Campaigns -->
-                                <div class="demo-tab" id="demo-tab-campaigns">
-                                    <h3 class="demo-tab-title">Campaigns</h3>
-                                    <p class="demo-tab-desc">Create and manage multi-channel marketing campaigns with built-in tracking, automation, and performance reporting.</p>
-                                    <div class="demo-visual demo-visual--campaigns">
-                                        <div class="demo-campaign-list">
-                                            <div class="demo-campaign"><span class="demo-campaign-name">Spring Window Promo</span><span class="demo-campaign-status demo-campaign-status--active">Active</span></div>
-                                            <div class="demo-campaign"><span class="demo-campaign-name">Referral Rewards Program</span><span class="demo-campaign-status demo-campaign-status--active">Active</span></div>
-                                            <div class="demo-campaign"><span class="demo-campaign-name">Win-back Email Series</span><span class="demo-campaign-status demo-campaign-status--draft">Draft</span></div>
-                                            <div class="demo-campaign"><span class="demo-campaign-name">Summer Door Sale</span><span class="demo-campaign-status demo-campaign-status--draft">Draft</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Analytics -->
-                                <div class="demo-tab" id="demo-tab-analytics">
-                                    <h3 class="demo-tab-title">Analytics</h3>
-                                    <p class="demo-tab-desc">Deep-dive reports — conversion rates, revenue trends, team performance, and campaign ROI. Make data-driven decisions with real-time insights.</p>
-                                    <div class="demo-visual demo-visual--analytics">
-                                        <div class="demo-chart">
-                                            <div class="demo-chart-bar" style="--height: 40%"><span>Jan</span></div>
-                                            <div class="demo-chart-bar" style="--height: 55%"><span>Feb</span></div>
-                                            <div class="demo-chart-bar" style="--height: 45%"><span>Mar</span></div>
-                                            <div class="demo-chart-bar" style="--height: 70%"><span>Apr</span></div>
-                                            <div class="demo-chart-bar" style="--height: 65%"><span>May</span></div>
-                                            <div class="demo-chart-bar" style="--height: 85%"><span>Jun</span></div>
-                                        </div>
-                                    </div>
-                                </div>
+                          <!-- App Header Bar -->
+                          <div class="iao-app-header">
+                            <div class="iao-brand">
+                              <span class="iao-brand-icon">&#9733;</span>
+                              <span class="iao-brand-name">Install America: Online</span>
                             </div>
+                            <div class="iao-header-actions">
+                              <span class="iao-header-btn">&#128276;</span>
+                              <span class="iao-header-btn">&#9881;</span>
+                              <span class="iao-header-avatar">JD</span>
+                            </div>
+                          </div>
+
+                          <div class="iao-app-body">
+                            <!-- Sidebar -->
+                            <nav class="iao-sidebar">
+                              <div class="iao-sidebar-brand">
+                                <div class="iao-sidebar-logo">
+                                  <span class="iao-logo-icon">&#9733;</span>
+                                </div>
+                                <div class="iao-sidebar-title">Install America</div>
+                                <div class="iao-sidebar-subtitle">Lead to Appointment System</div>
+                              </div>
+
+                              <ul class="iao-nav">
+                                <li class="iao-nav-item active" data-tab="dashboard">
+                                  <span class="iao-nav-icon">&#9634;</span>
+                                  <span class="iao-nav-label">NovaStack Dashboard</span>
+                                </li>
+                                <li class="iao-nav-item" data-tab="novaqueue">
+                                  <span class="iao-nav-icon">&#9742;</span>
+                                  <span class="iao-nav-label">NovaQueue</span>
+                                </li>
+                                <li class="iao-nav-item" data-tab="inbound">
+                                  <span class="iao-nav-icon">&#8615;</span>
+                                  <span class="iao-nav-label">Inbound Queue</span>
+                                </li>
+                                <li class="iao-nav-item" data-tab="leadcards">
+                                  <span class="iao-nav-icon">&#9871;</span>
+                                  <span class="iao-nav-label">LeadMax Center</span>
+                                </li>
+                                <li class="iao-nav-item" data-tab="calendar">
+                                  <span class="iao-nav-icon">&#128197;</span>
+                                  <span class="iao-nav-label">Calendar</span>
+                                </li>
+                                <li class="iao-nav-item" data-tab="terminal">
+                                  <span class="iao-nav-icon">&#9002;</span>
+                                  <span class="iao-nav-label">Terminal Station</span>
+                                </li>
+                                <li class="iao-nav-item" data-tab="portal">
+                                  <span class="iao-nav-icon">&#9873;</span>
+                                  <span class="iao-nav-label">Lead Portal</span>
+                                </li>
+                                <li class="iao-nav-item" data-tab="analytics">
+                                  <span class="iao-nav-icon">&#9636;</span>
+                                  <span class="iao-nav-label">Analytics</span>
+                                </li>
+                              </ul>
+
+                              <div class="iao-sidebar-footer">
+                                <div class="iao-sidebar-user">
+                                  <span class="iao-user-avatar">JD</span>
+                                  <span class="iao-user-name">Jane Doe</span>
+                                </div>
+                              </div>
+                            </nav>
+
+                            <!-- Content Area -->
+                            <main class="iao-content">
+
+                              <!-- TAB 1: NovaStack Dashboard -->
+                              <div class="iao-tab-panel active" id="iao-panel-dashboard">
+                                <div class="iao-page-header">
+                                  <div class="iao-page-header-left">
+                                    <span class="iao-page-icon">&#9634;</span>
+                                    <div>
+                                      <h2 class="iao-page-title">NovaStack Dashboard</h2>
+                                      <p class="iao-page-subtitle">Real-time message monitoring &amp; lead engagement</p>
+                                    </div>
+                                  </div>
+                                  <div class="iao-page-header-right">
+                                    <span class="iao-header-badge iao-badge-live">&#9679; Live</span>
+                                    <button class="iao-btn iao-btn-outline">Export</button>
+                                    <button class="iao-btn iao-btn-primary">+ New Message</button>
+                                  </div>
+                                </div>
+                                <div class="iao-stats-bar">
+                                  <div class="iao-stat-card"><span class="iao-stat-value">24</span><span class="iao-stat-label">Unread</span></div>
+                                  <div class="iao-stat-card"><span class="iao-stat-value">1,847</span><span class="iao-stat-label">Total Messages</span></div>
+                                  <div class="iao-stat-card"><span class="iao-stat-value">63</span><span class="iao-stat-label">Opt-Outs</span></div>
+                                  <div class="iao-stat-card"><span class="iao-stat-value">12</span><span class="iao-stat-label">Nova Queue</span></div>
+                                </div>
+                                <div class="iao-dashboard-layout">
+                                  <div class="iao-dashboard-main">
+                                    <div class="iao-tab-bar">
+                                      <button class="iao-tab active">Messages</button>
+                                      <button class="iao-tab">Opt-Outs</button>
+                                      <button class="iao-tab">Nova Queue</button>
+                                      <button class="iao-tab">Opportunities</button>
+                                    </div>
+                                    <div class="iao-search-bar">
+                                      <span class="iao-search-icon">&#128269;</span>
+                                      <input type="text" class="iao-search-input" placeholder="Search messages by name, phone, or keyword..." disabled>
+                                      <select class="iao-filter-select" disabled><option>All Sources</option></select>
+                                    </div>
+                                    <div class="iao-table-wrap">
+                                      <table class="iao-table">
+                                        <thead><tr><th>CONTACT</th><th>MESSAGE</th><th>SOURCE</th><th>TIME</th><th>STATUS</th></tr></thead>
+                                        <tbody>
+                                          <tr>
+                                            <td><div class="iao-contact-cell"><span class="iao-avatar iao-avatar-sm">HL</span><div><div class="iao-cell-name">Homeowner Lead</div><div class="iao-cell-phone">(555) ***-**01</div></div></div></td>
+                                            <td><span class="iao-msg-preview">Inbound SMS response from AI nurture sequence &mdash; lead expressing interest in scheduling</span></td>
+                                            <td><span class="iao-source-tag iao-tag-hatch">Hatch</span></td>
+                                            <td class="iao-cell-muted">2m ago</td>
+                                            <td><span class="iao-status-dot iao-status-unread"></span> Unread</td>
+                                          </tr>
+                                          <tr>
+                                            <td><div class="iao-contact-cell"><span class="iao-avatar iao-avatar-sm">NL</span><div><div class="iao-cell-name">New Lead</div><div class="iao-cell-phone">(555) ***-**02</div></div></div></td>
+                                            <td><span class="iao-msg-preview">Automated welcome message sent via Nova AI &mdash; awaiting homeowner reply</span></td>
+                                            <td><span class="iao-source-tag iao-tag-media">Media</span></td>
+                                            <td class="iao-cell-muted">15m ago</td>
+                                            <td><span class="iao-status-dot iao-status-sent"></span> Sent</td>
+                                          </tr>
+                                          <tr>
+                                            <td><div class="iao-contact-cell"><span class="iao-avatar iao-avatar-sm">RL</span><div><div class="iao-cell-name">Returning Lead</div><div class="iao-cell-phone">(555) ***-**03</div></div></div></td>
+                                            <td><span class="iao-msg-preview">Opt-out request processed &mdash; contact removed from active sequences</span></td>
+                                            <td><span class="iao-source-tag iao-tag-canvass">Canvass</span></td>
+                                            <td class="iao-cell-muted">1h ago</td>
+                                            <td><span class="iao-status-dot iao-status-optout"></span> Opt-Out</td>
+                                          </tr>
+                                          <tr>
+                                            <td><div class="iao-contact-cell"><span class="iao-avatar iao-avatar-sm">WL</span><div><div class="iao-cell-name">Warm Lead</div><div class="iao-cell-phone">(555) ***-**04</div></div></div></td>
+                                            <td><span class="iao-msg-preview">AI conversation completed &mdash; appointment confirmed, synced to CRM calendar</span></td>
+                                            <td><span class="iao-source-tag iao-tag-hatch">Hatch</span></td>
+                                            <td class="iao-cell-muted">3h ago</td>
+                                            <td><span class="iao-status-dot iao-status-read"></span> Read</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                  <div class="iao-dashboard-aside">
+                                    <div class="iao-widget">
+                                      <div class="iao-widget-header"><span class="iao-widget-icon">&#9002;</span><span>Terminal Station</span><span class="iao-widget-status iao-status-active">&#9679; Active</span></div>
+                                      <div class="iao-widget-body">
+                                        <div class="iao-terminal-mini">
+                                          <div class="iao-terminal-line iao-line-info">[Nova] Inbounder running &mdash; processing inbound leads</div>
+                                          <div class="iao-terminal-line iao-line-success">[Nova] Lead #1847 matched &amp; queued for callback</div>
+                                          <div class="iao-terminal-line iao-line-info">[Nova] Listener monitoring 3 webhook endpoints</div>
+                                          <div class="iao-terminal-line iao-line-warn">[Nova] Agent Dialer paused &mdash; daily limit reached</div>
+                                        </div>
+                                      </div>
+                                      <div class="iao-widget-footer"><button class="iao-btn iao-btn-sm iao-btn-outline">Open Terminal</button></div>
+                                    </div>
+                                    <div class="iao-widget">
+                                      <div class="iao-widget-header"><span class="iao-widget-icon">&#9873;</span><span>Quick Stats</span></div>
+                                      <div class="iao-widget-body">
+                                        <div class="iao-quick-stat"><span class="iao-qs-label">Today's Calls</span><span class="iao-qs-value">47</span></div>
+                                        <div class="iao-quick-stat"><span class="iao-qs-label">Appointments Set</span><span class="iao-qs-value">8</span></div>
+                                        <div class="iao-quick-stat"><span class="iao-qs-label">Conversion Rate</span><span class="iao-qs-value">17%</span></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- TAB 2: NovaQueue -->
+                              <div class="iao-tab-panel" id="iao-panel-novaqueue">
+                                <div class="iao-page-header">
+                                  <div class="iao-page-header-left"><span class="iao-page-icon">&#9742;</span><div><h2 class="iao-page-title">NovaQueue</h2><p class="iao-page-subtitle">Live call queue monitor &amp; dialer management</p></div></div>
+                                  <div class="iao-page-header-right"><span class="iao-header-badge iao-badge-live">&#9679; Live</span><button class="iao-btn iao-btn-primary">+ Add to Queue</button></div>
+                                </div>
+                                <div class="iao-tab-bar"><button class="iao-tab active">Queue</button><button class="iao-tab">Call Center</button><button class="iao-tab">Recent Calls</button></div>
+                                <div class="iao-queue-counters">
+                                  <div class="iao-queue-counter iao-counter-queued"><span class="iao-counter-number">7</span><span class="iao-counter-label">Queued</span></div>
+                                  <div class="iao-queue-counter iao-counter-active"><span class="iao-counter-number">3</span><span class="iao-counter-label">Active</span></div>
+                                  <div class="iao-queue-status-row">
+                                    <span class="iao-qs-pill iao-pill-connected">&#9679; Connected: 2</span>
+                                    <span class="iao-qs-pill iao-pill-failed">&#9679; Failed: 1</span>
+                                    <span class="iao-qs-pill iao-pill-processed">&#9679; Processed: 34</span>
+                                  </div>
+                                </div>
+                                <div class="iao-search-bar"><span class="iao-search-icon">&#128269;</span><input type="text" class="iao-search-input" placeholder="Search by name, phone, or product..." disabled></div>
+                                <div class="iao-filter-tabs"><button class="iao-filter-tab active">All Sources</button><button class="iao-filter-tab">Hatch</button><button class="iao-filter-tab">Media</button><button class="iao-filter-tab">Canvass</button><button class="iao-filter-tab">Referral</button></div>
+                                <div class="iao-table-wrap">
+                                  <table class="iao-table">
+                                    <thead><tr><th>#</th><th>NAME</th><th>PHONE</th><th>PRODUCT</th><th>SOURCE</th><th>INITIATED BY</th><th>TIME</th><th>STATUS</th><th>ACTIONS</th></tr></thead>
+                                    <tbody>
+                                      <tr><td>1</td><td><div class="iao-contact-cell"><span class="iao-avatar iao-avatar-sm">HL</span><span class="iao-cell-name">Homeowner Lead</span></div></td><td class="iao-cell-mono">(555) ***-**10</td><td><span class="iao-product-tag">Windows</span></td><td><span class="iao-source-tag iao-tag-hatch">Hatch</span></td><td><span class="iao-cell-muted">Nova AI &mdash; auto-dialer</span></td><td class="iao-cell-muted">0:42</td><td><span class="iao-status-pill iao-pill-ringing">Ringing</span></td><td><button class="iao-btn iao-btn-sm iao-btn-icon" title="View">&#128065;</button><button class="iao-btn iao-btn-sm iao-btn-icon" title="Transfer">&#8644;</button></td></tr>
+                                      <tr><td>2</td><td><div class="iao-contact-cell"><span class="iao-avatar iao-avatar-sm">CL</span><span class="iao-cell-name">Callback Lead</span></div></td><td class="iao-cell-mono">(555) ***-**11</td><td><span class="iao-product-tag">Roofing</span></td><td><span class="iao-source-tag iao-tag-media">Media</span></td><td><span class="iao-cell-muted">Agent &mdash; manual callback</span></td><td class="iao-cell-muted">2:15</td><td><span class="iao-status-pill iao-pill-connected">Connected</span></td><td><button class="iao-btn iao-btn-sm iao-btn-icon" title="View">&#128065;</button><button class="iao-btn iao-btn-sm iao-btn-icon" title="Transfer">&#8644;</button></td></tr>
+                                      <tr><td>3</td><td><div class="iao-contact-cell"><span class="iao-avatar iao-avatar-sm">NL</span><span class="iao-cell-name">New Lead</span></div></td><td class="iao-cell-mono">(555) ***-**12</td><td><span class="iao-product-tag">Siding</span></td><td><span class="iao-source-tag iao-tag-canvass">Canvass</span></td><td><span class="iao-cell-muted">Inbounder &mdash; speed-to-contact</span></td><td class="iao-cell-muted">Queued</td><td><span class="iao-status-pill iao-pill-queued">Queued</span></td><td><button class="iao-btn iao-btn-sm iao-btn-icon" title="View">&#128065;</button><button class="iao-btn iao-btn-sm iao-btn-icon" title="Remove">&#10005;</button></td></tr>
+                                      <tr><td>4</td><td><div class="iao-contact-cell"><span class="iao-avatar iao-avatar-sm">FL</span><span class="iao-cell-name">Follow-Up Lead</span></div></td><td class="iao-cell-mono">(555) ***-**13</td><td><span class="iao-product-tag">Bath</span></td><td><span class="iao-source-tag iao-tag-hatch">Hatch</span></td><td><span class="iao-cell-muted">Column Runner &mdash; re-engagement</span></td><td class="iao-cell-muted">Queued</td><td><span class="iao-status-pill iao-pill-failed">Failed</span></td><td><button class="iao-btn iao-btn-sm iao-btn-icon" title="Retry">&#8635;</button><button class="iao-btn iao-btn-sm iao-btn-icon" title="Remove">&#10005;</button></td></tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+
+                              <!-- TAB 3: Inbound Queue -->
+                              <div class="iao-tab-panel" id="iao-panel-inbound">
+                                <div class="iao-page-header">
+                                  <div class="iao-page-header-left"><span class="iao-page-icon">&#8615;</span><div><h2 class="iao-page-title">Inbound Queue</h2><p class="iao-page-subtitle">Webhook events &amp; real-time lead intake</p></div></div>
+                                  <div class="iao-page-header-right"><button class="iao-btn iao-btn-outline">Configure Webhooks</button></div>
+                                </div>
+                                <div class="iao-stats-bar">
+                                  <div class="iao-stat-card"><span class="iao-stat-value">38</span><span class="iao-stat-label">Today</span></div>
+                                  <div class="iao-stat-card"><span class="iao-stat-value">4,219</span><span class="iao-stat-label">Total Events</span></div>
+                                  <div class="iao-stat-card"><span class="iao-stat-value">99.8%</span><span class="iao-stat-label">Success Rate</span></div>
+                                </div>
+                                <div class="iao-filter-row">
+                                  <select class="iao-filter-select" disabled><option>All Event Types</option></select>
+                                  <select class="iao-filter-select" disabled><option>All Products</option></select>
+                                  <select class="iao-filter-select" disabled><option>All Statuses</option></select>
+                                  <select class="iao-filter-select" disabled><option>Today</option></select>
+                                </div>
+                                <div class="iao-table-wrap">
+                                  <table class="iao-table">
+                                    <thead><tr><th>EVENT TYPE</th><th>CONTACT</th><th>PHONE</th><th>PRODUCT</th><th>OCCURRED</th><th>STATUS</th><th>ACTIONS</th></tr></thead>
+                                    <tbody>
+                                      <tr><td><span class="iao-event-tag iao-event-created">Contact Created</span></td><td><div class="iao-contact-cell"><span class="iao-avatar iao-avatar-sm">NL</span><span class="iao-cell-name">New Lead</span></div></td><td class="iao-cell-mono">(555) ***-**20</td><td><span class="iao-product-tag">Windows</span></td><td class="iao-cell-muted">Just now</td><td><span class="iao-status-pill iao-pill-processed">Processed</span></td><td><button class="iao-btn iao-btn-sm iao-btn-icon" title="View">&#128065;</button><button class="iao-btn iao-btn-sm iao-btn-icon" title="Open CRM">&#8599;</button></td></tr>
+                                      <tr><td><span class="iao-event-tag iao-event-ai">AI Conversation</span></td><td><div class="iao-contact-cell"><span class="iao-avatar iao-avatar-sm">HL</span><span class="iao-cell-name">Homeowner Lead</span></div></td><td class="iao-cell-mono">(555) ***-**21</td><td><span class="iao-product-tag">Roofing</span></td><td class="iao-cell-muted">3m ago</td><td><span class="iao-status-pill iao-pill-processed">Processed</span></td><td><button class="iao-btn iao-btn-sm iao-btn-icon" title="View">&#128065;</button><button class="iao-btn iao-btn-sm iao-btn-icon" title="Transcript">&#128172;</button></td></tr>
+                                      <tr><td><span class="iao-event-tag iao-event-created">Contact Created</span></td><td><div class="iao-contact-cell"><span class="iao-avatar iao-avatar-sm">RL</span><span class="iao-cell-name">Referral Lead</span></div></td><td class="iao-cell-mono">(555) ***-**22</td><td><span class="iao-product-tag">Siding</span></td><td class="iao-cell-muted">12m ago</td><td><span class="iao-status-pill iao-pill-processed">Processed</span></td><td><button class="iao-btn iao-btn-sm iao-btn-icon" title="View">&#128065;</button><button class="iao-btn iao-btn-sm iao-btn-icon" title="Open CRM">&#8599;</button></td></tr>
+                                      <tr><td><span class="iao-event-tag iao-event-ai">AI Conversation</span></td><td><div class="iao-contact-cell"><span class="iao-avatar iao-avatar-sm">WL</span><span class="iao-cell-name">Warm Lead</span></div></td><td class="iao-cell-mono">(555) ***-**23</td><td><span class="iao-product-tag">Bath</span></td><td class="iao-cell-muted">28m ago</td><td><span class="iao-status-pill iao-pill-connected">In Progress</span></td><td><button class="iao-btn iao-btn-sm iao-btn-icon" title="View">&#128065;</button><button class="iao-btn iao-btn-sm iao-btn-icon" title="Transcript">&#128172;</button></td></tr>
+                                      <tr><td><span class="iao-event-tag iao-event-created">Contact Created</span></td><td><div class="iao-contact-cell"><span class="iao-avatar iao-avatar-sm">CL</span><span class="iao-cell-name">Canvass Lead</span></div></td><td class="iao-cell-mono">(555) ***-**24</td><td><span class="iao-product-tag">Windows</span></td><td class="iao-cell-muted">45m ago</td><td><span class="iao-status-pill iao-pill-failed">Error</span></td><td><button class="iao-btn iao-btn-sm iao-btn-icon" title="View">&#128065;</button><button class="iao-btn iao-btn-sm iao-btn-icon" title="Retry">&#8635;</button></td></tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+
+                              <!-- TAB 4: LeadMax Center -->
+                              <div class="iao-tab-panel" id="iao-panel-leadcards">
+                                <div class="iao-page-header">
+                                  <div class="iao-page-header-left"><span class="iao-page-icon">&#9871;</span><div><h2 class="iao-page-title">LeadMax Center</h2><p class="iao-page-subtitle">Pipeline management &amp; lead card organization</p></div></div>
+                                  <div class="iao-page-header-right">
+                                    <div class="iao-toggle-group"><button class="iao-toggle active">Kanban</button><button class="iao-toggle">List</button></div>
+                                    <button class="iao-btn iao-btn-primary">+ Add Lead</button>
+                                  </div>
+                                </div>
+                                <div class="iao-kanban">
+                                  <div class="iao-kanban-col"><div class="iao-kanban-header iao-kanban-hot"><span class="iao-kanban-title">HOT</span><span class="iao-kanban-count">3</span></div><div class="iao-kanban-cards">
+                                    <div class="iao-lead-card"><div class="iao-lead-card-header"><span class="iao-avatar iao-avatar-sm">HL</span><div><div class="iao-cell-name">Homeowner Lead</div><div class="iao-cell-phone">(555) ***-**30</div></div></div><div class="iao-lead-card-product"><span class="iao-product-tag">Windows</span></div><div class="iao-lead-card-status">Appointment confirmed &mdash; ready for setter visit</div><div class="iao-lead-card-tags"><span class="iao-integration-tag iao-tag-hatch">Hatch</span><span class="iao-integration-tag iao-tag-vapi">Vapi</span></div></div>
+                                    <div class="iao-lead-card"><div class="iao-lead-card-header"><span class="iao-avatar iao-avatar-sm">PL</span><div><div class="iao-cell-name">Priority Lead</div><div class="iao-cell-phone">(555) ***-**31</div></div></div><div class="iao-lead-card-product"><span class="iao-product-tag">Roofing</span></div><div class="iao-lead-card-status">AI call completed &mdash; homeowner requested callback today</div><div class="iao-lead-card-tags"><span class="iao-integration-tag iao-tag-vapi">Vapi</span></div></div>
+                                    <div class="iao-lead-card"><div class="iao-lead-card-header"><span class="iao-avatar iao-avatar-sm">UL</span><div><div class="iao-cell-name">Urgent Lead</div><div class="iao-cell-phone">(555) ***-**32</div></div></div><div class="iao-lead-card-product"><span class="iao-product-tag">Bath</span></div><div class="iao-lead-card-status">Responded to SMS within 2 minutes &mdash; high intent signal</div><div class="iao-lead-card-tags"><span class="iao-integration-tag iao-tag-hatch">Hatch</span></div></div>
+                                  </div></div>
+                                  <div class="iao-kanban-col"><div class="iao-kanban-header iao-kanban-warm"><span class="iao-kanban-title">WARM</span><span class="iao-kanban-count">2</span></div><div class="iao-kanban-cards">
+                                    <div class="iao-lead-card"><div class="iao-lead-card-header"><span class="iao-avatar iao-avatar-sm">IL</span><div><div class="iao-cell-name">Interested Lead</div><div class="iao-cell-phone">(555) ***-**33</div></div></div><div class="iao-lead-card-product"><span class="iao-product-tag">Siding</span></div><div class="iao-lead-card-status">Engaged with 3 AI messages &mdash; scheduling in progress</div><div class="iao-lead-card-tags"><span class="iao-integration-tag iao-tag-hatch">Hatch</span></div></div>
+                                    <div class="iao-lead-card"><div class="iao-lead-card-header"><span class="iao-avatar iao-avatar-sm">ML</span><div><div class="iao-cell-name">Media Lead</div><div class="iao-cell-phone">(555) ***-**34</div></div></div><div class="iao-lead-card-product"><span class="iao-product-tag">Windows</span></div><div class="iao-lead-card-status">Voicemail left by AI &mdash; awaiting callback</div><div class="iao-lead-card-tags"><span class="iao-integration-tag iao-tag-vapi">Vapi</span></div></div>
+                                  </div></div>
+                                  <div class="iao-kanban-col"><div class="iao-kanban-header iao-kanban-wip"><span class="iao-kanban-title">WIP</span><span class="iao-kanban-count">2</span></div><div class="iao-kanban-cards">
+                                    <div class="iao-lead-card"><div class="iao-lead-card-header"><span class="iao-avatar iao-avatar-sm">AL</span><div><div class="iao-cell-name">Active Lead</div><div class="iao-cell-phone">(555) ***-**35</div></div></div><div class="iao-lead-card-product"><span class="iao-product-tag">Roofing</span></div><div class="iao-lead-card-status">In nurture sequence &mdash; follow-up #2 scheduled tomorrow</div><div class="iao-lead-card-tags"><span class="iao-integration-tag iao-tag-hatch">Hatch</span><span class="iao-integration-tag iao-tag-vapi">Vapi</span></div></div>
+                                    <div class="iao-lead-card"><div class="iao-lead-card-header"><span class="iao-avatar iao-avatar-sm">QL</span><div><div class="iao-cell-name">Qualified Lead</div><div class="iao-cell-phone">(555) ***-**36</div></div></div><div class="iao-lead-card-product"><span class="iao-product-tag">Bath</span></div><div class="iao-lead-card-status">Credit check pending &mdash; agent assigned for next step</div><div class="iao-lead-card-tags"><span class="iao-integration-tag iao-tag-hatch">Hatch</span></div></div>
+                                  </div></div>
+                                  <div class="iao-kanban-col"><div class="iao-kanban-header iao-kanban-cold"><span class="iao-kanban-title">COLD</span><span class="iao-kanban-count">2</span></div><div class="iao-kanban-cards">
+                                    <div class="iao-lead-card"><div class="iao-lead-card-header"><span class="iao-avatar iao-avatar-sm">OL</span><div><div class="iao-cell-name">Older Lead</div><div class="iao-cell-phone">(555) ***-**37</div></div></div><div class="iao-lead-card-product"><span class="iao-product-tag">Windows</span></div><div class="iao-lead-card-status">No response after 5 attempts &mdash; queued for re-engagement</div><div class="iao-lead-card-tags"><span class="iao-integration-tag iao-tag-hatch">Hatch</span></div></div>
+                                    <div class="iao-lead-card"><div class="iao-lead-card-header"><span class="iao-avatar iao-avatar-sm">DL</span><div><div class="iao-cell-name">Dormant Lead</div><div class="iao-cell-phone">(555) ***-**38</div></div></div><div class="iao-lead-card-product"><span class="iao-product-tag">Siding</span></div><div class="iao-lead-card-status">Last contact 14 days ago &mdash; Column Runner will retry</div><div class="iao-lead-card-tags"><span class="iao-integration-tag iao-tag-vapi">Vapi</span></div></div>
+                                  </div></div>
+                                </div>
+                              </div>
+
+                              <!-- TAB 5: Calendar -->
+                              <div class="iao-tab-panel" id="iao-panel-calendar">
+                                <div class="iao-page-header">
+                                  <div class="iao-page-header-left"><span class="iao-page-icon">&#128197;</span><div><h2 class="iao-page-title">Calendar</h2><p class="iao-page-subtitle">Appointment scheduling &amp; callback management</p></div></div>
+                                  <div class="iao-page-header-right">
+                                    <div class="iao-toggle-group"><button class="iao-toggle">Day</button><button class="iao-toggle active">Week</button><button class="iao-toggle">Month</button></div>
+                                    <button class="iao-btn iao-btn-primary">+ New Appointment</button>
+                                  </div>
+                                </div>
+                                <div class="iao-calendar-nav"><button class="iao-btn iao-btn-icon">&lsaquo;</button><span class="iao-calendar-range">Jan 27 &ndash; Feb 2, 2026</span><button class="iao-btn iao-btn-icon">&rsaquo;</button><button class="iao-btn iao-btn-sm iao-btn-outline">Today</button></div>
+                                <div class="iao-calendar-grid">
+                                  <div class="iao-calendar-day"><div class="iao-day-header">SUN<br><span class="iao-day-num">27</span></div><div class="iao-day-slots"><div class="iao-cal-event iao-cal-appt"><span class="iao-cal-time">10:00a</span><span class="iao-cal-title">Setter Visit</span><span class="iao-cal-desc">Windows estimate</span></div></div></div>
+                                  <div class="iao-calendar-day"><div class="iao-day-header">MON<br><span class="iao-day-num">28</span></div><div class="iao-day-slots"><div class="iao-cal-event iao-cal-appt"><span class="iao-cal-time">9:00a</span><span class="iao-cal-title">Setter Visit</span><span class="iao-cal-desc">Roofing inspection</span></div><div class="iao-cal-event iao-cal-callback"><span class="iao-cal-time">1:00p</span><span class="iao-cal-title">Callback</span><span class="iao-cal-desc">Follow-up call</span></div><div class="iao-cal-event iao-cal-appt"><span class="iao-cal-time">4:00p</span><span class="iao-cal-title">Setter Visit</span><span class="iao-cal-desc">Bath remodel</span></div></div></div>
+                                  <div class="iao-calendar-day"><div class="iao-day-header">TUE<br><span class="iao-day-num">29</span></div><div class="iao-day-slots"><div class="iao-cal-event iao-cal-callback"><span class="iao-cal-time">10:30a</span><span class="iao-cal-title">Callback</span><span class="iao-cal-desc">Re-engagement</span></div><div class="iao-cal-event iao-cal-appt"><span class="iao-cal-time">2:00p</span><span class="iao-cal-title">Setter Visit</span><span class="iao-cal-desc">Siding estimate</span></div></div></div>
+                                  <div class="iao-calendar-day"><div class="iao-day-header">WED<br><span class="iao-day-num">30</span></div><div class="iao-day-slots"><div class="iao-cal-event iao-cal-appt"><span class="iao-cal-time">11:00a</span><span class="iao-cal-title">Setter Visit</span><span class="iao-cal-desc">Windows estimate</span></div></div></div>
+                                  <div class="iao-calendar-day iao-day-today"><div class="iao-day-header">THU<br><span class="iao-day-num">31</span></div><div class="iao-day-slots"><div class="iao-cal-event iao-cal-appt"><span class="iao-cal-time">9:30a</span><span class="iao-cal-title">Setter Visit</span><span class="iao-cal-desc">Roofing estimate</span></div><div class="iao-cal-event iao-cal-callback"><span class="iao-cal-time">12:00p</span><span class="iao-cal-title">Callback</span><span class="iao-cal-desc">Hot lead follow-up</span></div><div class="iao-cal-event iao-cal-ai"><span class="iao-cal-time">3:00p</span><span class="iao-cal-title">AI Scheduled</span><span class="iao-cal-desc">Auto-booked via Hatch</span></div></div></div>
+                                  <div class="iao-calendar-day"><div class="iao-day-header">FRI<br><span class="iao-day-num">1</span></div><div class="iao-day-slots"><div class="iao-cal-event iao-cal-appt"><span class="iao-cal-time">10:00a</span><span class="iao-cal-title">Setter Visit</span><span class="iao-cal-desc">Bath remodel</span></div><div class="iao-cal-event iao-cal-appt"><span class="iao-cal-time">3:30p</span><span class="iao-cal-title">Setter Visit</span><span class="iao-cal-desc">Siding estimate</span></div></div></div>
+                                  <div class="iao-calendar-day"><div class="iao-day-header">SAT<br><span class="iao-day-num">2</span></div><div class="iao-day-slots"><div class="iao-cal-event iao-cal-appt"><span class="iao-cal-time">9:00a</span><span class="iao-cal-title">Setter Visit</span><span class="iao-cal-desc">Windows estimate</span></div></div></div>
+                                </div>
+                                <div class="iao-calendar-bottom">
+                                  <div class="iao-cal-section"><h3 class="iao-section-title">Callbacks Today</h3><div class="iao-cal-list">
+                                    <div class="iao-cal-list-item"><span class="iao-avatar iao-avatar-sm">HL</span><div class="iao-cal-list-info"><span class="iao-cell-name">Homeowner Lead</span><span class="iao-cell-muted">1:00 PM &mdash; Follow-up on roofing interest</span></div><span class="iao-status-pill iao-pill-queued">Pending</span></div>
+                                    <div class="iao-cal-list-item"><span class="iao-avatar iao-avatar-sm">WL</span><div class="iao-cal-list-info"><span class="iao-cell-name">Warm Lead</span><span class="iao-cell-muted">3:30 PM &mdash; Requested pricing info for windows</span></div><span class="iao-status-pill iao-pill-queued">Pending</span></div>
+                                  </div></div>
+                                  <div class="iao-cal-section"><h3 class="iao-section-title">Warm Leads (Ready to Book)</h3><div class="iao-cal-list">
+                                    <div class="iao-cal-list-item"><span class="iao-avatar iao-avatar-sm">IL</span><div class="iao-cal-list-info"><span class="iao-cell-name">Interested Lead</span><span class="iao-cell-muted">Engaged via AI &mdash; waiting for time slot confirmation</span></div><button class="iao-btn iao-btn-sm iao-btn-primary">Book</button></div>
+                                    <div class="iao-cal-list-item"><span class="iao-avatar iao-avatar-sm">RL</span><div class="iao-cal-list-info"><span class="iao-cell-name">Referral Lead</span><span class="iao-cell-muted">Spouse approved &mdash; needs evening appointment</span></div><button class="iao-btn iao-btn-sm iao-btn-primary">Book</button></div>
+                                  </div></div>
+                                </div>
+                              </div>
+
+                              <!-- TAB 6: Terminal Station -->
+                              <div class="iao-tab-panel" id="iao-panel-terminal">
+                                <div class="iao-page-header">
+                                  <div class="iao-page-header-left"><span class="iao-page-icon">&#9002;</span><div><h2 class="iao-page-title">Terminal Station</h2><p class="iao-page-subtitle">Automation engine &amp; process control center</p></div></div>
+                                  <div class="iao-page-header-right"><span class="iao-header-badge iao-badge-live">&#9679; System Online</span></div>
+                                </div>
+                                <div class="iao-tab-bar">
+                                  <button class="iao-tab active" data-tooltip="Processes inbound leads instantly">Inbounder</button>
+                                  <button class="iao-tab" data-tooltip="AI-powered dialer using Vapi">Agent Dialer</button>
+                                  <button class="iao-tab" data-tooltip="High-volume outbound campaigns">LP Caller</button>
+                                  <button class="iao-tab" data-tooltip="Re-engages cold leads">Column Runner</button>
+                                  <button class="iao-tab" data-tooltip="Builds targeted audiences">Audience Runner</button>
+                                  <button class="iao-tab" data-tooltip="Monitors webhooks in real-time">Listener</button>
+                                </div>
+                                <div class="iao-terminal-panel">
+                                  <div class="iao-terminal-controls">
+                                    <button class="iao-btn iao-btn-success">&#9654; Start</button>
+                                    <button class="iao-btn iao-btn-danger">&#9632; Stop</button>
+                                    <button class="iao-btn iao-btn-outline">Next Lead &#8674;</button>
+                                    <button class="iao-btn iao-btn-outline">&#8635; Refresh Logs</button>
+                                    <button class="iao-btn iao-btn-outline">Force Reset</button>
+                                    <button class="iao-btn iao-btn-outline">Open CRM &#8599;</button>
+                                    <div class="iao-terminal-status-indicator"><span class="iao-status-dot iao-status-active"></span><span>Inbounder Active &mdash; Processing</span></div>
+                                  </div>
+                                  <div class="iao-terminal-info">
+                                    <div class="iao-info-item"><span class="iao-info-label">Mode</span><span class="iao-info-value">Auto &mdash; Speed to Contact</span></div>
+                                    <div class="iao-info-item"><span class="iao-info-label">Leads Processed</span><span class="iao-info-value">142 today</span></div>
+                                    <div class="iao-info-item"><span class="iao-info-label">Success Rate</span><span class="iao-info-value">94.3%</span></div>
+                                    <div class="iao-info-item"><span class="iao-info-label">Avg. Response Time</span><span class="iao-info-value">12 seconds</span></div>
+                                  </div>
+                                  <div class="iao-console">
+                                    <div class="iao-console-line iao-line-system">[SYSTEM] Inbounder v3.2 initialized &mdash; connected to CRM webhook listener</div>
+                                    <div class="iao-console-line iao-line-system">[SYSTEM] Monitoring endpoints: /api/contacts, /api/conversations, /api/events</div>
+                                    <div class="iao-console-line iao-line-info">[10:42:03] New lead received &mdash; Source: Hatch | Product: Windows | Score: 87</div>
+                                    <div class="iao-console-line iao-line-info">[10:42:03] Lead routed to speed-to-contact workflow</div>
+                                    <div class="iao-console-line iao-line-success">[10:42:15] AI voice call initiated via Vapi &mdash; Agent: Nova-Setter-v2</div>
+                                    <div class="iao-console-line iao-line-success">[10:42:47] Call connected &mdash; duration 32s &mdash; homeowner engaged</div>
+                                    <div class="iao-console-line iao-line-success">[10:43:12] Appointment booked: Thu 1/31 at 3:00 PM &mdash; synced to calendar</div>
+                                    <div class="iao-console-line iao-line-info">[10:45:22] New lead received &mdash; Source: Media | Product: Roofing | Score: 64</div>
+                                    <div class="iao-console-line iao-line-info">[10:45:23] Lead queued for nurture sequence (score below threshold)</div>
+                                    <div class="iao-console-line iao-line-warn">[10:48:01] Rate limit approaching &mdash; 47/50 calls used this hour</div>
+                                    <div class="iao-console-line iao-line-info">[10:52:17] New lead received &mdash; Source: Canvass | Product: Siding | Score: 91</div>
+                                    <div class="iao-console-line iao-line-success">[10:52:18] High-score lead &mdash; priority routing activated</div>
+                                    <div class="iao-console-line iao-line-success">[10:52:19] SMS sent: "Hi! This is Nova from Install America..."</div>
+                                    <div class="iao-console-line iao-line-system">[10:55:00] Heartbeat OK &mdash; 3 active connections, 0 errors, uptime 4h 22m</div>
+                                    <div class="iao-console-cursor">_</div>
+                                  </div>
+                                  <div class="iao-terminal-help"><div class="iao-help-grid">
+                                    <div class="iao-help-item"><strong>Inbounder</strong><p>Instantly processes new inbound leads. Triggers speed-to-contact workflows within seconds of lead creation.</p></div>
+                                    <div class="iao-help-item"><strong>Agent Dialer</strong><p>AI voice agent calls leads using natural conversation. Powered by Vapi for human-like appointment setting.</p></div>
+                                    <div class="iao-help-item"><strong>LP Caller</strong><p>High-volume outbound dialer for Lead Portal campaigns. Automated scripts with live transfer capability.</p></div>
+                                    <div class="iao-help-item"><strong>Column Runner</strong><p>Systematically works through CRM pipeline columns. Re-engages dormant leads on configurable schedules.</p></div>
+                                    <div class="iao-help-item"><strong>Audience Runner</strong><p>Builds targeted lead segments for campaigns. Filters by product, source, engagement score, and geography.</p></div>
+                                    <div class="iao-help-item"><strong>Listener</strong><p>Real-time webhook monitor. Watches for CRM events, form submissions, and API calls to trigger automations.</p></div>
+                                  </div></div>
+                                </div>
+                              </div>
+
+                              <!-- TAB 7: Lead Portal -->
+                              <div class="iao-tab-panel" id="iao-panel-portal">
+                                <div class="iao-page-header">
+                                  <div class="iao-page-header-left"><span class="iao-page-icon">&#9873;</span><div><h2 class="iao-page-title">Lead Portal</h2><p class="iao-page-subtitle">Performance metrics &amp; revenue intelligence</p></div></div>
+                                  <div class="iao-page-header-right"><select class="iao-filter-select" disabled><option>This Month</option></select><button class="iao-btn iao-btn-outline">Export Report</button></div>
+                                </div>
+                                <div class="iao-metric-cards">
+                                  <div class="iao-metric-card"><div class="iao-metric-icon iao-mi-blue">&#9632;</div><div class="iao-metric-data"><span class="iao-metric-value">2,847</span><span class="iao-metric-label">Total Leads</span></div><span class="iao-metric-trend iao-trend-up">+12.3%</span></div>
+                                  <div class="iao-metric-card"><div class="iao-metric-icon iao-mi-green">&#9742;</div><div class="iao-metric-data"><span class="iao-metric-value">68.4%</span><span class="iao-metric-label">Contact Rate</span></div><span class="iao-metric-trend iao-trend-up">+5.1%</span></div>
+                                  <div class="iao-metric-card"><div class="iao-metric-icon iao-mi-gold">&#128197;</div><div class="iao-metric-data"><span class="iao-metric-value">24.7%</span><span class="iao-metric-label">Appt Set Rate</span></div><span class="iao-metric-trend iao-trend-up">+2.8%</span></div>
+                                  <div class="iao-metric-card"><div class="iao-metric-icon iao-mi-purple">&#9733;</div><div class="iao-metric-data"><span class="iao-metric-value">31.2%</span><span class="iao-metric-label">Close Rate</span></div><span class="iao-metric-trend iao-trend-down">-1.4%</span></div>
+                                  <div class="iao-metric-card"><div class="iao-metric-icon iao-mi-green">$</div><div class="iao-metric-data"><span class="iao-metric-value">$184K</span><span class="iao-metric-label">Net Sales</span></div><span class="iao-metric-trend iao-trend-up">+18.6%</span></div>
+                                  <div class="iao-metric-card"><div class="iao-metric-icon iao-mi-blue">&#9201;</div><div class="iao-metric-data"><span class="iao-metric-value">14s</span><span class="iao-metric-label">Speed to Contact</span></div><span class="iao-metric-trend iao-trend-up">-23%</span></div>
+                                </div>
+                                <div class="iao-portal-grid">
+                                  <div class="iao-portal-section"><h3 class="iao-section-title">Revenue Summary</h3><div class="iao-revenue-summary">
+                                    <div class="iao-revenue-row"><span class="iao-rev-label">Gross Revenue</span><span class="iao-rev-value">$247,800</span></div>
+                                    <div class="iao-revenue-row"><span class="iao-rev-label">Windows</span><span class="iao-rev-value">$98,400</span><div class="iao-rev-bar"><div class="iao-rev-fill" style="width:40%"></div></div></div>
+                                    <div class="iao-revenue-row"><span class="iao-rev-label">Roofing</span><span class="iao-rev-value">$72,100</span><div class="iao-rev-bar"><div class="iao-rev-fill" style="width:29%"></div></div></div>
+                                    <div class="iao-revenue-row"><span class="iao-rev-label">Bath</span><span class="iao-rev-value">$48,300</span><div class="iao-rev-bar"><div class="iao-rev-fill" style="width:19%"></div></div></div>
+                                    <div class="iao-revenue-row"><span class="iao-rev-label">Siding</span><span class="iao-rev-value">$29,000</span><div class="iao-rev-bar"><div class="iao-rev-fill" style="width:12%"></div></div></div>
+                                  </div></div>
+                                  <div class="iao-portal-section"><h3 class="iao-section-title">Conversion Funnel</h3><div class="iao-funnel">
+                                    <div class="iao-funnel-step"><span class="iao-funnel-label">Total Leads</span><div class="iao-funnel-bar"><div class="iao-funnel-fill" style="width:100%">2,847</div></div></div>
+                                    <div class="iao-funnel-step"><span class="iao-funnel-label">Contacted</span><div class="iao-funnel-bar"><div class="iao-funnel-fill" style="width:68%">1,947</div></div></div>
+                                    <div class="iao-funnel-step"><span class="iao-funnel-label">Appointments Set</span><div class="iao-funnel-bar"><div class="iao-funnel-fill" style="width:25%">703</div></div></div>
+                                    <div class="iao-funnel-step"><span class="iao-funnel-label">Appointments Sat</span><div class="iao-funnel-bar"><div class="iao-funnel-fill" style="width:18%">512</div></div></div>
+                                    <div class="iao-funnel-step"><span class="iao-funnel-label">Closed / Sold</span><div class="iao-funnel-bar"><div class="iao-funnel-fill" style="width:9%">248</div></div></div>
+                                  </div></div>
+                                  <div class="iao-portal-section iao-portal-full"><h3 class="iao-section-title">Disposition Breakdown</h3><div class="iao-dispositions">
+                                    <div class="iao-disp-item"><span class="iao-disp-icon iao-disp-sold">&#10003;</span><span class="iao-disp-label">Sold</span><span class="iao-disp-value">248</span></div>
+                                    <div class="iao-disp-item"><span class="iao-disp-icon iao-disp-appt">&#128197;</span><span class="iao-disp-label">Appt Set</span><span class="iao-disp-value">703</span></div>
+                                    <div class="iao-disp-item"><span class="iao-disp-icon iao-disp-callback">&#9742;</span><span class="iao-disp-label">Callback</span><span class="iao-disp-value">312</span></div>
+                                    <div class="iao-disp-item"><span class="iao-disp-icon iao-disp-noans">&#10007;</span><span class="iao-disp-label">No Answer</span><span class="iao-disp-value">584</span></div>
+                                    <div class="iao-disp-item"><span class="iao-disp-icon iao-disp-dnc">&#128683;</span><span class="iao-disp-label">DNC</span><span class="iao-disp-value">89</span></div>
+                                    <div class="iao-disp-item"><span class="iao-disp-icon iao-disp-notqual">&#8709;</span><span class="iao-disp-label">Not Qualified</span><span class="iao-disp-value">411</span></div>
+                                    <div class="iao-disp-item"><span class="iao-disp-icon iao-disp-nurture">&#9998;</span><span class="iao-disp-label">In Nurture</span><span class="iao-disp-value">500</span></div>
+                                  </div></div>
+                                </div>
+                              </div>
+
+                              <!-- TAB 8: Analytics -->
+                              <div class="iao-tab-panel" id="iao-panel-analytics">
+                                <div class="iao-page-header">
+                                  <div class="iao-page-header-left"><span class="iao-page-icon">&#9636;</span><div><h2 class="iao-page-title">Analytics</h2><p class="iao-page-subtitle">Key performance indicators &amp; goal tracking</p></div></div>
+                                  <div class="iao-page-header-right"><select class="iao-filter-select" disabled><option>This Week</option></select><button class="iao-btn iao-btn-outline">Download PDF</button></div>
+                                </div>
+                                <div class="iao-kpi-cards">
+                                  <div class="iao-kpi-card"><span class="iao-kpi-icon iao-kpi-blue">&#9632;</span><div><span class="iao-kpi-value">127</span><span class="iao-kpi-label">Leads This Week</span></div><span class="iao-kpi-trend iao-trend-up">+8%</span></div>
+                                  <div class="iao-kpi-card"><span class="iao-kpi-icon iao-kpi-gold">&#128197;</span><div><span class="iao-kpi-value">34</span><span class="iao-kpi-label">Appointments Set</span></div><span class="iao-kpi-trend iao-trend-up">+15%</span></div>
+                                  <div class="iao-kpi-card"><span class="iao-kpi-icon iao-kpi-green">%</span><div><span class="iao-kpi-value">26.8%</span><span class="iao-kpi-label">Conversion Rate</span></div><span class="iao-kpi-trend iao-trend-up">+3.2%</span></div>
+                                  <div class="iao-kpi-card"><span class="iao-kpi-icon iao-kpi-purple">&#9742;</span><div><span class="iao-kpi-value">312</span><span class="iao-kpi-label">Calls This Week</span></div><span class="iao-kpi-trend iao-trend-down">-4%</span></div>
+                                </div>
+                                <div class="iao-analytics-section"><h3 class="iao-section-title">Goal Progress</h3><div class="iao-goals">
+                                  <div class="iao-goal"><div class="iao-goal-header"><span class="iao-goal-name">Weekly Appointments</span><span class="iao-goal-numbers">34 / 40</span></div><div class="iao-progress-bar"><div class="iao-progress-fill iao-progress-gold" style="width:85%"></div></div><span class="iao-goal-pct">85%</span></div>
+                                  <div class="iao-goal"><div class="iao-goal-header"><span class="iao-goal-name">Weekly Calls</span><span class="iao-goal-numbers">312 / 350</span></div><div class="iao-progress-bar"><div class="iao-progress-fill iao-progress-blue" style="width:89%"></div></div><span class="iao-goal-pct">89%</span></div>
+                                  <div class="iao-goal"><div class="iao-goal-header"><span class="iao-goal-name">Monthly Leads</span><span class="iao-goal-numbers">2,847 / 3,000</span></div><div class="iao-progress-bar"><div class="iao-progress-fill iao-progress-green" style="width:95%"></div></div><span class="iao-goal-pct">95%</span></div>
+                                  <div class="iao-goal"><div class="iao-goal-header"><span class="iao-goal-name">Conversion Rate</span><span class="iao-goal-numbers">26.8% / 30%</span></div><div class="iao-progress-bar"><div class="iao-progress-fill iao-progress-purple" style="width:89%"></div></div><span class="iao-goal-pct">89%</span></div>
+                                </div></div>
+                                <div class="iao-summary-cards">
+                                  <div class="iao-summary-card"><h4 class="iao-summary-title">&#9742; Calls Summary</h4><div class="iao-summary-rows"><div class="iao-summary-row"><span>Total Outbound</span><span class="iao-summary-val">284</span></div><div class="iao-summary-row"><span>Total Inbound</span><span class="iao-summary-val">28</span></div><div class="iao-summary-row"><span>Connected</span><span class="iao-summary-val">196</span></div><div class="iao-summary-row"><span>Avg Duration</span><span class="iao-summary-val">2m 34s</span></div><div class="iao-summary-row"><span>AI Calls (Vapi)</span><span class="iao-summary-val">142</span></div></div></div>
+                                  <div class="iao-summary-card"><h4 class="iao-summary-title">&#9632; Leads Summary</h4><div class="iao-summary-rows"><div class="iao-summary-row"><span>New This Week</span><span class="iao-summary-val">127</span></div><div class="iao-summary-row"><span>From Hatch</span><span class="iao-summary-val">64</span></div><div class="iao-summary-row"><span>From Media</span><span class="iao-summary-val">38</span></div><div class="iao-summary-row"><span>From Canvass</span><span class="iao-summary-val">19</span></div><div class="iao-summary-row"><span>Referrals</span><span class="iao-summary-val">6</span></div></div></div>
+                                  <div class="iao-summary-card"><h4 class="iao-summary-title">&#128197; Appointments Summary</h4><div class="iao-summary-rows"><div class="iao-summary-row"><span>Set This Week</span><span class="iao-summary-val">34</span></div><div class="iao-summary-row"><span>Sat (Completed)</span><span class="iao-summary-val">22</span></div><div class="iao-summary-row"><span>No-Shows</span><span class="iao-summary-val">4</span></div><div class="iao-summary-row"><span>Cancelled</span><span class="iao-summary-val">2</span></div><div class="iao-summary-row"><span>AI-Booked</span><span class="iao-summary-val">18</span></div></div></div>
+                                </div>
+                              </div>
+
+                            </main>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -627,6 +825,6 @@
         </div>
     </footer>
 
-    <script src="script.js?v=5"></script>
+    <script src="script.js?v=6"></script>
 </body>
 </html>
