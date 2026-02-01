@@ -170,6 +170,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Interactive Demo Tab Switching ---
+    const demoSidebar = document.querySelector('.demo-sidebar');
+    if (demoSidebar) {
+        const demoNavItems = demoSidebar.querySelectorAll('.demo-nav-item');
+        const demoTabs = document.querySelectorAll('.demo-tab');
+
+        demoNavItems.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.getAttribute('data-tab');
+
+                demoNavItems.forEach(item => item.classList.remove('active'));
+                button.classList.add('active');
+
+                demoTabs.forEach(tab => tab.classList.remove('active'));
+                const targetPanel = document.getElementById('demo-tab-' + targetTab);
+                if (targetPanel) {
+                    targetPanel.classList.add('active');
+                }
+            });
+        });
+    }
+
     // --- Staggered scroll animations ---
     const staggerContainers = [
         '.problems-grid',
