@@ -188,7 +188,15 @@ h3 {
 
 .logo-text {
     font-size: 1.4rem;
+    font-weight: 800;
     letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.logo-text .logo-media,
+.logo-text .logo-minded,
+.logo-text .logo-dot {
+    font-size: inherit;
 }
 
 .logo-media {
