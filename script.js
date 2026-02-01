@@ -102,7 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            if (targetId === '#') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
 
             const targetEl = document.querySelector(targetId);
             if (targetEl) {
