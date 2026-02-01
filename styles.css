@@ -176,6 +176,13 @@ h3 {
     line-height: 1;
     white-space: nowrap;
     flex-shrink: 0;
+    display: inline-flex;
+}
+
+.nav-logo .logo-media,
+.nav-logo .logo-minded,
+.nav-logo .logo-dot {
+    display: inline;
 }
 
 .logo-media {
