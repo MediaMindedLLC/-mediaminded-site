@@ -2254,127 +2254,31 @@
 }
 
 /* Dark Map Area */
+/* Dark Map Area (Leaflet) */
 .iao-theme .iao-nm-map {
   flex: 1;
   position: relative;
-  background: #1a2332;
-  background-image:
-    radial-gradient(ellipse 120% 100% at 50% 50%, #1e2d42 0%, #111923 100%);
   overflow: hidden;
   min-height: 340px;
 }
 
-/* State boundary outlines */
-.iao-theme .iao-nm-borders {
-  position: absolute;
-  top: 0;
-  left: 0;
+#novamap-leaflet {
   width: 100%;
   height: 100%;
-  pointer-events: none;
-  z-index: 1;
+  background: #1a2332;
 }
 
-.iao-theme .iao-nm-borders polygon {
-  fill: rgba(255,255,255,0.02);
-  stroke: rgba(255,255,255,0.12);
-  stroke-width: 0.35;
-  stroke-linejoin: round;
-}
+/* Hide Leaflet attribution inside demo */
+.iao-theme .leaflet-control-attribution { display: none !important; }
 
-.iao-theme .iao-nm-zoom {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  z-index: 5;
+/* Style Leaflet zoom control to match dark theme */
+.iao-theme .leaflet-control-zoom a {
+  background: rgba(20, 30, 48, 0.9) !important;
+  color: #fff !important;
+  border-color: rgba(255,255,255,0.15) !important;
 }
-
-.iao-theme .iao-nm-zoom-btn {
-  width: 24px;
-  height: 24px;
-  background: rgba(30,40,55,0.9);
-  border: 1px solid rgba(255,255,255,0.15);
-  color: var(--iao-white);
-  font-size: 0.8rem;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--iao-font);
-}
-.iao-theme .iao-nm-zoom-btn:first-child { border-radius: 3px 3px 0 0; }
-.iao-theme .iao-nm-zoom-btn:last-child { border-radius: 0 0 3px 3px; }
-
-.iao-theme .iao-nm-state {
-  position: absolute;
-  font-size: 0.48rem;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  color: rgba(255,255,255,0.12);
-  text-transform: uppercase;
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-/* Map Pins */
-.iao-theme .iao-nm-pin {
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  transform: translate(-50%,-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
-  box-shadow: 0 0 8px rgba(0,0,0,0.5);
-  border: 2px solid rgba(255,255,255,0.5);
-}
-
-.iao-theme .iao-nm-pin-hq {
-  width: 32px;
-  height: 32px;
-  background: var(--iao-blue-bright);
-  border-color: rgba(255,255,255,0.8);
-  z-index: 4;
-  box-shadow: 0 0 16px rgba(25,118,210,0.6);
-}
-.iao-theme .iao-nm-pin-icon { font-size: 0.8rem; line-height: 1; }
-
-.iao-theme .iao-nm-pin-branch {
-  background: #F9A825;
-  border-color: rgba(255,255,255,0.6);
-}
-
-.iao-theme .iao-nm-pin-rep {
-  background: #9C27B0;
-  border-color: rgba(255,255,255,0.5);
-  font-size: 0.5rem;
-  color: var(--iao-white);
-}
-
-.iao-theme .iao-nm-pin-star {
-  background: #9C27B0;
-  border-color: rgba(255,255,255,0.5);
-}
-.iao-theme .iao-nm-pin-star::after {
-  content: '\2605';
-  color: var(--iao-gold);
-  font-size: 0.6rem;
-}
-
-.iao-theme .iao-nm-pin-appt {
-  background: #00897B;
-  border-color: rgba(255,255,255,0.5);
-}
-.iao-theme .iao-nm-pin-appt::after {
-  content: '\2191';
-  color: var(--iao-white);
-  font-size: 0.55rem;
-  font-weight: 800;
+.iao-theme .leaflet-control-zoom a:hover {
+  background: rgba(30, 45, 65, 0.95) !important;
 }
 
 /* Map Legend */
@@ -2750,14 +2654,6 @@
   .iao-theme .iao-nm-stat-num {
     font-size: 1rem;
   }
-  .iao-theme .iao-nm-pin {
-    width: 16px;
-    height: 16px;
-  }
-  .iao-theme .iao-nm-pin-hq {
-    width: 22px;
-    height: 22px;
-  }
   .iao-theme .iao-sched-cols,
   .iao-theme .iao-sched-row {
     grid-template-columns: 100px 1fr 1fr 1fr;
@@ -2906,15 +2802,6 @@
   }
   .iao-theme .iao-nm-map {
     min-height: 200px;
-  }
-  .iao-theme .iao-nm-pin {
-    width: 12px;
-    height: 12px;
-    font-size: 0.35rem;
-  }
-  .iao-theme .iao-nm-pin-hq {
-    width: 18px;
-    height: 18px;
   }
   .iao-theme .iao-nm-legend {
     padding: 4px 6px;
