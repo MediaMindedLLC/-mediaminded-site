@@ -161,7 +161,7 @@ h3 {
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 24px;
     display: flex;
@@ -174,15 +174,9 @@ h3 {
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 1;
-    white-space: nowrap;
+    white-space: nowrap !important;
     flex-shrink: 0;
-    display: inline-flex;
-}
-
-.nav-logo .logo-media,
-.nav-logo .logo-minded,
-.nav-logo .logo-dot {
-    display: inline;
+    min-width: max-content;
 }
 
 .logo-media {
