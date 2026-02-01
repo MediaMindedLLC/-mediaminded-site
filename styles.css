@@ -170,10 +170,11 @@ h3 {
 }
 
 .nav-logo {
-    font-size: 4rem;
+    font-size: 1.8rem;
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 1;
+    white-space: nowrap;
 }
 
 .logo-media {
