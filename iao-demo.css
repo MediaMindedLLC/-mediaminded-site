@@ -221,13 +221,13 @@
 }
 
 .iao-theme .iao-nav-item {
-  display: flex;
+  display: flex !important;
   align-items: center;
   gap: 8px;
   padding: 7px 12px 7px 14px;
   font-size: 0.76rem;
   font-weight: 500;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   text-decoration: none;
   cursor: pointer;
   border-left: 3px solid transparent;
@@ -2089,7 +2089,6 @@
 #iao-panel-novamap {
   background: var(--iao-navy);
   padding: 0 !important;
-  display: flex;
   flex-direction: column;
 }
 #iao-panel-novamap.active { display: flex; flex: 1 1 0%; }
