@@ -225,17 +225,17 @@
 
 .iao-theme .iao-nav-item {
   display: flex !important;
-  align-items: center;
-  gap: 12px;
-  padding: 13px 14px 13px 18px;
-  font-size: 0.85rem;
-  font-weight: 500;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 13px 14px 13px 18px !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
   color: #FFFFFF !important;
-  text-decoration: none;
-  cursor: pointer;
-  border-left: 3px solid transparent;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  border-left: 3px solid transparent !important;
   transition: background var(--iao-transition), color var(--iao-transition), border-color var(--iao-transition);
-  white-space: nowrap;
+  white-space: nowrap !important;
   user-select: none;
 }
 
