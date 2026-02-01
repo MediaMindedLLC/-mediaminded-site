@@ -313,6 +313,8 @@
   background: var(--iao-gray-50);
   overflow-y: auto;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
   scrollbar-width: thin;
   scrollbar-color: var(--iao-gray-300) transparent;
 }
@@ -332,6 +334,7 @@
 
 .iao-theme .iao-tab-panel.active {
   display: block;
+  flex: 0 0 auto;
   animation: iaoFadeIn .25s ease;
 }
 
@@ -2089,7 +2092,7 @@
   display: flex;
   flex-direction: column;
 }
-#iao-panel-novamap.active { display: flex; }
+#iao-panel-novamap.active { display: flex; flex: 1 1 0%; }
 
 .iao-theme .iao-nm-tabbar {
   display: flex;
@@ -2127,6 +2130,7 @@
 .iao-theme .iao-nm-view {
   display: none;
   flex: 1;
+  flex-direction: column;
   min-height: 0;
   overflow: auto;
 }
