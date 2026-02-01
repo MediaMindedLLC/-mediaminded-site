@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — MediaMinded.ai</title>
+    <meta name="description" content="Get in touch with MediaMinded.ai. Tell us about your business and we'll show you how a custom platform can save you time and money.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-media">Media</span><span class="logo-minded">Minded</span><span class="logo-dot">.ai</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#process">Process</a></li>
+                <li><a href="index.html#case-study">Case Study</a></li>
+                <li><a href="index.html#results">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="contact.html" class="btn btn-primary nav-cta">Get Started</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Page -->
+    <section class="contact-page">
+        <div class="contact-page-bg"></div>
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info animate-in">
+                    <span class="section-tag">Get In Touch</span>
+                    <h1>Let's build something <span class="gradient-text">that actually works.</span></h1>
+                    <p class="contact-description">Tell us about your business. We'll show you exactly where you're losing time and money — and how a custom platform can fix it.</p>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <a href="mailto:contact@mediaminded.ai">contact@mediaminded.ai</a>
+                        </div>
+                    </div>
+                    <span class="cta-note">No commitment. No sales pitch. Just a real conversation about your business.</span>
+                </div>
+                <div class="contact-form-wrapper animate-in" style="animation-delay: 0.2s;">
+                    <form action="https://formspree.io/f/mvzqoawa" method="POST" class="contact-form" id="contactForm">
+                        <input type="hidden" name="_subject" value="New inquiry from mediaminded.ai">
+                        <div class="form-group">
+                            <label for="name">Name <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" required placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required placeholder="you@company.com">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="company">Company <span class="required">*</span></label>
+                                <input type="text" id="company" name="company" required placeholder="Your company">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message <span class="required">*</span></label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tell us about your business and what you're looking for..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-full">Send Message</button>
+                    </form>
+                    <div class="form-success" id="formSuccess">
+                        <div class="success-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <h3>Message Sent!</h3>
+                        <p>We'll get back to you within 24 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo">
+                        <span class="logo-media">Media</span><span class="logo-minded">Minded</span><span class="logo-dot">.ai</span>
+                    </a>
+                    <p>Custom platforms and automations that replace your fragmented software stack with one powerful system.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#case-study">Case Study</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="index.html#services">Platform Development</a></li>
+                        <li><a href="index.html#services">Workflow Automation</a></li>
+                        <li><a href="index.html#services">AI Integration</a></li>
+                        <li><a href="index.html#services">Software Consolidation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Get In Touch</h4>
+                    <ul>
+                        <li><a href="mailto:contact@mediaminded.ai">contact@mediaminded.ai</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MediaMinded.ai. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

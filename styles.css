@@ -868,6 +868,67 @@ h3 {
     width: 100%;
 }
 
+/* Contact Page Layout */
+.contact-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-page-bg {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(79, 70, 229, 0.12) 0%, rgba(6, 182, 212, 0.06) 40%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.contact-page .contact-grid {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-page .contact-info h1 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 20px;
+}
+
+/* CTA Section (index page) */
+.cta-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-content h2 {
+    margin-bottom: 20px;
+}
+
+.cta-content > p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 36px;
+}
+
+.cta-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
 /* Form Success State */
 .form-success {
     display: none;
