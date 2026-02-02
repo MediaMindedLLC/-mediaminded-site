@@ -4,6 +4,16 @@
    Class names match demo-window.html exactly.
    ========================================================================== */
 
+/* ---------- Client Name Blur ---------- */
+.iao-theme .demo-titlebar-title,
+.iao-theme .iao-brand-name,
+.iao-theme .iao-sidebar-title,
+.iao-theme .iao-blur-text {
+  filter: blur(5px) !important;
+  -webkit-filter: blur(5px) !important;
+  user-select: none;
+}
+
 /* ---------- Design Tokens ---------- */
 .iao-theme {
   --iao-navy:         #0C2340;
