@@ -42,7 +42,7 @@
 }
 
 .iao-demo-overlay-btn {
-  background: #1976D2;
+  background: linear-gradient(135deg, #4F46E5, #06B6D4);
   color: #fff;
   border: none;
   padding: 1rem 2.5rem;
@@ -50,12 +50,13 @@
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
 }
 
 .iao-demo-overlay-btn:hover {
-  background: #1565C0;
   transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.5);
 }
 
 /* ---------- Client Name Blur ---------- */
