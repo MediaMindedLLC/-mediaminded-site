@@ -91,7 +91,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="styles.css?v=10">
-    <link rel="stylesheet" href="iao-demo.css?v=13">
+    <link rel="stylesheet" href="iao-demo.css?v=14">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
@@ -361,6 +361,12 @@
                             <div class="demo-titlebar-spacer"></div>
                         </div>
                         <div class="demo-body">
+                          <!-- Demo Welcome Overlay -->
+                          <div class="iao-demo-overlay" id="demoOverlay">
+                            <div class="iao-demo-overlay-title">Interactive Demo</div>
+                            <p class="iao-demo-overlay-text">This is a real platform we built for a previous client. Feel free to click around and explore all the features — dashboards, calendars, maps, analytics, and more.</p>
+                            <button class="iao-demo-overlay-btn" id="demoStartBtn">Click Here to Begin</button>
+                          </div>
                           <!-- App Header Bar -->
                           <div class="iao-app-header">
                             <div class="iao-brand">

@@ -173,6 +173,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Demo Welcome Overlay ---
+    const demoOverlay = document.getElementById('demoOverlay');
+    const demoStartBtn = document.getElementById('demoStartBtn');
+    if (demoOverlay && demoStartBtn) {
+        demoStartBtn.addEventListener('click', () => {
+            demoOverlay.classList.add('hidden');
+        });
+    }
+
     // --- Interactive Demo Tab Switching ---
     const iaoSidebar = document.querySelector('.iao-sidebar');
     if (iaoSidebar) {
