@@ -269,6 +269,15 @@
   letter-spacing: .01em;
 }
 
+.iao-theme .iao-sidebar-status {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--iao-green);
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  margin-top: 1px;
+}
+
 .iao-theme .iao-sidebar-subtitle {
   font-size: 0.58rem;
   font-weight: 500;
@@ -306,13 +315,17 @@
 
 .iao-theme .iao-nav-item:hover {
   background: rgba(255,255,255,.06);
-  color: var(--iao-white);
+  color: var(--iao-blue-bright) !important;
 }
 
 .iao-theme .iao-nav-item.active {
   background: var(--iao-blue);
-  color: var(--iao-white);
+  color: var(--iao-white) !important;
   border-left-color: var(--iao-gold);
+}
+
+.iao-theme .iao-nav-item.active:hover {
+  color: var(--iao-white) !important;
 }
 
 .iao-theme .iao-nav-icon {
@@ -2610,6 +2623,7 @@
   }
 
   .iao-theme .iao-sidebar-title,
+  .iao-theme .iao-sidebar-status,
   .iao-theme .iao-sidebar-subtitle,
   .iao-theme .iao-nav-label,
   .iao-theme .iao-user-name {
