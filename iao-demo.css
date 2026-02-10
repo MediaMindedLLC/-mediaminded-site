@@ -272,7 +272,7 @@
 .iao-theme .iao-sidebar-status {
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--iao-green);
+  color: var(--iao-yellow);
   text-transform: uppercase;
   letter-spacing: .03em;
   margin-top: 1px;
@@ -304,7 +304,7 @@
   padding: 13px 14px 13px 18px !important;
   font-size: 0.85rem !important;
   font-weight: 500 !important;
-  color: #FFFFFF !important;
+  color: var(--iao-white) !important;
   text-decoration: none !important;
   cursor: pointer !important;
   border-left: 3px solid transparent !important;
