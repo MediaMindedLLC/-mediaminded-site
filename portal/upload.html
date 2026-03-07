@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Leads - MediaMinded.ai</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <style>
+    .upload-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .upload-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .upload-box {
+      width: 100%;
+      max-width: 500px;
+    }
+    .upload-box h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .upload-box p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+    .file-drop {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition);
+      margin-bottom: 1.25rem;
+    }
+    .file-drop:hover,
+    .file-drop.dragover {
+      border-color: var(--accent);
+      background: rgba(108, 99, 255, 0.05);
+    }
+    .file-drop .file-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .file-drop .file-name {
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+    .upload-result {
+      display: none;
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="upload-page">
+    <nav class="nav">
+      <div class="nav-logo">Media<span>Minded</span>.ai</div>
+      <div class="nav-links">
+        <a href="/portal/dashboard.html">Dashboard</a>
+        <button class="btn btn-secondary btn-sm" onclick="logout()">Logout</button>
+      </div>
+    </nav>
+
+    <div class="upload-container">
+      <div class="upload-box">
+        <h1>Upload Leads</h1>
+        <p>Upload a CSV file with your leads. Required columns: first_name, last_name, phone. Optional: email, address, city, state, zip, notes.</p>
+
+        <form id="uploadForm">
+          <div class="form-group">
+            <label for="importName">Import Name</label>
+            <input type="text" id="importName" required placeholder="e.g., January 2026 Aged Leads">
+          </div>
+
+          <div class="file-drop" id="fileDrop">
+            <div class="file-icon">&#128196;</div>
+            <div>Drop CSV file here or click to browse</div>
+            <div class="file-name" id="fileName"></div>
+            <input type="file" id="fileInput" accept=".csv" style="display:none">
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;" id="uploadBtn" disabled>
+            Upload Leads
+          </button>
+        </form>
+
+        <div id="uploadResult" class="upload-result"></div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      &copy; 2026 MediaMinded.ai &mdash; Powered by LeadPerfected
+    </footer>
+  </div>
+
+  <script src="/assets/app.js"></script>
+  <script>
+    if (!requireAuth()) throw new Error('Not authenticated');
+
+    const partnerId = getPartnerId();
+    const fileDrop = document.getElementById('fileDrop');
+    const fileInput = document.getElementById('fileInput');
+    const fileName = document.getElementById('fileName');
+    const uploadBtn = document.getElementById('uploadBtn');
+    const uploadForm = document.getElementById('uploadForm');
+    const resultEl = document.getElementById('uploadResult');
+
+    let selectedFile = null;
+
+    fileDrop.addEventListener('click', () => fileInput.click());
+
+    fileDrop.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      fileDrop.classList.add('dragover');
+    });
+
+    fileDrop.addEventListener('dragleave', () => {
+      fileDrop.classList.remove('dragover');
+    });
+
+    fileDrop.addEventListener('drop', (e) => {
+      e.preventDefault();
+      fileDrop.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file && file.name.endsWith('.csv')) {
+        selectFile(file);
+      }
+    });
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files[0]) selectFile(fileInput.files[0]);
+    });
+
+    function selectFile(file) {
+      selectedFile = file;
+      fileName.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
+      uploadBtn.disabled = false;
+    }
+
+    uploadForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!selectedFile) return;
+
+      uploadBtn.disabled = true;
+      uploadBtn.textContent = 'Uploading...';
+      resultEl.style.display = 'none';
+
+      const formData = new FormData();
+      formData.append('import_name', document.getElementById('importName').value);
+      formData.append('file', selectedFile);
+
+      try {
+        const data = await apiFetch(`/b2b/partners/${partnerId}/import-leads`, {
+          method: 'POST',
+          body: formData,
+        });
+
+        resultEl.className = 'upload-result alert alert-success';
+        resultEl.textContent = `Successfully uploaded ${data.leads_count || 0} leads. Import ID: ${data.import_id || '-'}`;
+        resultEl.style.display = 'block';
+
+        uploadForm.reset();
+        selectedFile = null;
+        fileName.textContent = '';
+        uploadBtn.textContent = 'Upload Leads';
+      } catch (err) {
+        resultEl.className = 'upload-result alert alert-error';
+        resultEl.textContent = err.message || 'Upload failed. Please try again.';
+        resultEl.style.display = 'block';
+        uploadBtn.disabled = false;
+        uploadBtn.textContent = 'Upload Leads';
+      }
+    });
+  </script>
+</body>
+</html>

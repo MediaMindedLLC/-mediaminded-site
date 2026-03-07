@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Login - MediaMinded.ai</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <style>
+    .login-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse at center top, rgba(108,99,255,0.08) 0%, transparent 50%);
+    }
+    .login-box {
+      width: 100%;
+      max-width: 400px;
+      padding: 2rem;
+    }
+    .login-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .login-header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .login-header h1 span {
+      color: var(--accent);
+    }
+    .login-header p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .login-form .btn {
+      width: 100%;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+    .login-footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+    .login-error {
+      display: none;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-box">
+      <div class="login-header">
+        <h1>Media<span>Minded</span>.ai</h1>
+        <p>Partner Portal</p>
+      </div>
+
+      <div id="loginError" class="alert alert-error login-error"></div>
+
+      <form id="loginForm" class="login-form" autocomplete="on">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="you@company.com" autofocus>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required placeholder="Enter your password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" id="loginBtn">Sign In</button>
+      </form>
+
+      <div class="login-footer">
+        Powered by LeadPerfected
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/app.js"></script>
+  <script>
+    // If already logged in, redirect
+    if (getToken() && getUser()) {
+      const user = getUser();
+      if (user.role === 'master_admin' || user.role === 'admin') {
+        window.location.href = '/admin/';
+      } else {
+        window.location.href = '/portal/dashboard.html';
+      }
+    }
+
+    const form = document.getElementById('loginForm');
+    const errorEl = document.getElementById('loginError');
+    const loginBtn = document.getElementById('loginBtn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorEl.style.display = 'none';
+      loginBtn.disabled = true;
+      loginBtn.textContent = 'Signing in...';
+
+      try {
+        const data = await apiFetch('/auth/login', {
+          method: 'POST',
+          body: JSON.stringify({
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value,
+          }),
+        });
+
+        setAuth(data.token, data.user, data.partner_id);
+
+        if (data.user.role === 'master_admin' || data.user.role === 'admin') {
+          window.location.href = '/admin/';
+        } else {
+          window.location.href = '/portal/dashboard.html';
+        }
+      } catch (err) {
+        errorEl.textContent = err.message || 'Login failed. Check your credentials.';
+        errorEl.style.display = 'block';
+        loginBtn.disabled = false;
+        loginBtn.textContent = 'Sign In';
+      }
+    });
+  </script>
+</body>
+</html>

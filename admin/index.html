@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - MediaMinded.ai</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <style>
+    .pipeline-bar {
+      display: flex;
+      gap: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 8px;
+      background: var(--bg-primary);
+      margin-top: 1rem;
+    }
+    .pipeline-bar div {
+      height: 100%;
+      transition: width 0.3s;
+    }
+    .action-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .filter-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+      align-items: flex-end;
+    }
+    .filter-row .form-group {
+      margin-bottom: 0;
+      min-width: 140px;
+    }
+    .filter-row .form-group label {
+      margin-bottom: 0.2rem;
+    }
+    .select-col {
+      width: 40px;
+      text-align: center;
+    }
+    .row-actions {
+      display: flex;
+      gap: 0.4rem;
+    }
+    .partner-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .partner-stat {
+      text-align: center;
+      font-size: 0.8rem;
+    }
+    .partner-stat .val {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .count-badge {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0.15rem 0.6rem;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-left: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-logo">Media<span>Minded</span>.ai <span style="font-size:0.7rem;color:var(--text-muted);margin-left:0.5rem;">ADMIN</span></div>
+    <div class="nav-links">
+      <span id="adminUser" style="color:var(--text-secondary);font-size:0.85rem;"></span>
+      <button class="btn btn-secondary btn-sm" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <!-- Pipeline Stats -->
+    <div class="stats-grid" id="pipelineStats">
+      <div class="stat-card"><div class="stat-value" id="pTotal">-</div><div class="stat-label">Total Prospects</div></div>
+      <div class="stat-card"><div class="stat-value" id="pCalled">-</div><div class="stat-label">Called</div></div>
+      <div class="stat-card"><div class="stat-value" id="pInterested">-</div><div class="stat-label">Interested</div></div>
+      <div class="stat-card"><div class="stat-value" id="pSigned">-</div><div class="stat-label">Signed Partners</div></div>
+      <div class="stat-card"><div class="stat-value" id="pRevenue">-</div><div class="stat-label">Total Revenue</div></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs" style="margin-top:2rem;">
+      <button class="tab-btn active" data-tab="prospects">Prospects</button>
+      <button class="tab-btn" data-tab="partners">Partners</button>
+      <button class="tab-btn" data-tab="pipeline">Pipeline</button>
+    </div>
+
+    <!-- Prospects Tab -->
+    <div class="tab-content active" id="tab-prospects">
+      <div class="toolbar">
+        <div class="action-bar">
+          <button class="btn btn-primary btn-sm" onclick="openDiscoverModal()">Discover Prospects</button>
+          <button class="btn btn-secondary btn-sm" id="btnOutreach" onclick="generateOutreach()" disabled>Generate Outreach</button>
+          <button class="btn btn-secondary btn-sm" id="btnLaunch" onclick="launchCalls()" disabled>Launch Calls</button>
+        </div>
+        <div class="toolbar-spacer"></div>
+        <span id="selectedCount" style="color:var(--text-muted);font-size:0.85rem;"></span>
+      </div>
+
+      <div class="filter-row">
+        <div class="form-group">
+          <label>Niche</label>
+          <select id="filterNiche" onchange="loadProspects()">
+            <option value="">All Niches</option>
+            <option>Fencing</option><option>Pools</option><option>Roofing</option>
+            <option>Solar</option><option>HVAC</option><option>RV Dealers</option>
+            <option>Real Estate</option><option>Windows</option><option>Siding</option>
+            <option>Driveways</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select id="filterStatus" onchange="loadProspects()">
+            <option value="">All Statuses</option>
+            <option>new</option><option>contacted</option><option>called</option>
+            <option>interested</option><option>signed</option><option>declined</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Search</label>
+          <input type="text" id="filterSearch" placeholder="Company or name..." oninput="debounceSearch()">
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="select-col"><input type="checkbox" id="selectAll" onchange="toggleSelectAll()"></th>
+              <th>Company</th>
+              <th>Contact</th>
+              <th>Niche</th>
+              <th>Location</th>
+              <th>Status</th>
+              <th>Last Contact</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="prospectsTable">
+            <tr><td colspan="8" class="loading-overlay"><span class="spinner"></span> Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="prospectsPagination" style="margin-top:1rem;display:flex;gap:0.5rem;justify-content:center;"></div>
+    </div>
+
+    <!-- Partners Tab -->
+    <div class="tab-content" id="tab-partners">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Contact</th>
+              <th>Niche</th>
+              <th>Status</th>
+              <th>Leads</th>
+              <th>Calls</th>
+              <th>Appointments</th>
+              <th>Revenue</th>
+              <th>Since</th>
+            </tr>
+          </thead>
+          <tbody id="partnersTable">
+            <tr><td colspan="9" class="loading-overlay"><span class="spinner"></span> Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Pipeline Tab -->
+    <div class="tab-content" id="tab-pipeline">
+      <div id="pipelineContent">
+        <div class="loading-overlay"><span class="spinner"></span> Loading pipeline data...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Discover Prospects Modal -->
+  <div class="modal-overlay" id="discoverModal">
+    <div class="modal">
+      <h3>Discover Prospects</h3>
+      <form id="discoverForm">
+        <div class="form-group">
+          <label>Niche</label>
+          <select id="discoverNiche" required>
+            <option value="">Select niche...</option>
+            <option>Fencing</option><option>Pools</option><option>Roofing</option>
+            <option>Solar</option><option>HVAC</option><option>RV Dealers</option>
+            <option>Real Estate</option><option>Windows</option><option>Siding</option>
+            <option>Driveways</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Locations (comma separated)</label>
+          <input type="text" id="discoverLocations" placeholder="e.g., Miami FL, Tampa FL" required>
+        </div>
+        <div class="form-group">
+          <label>Limit</label>
+          <input type="number" id="discoverLimit" value="50" min="1" max="500">
+        </div>
+        <div style="display:flex;gap:0.75rem;justify-content:flex-end;margin-top:1.5rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeDiscoverModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="discoverBtn">Discover</button>
+        </div>
+      </form>
+      <div id="discoverResult" style="margin-top:1rem;display:none;"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    &copy; 2026 MediaMinded.ai &mdash; Admin Panel
+  </footer>
+
+  <script src="/assets/app.js"></script>
+  <script>
+    if (!requireAuth(['master_admin', 'admin'])) throw new Error('Not authorized');
+
+    const user = getUser();
+    $('#adminUser').textContent = user.email;
+
+    // State
+    let prospects = [];
+    let selectedIds = new Set();
+    let currentPage = 1;
+    const pageSize = 50;
+    let searchTimeout = null;
+
+    // Tabs
+    $$('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        $$('.tab-btn').forEach(b => b.classList.remove('active'));
+        $$('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        $(`#tab-${btn.dataset.tab}`).classList.add('active');
+
+        if (btn.dataset.tab === 'partners') loadPartners();
+        if (btn.dataset.tab === 'pipeline') loadPipeline();
+      });
+    });
+
+    // Load pipeline stats
+    async function loadPipelineStats() {
+      try {
+        const data = await apiFetch('/b2b/admin/stats');
+        $('#pTotal').textContent = formatNumber(data.total_prospects);
+        $('#pCalled').textContent = formatNumber(data.called);
+        $('#pInterested').textContent = formatNumber(data.interested);
+        $('#pSigned').textContent = formatNumber(data.signed);
+        $('#pRevenue').textContent = formatCurrency(data.total_revenue);
+      } catch (err) {
+        console.error('Stats error:', err);
+      }
+    }
+
+    // Prospects
+    async function loadProspects() {
+      const niche = $('#filterNiche').value;
+      const status = $('#filterStatus').value;
+      const search = $('#filterSearch').value;
+
+      let url = `/b2b/prospects?page=${currentPage}&limit=${pageSize}`;
+      if (niche) url += `&niche=${encodeURIComponent(niche)}`;
+      if (status) url += `&status=${encodeURIComponent(status)}`;
+      if (search) url += `&search=${encodeURIComponent(search)}`;
+
+      try {
+        const data = await apiFetch(url);
+        prospects = data.prospects || data || [];
+        const total = data.total || prospects.length;
+
+        if (prospects.length === 0) {
+          $('#prospectsTable').innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--text-muted);padding:2rem;">No prospects found</td></tr>';
+          $('#prospectsPagination').innerHTML = '';
+          return;
+        }
+
+        $('#prospectsTable').innerHTML = prospects.map(p => `
+          <tr>
+            <td class="select-col"><input type="checkbox" value="${p.id}" onchange="toggleSelect(this)" ${selectedIds.has(String(p.id)) ? 'checked' : ''}></td>
+            <td><strong>${p.company_name || '-'}</strong></td>
+            <td>${p.contact_name || '-'}<br><span style="color:var(--text-muted);font-size:0.8rem;">${p.email || ''}</span></td>
+            <td>${p.niche || '-'}</td>
+            <td>${[p.city, p.state].filter(Boolean).join(', ') || '-'}</td>
+            <td>${statusBadge(p.status)}</td>
+            <td>${formatDate(p.last_contacted_at)}</td>
+            <td class="row-actions">
+              <button class="btn btn-sm btn-secondary" onclick="viewProspect(${p.id})" title="View">View</button>
+            </td>
+          </tr>
+        `).join('');
+
+        // Pagination
+        const totalPages = Math.ceil(total / pageSize);
+        if (totalPages > 1) {
+          let pages = '';
+          for (let i = 1; i <= totalPages && i <= 10; i++) {
+            pages += `<button class="btn btn-sm ${i === currentPage ? 'btn-primary' : 'btn-secondary'}" onclick="goToPage(${i})">${i}</button>`;
+          }
+          $('#prospectsPagination').innerHTML = pages;
+        } else {
+          $('#prospectsPagination').innerHTML = '';
+        }
+
+        updateSelectionUI();
+      } catch (err) {
+        $('#prospectsTable').innerHTML = `<tr><td colspan="8" class="alert-error">Error loading prospects: ${err.message}</td></tr>`;
+      }
+    }
+
+    function goToPage(page) {
+      currentPage = page;
+      loadProspects();
+    }
+
+    function debounceSearch() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        currentPage = 1;
+        loadProspects();
+      }, 300);
+    }
+
+    // Selection
+    function toggleSelect(cb) {
+      if (cb.checked) {
+        selectedIds.add(cb.value);
+      } else {
+        selectedIds.delete(cb.value);
+      }
+      updateSelectionUI();
+    }
+
+    function toggleSelectAll() {
+      const checked = $('#selectAll').checked;
+      $$('#prospectsTable input[type="checkbox"]').forEach(cb => {
+        cb.checked = checked;
+        if (checked) selectedIds.add(cb.value);
+        else selectedIds.delete(cb.value);
+      });
+      updateSelectionUI();
+    }
+
+    function updateSelectionUI() {
+      const count = selectedIds.size;
+      $('#selectedCount').textContent = count > 0 ? `${count} selected` : '';
+      $('#btnOutreach').disabled = count === 0;
+      $('#btnLaunch').disabled = count === 0;
+    }
+
+    // Actions
+    async function generateOutreach() {
+      if (selectedIds.size === 0) return;
+      const btn = $('#btnOutreach');
+      btn.disabled = true;
+      btn.textContent = 'Generating...';
+
+      try {
+        await apiFetch('/b2b/admin/generate-outreach', {
+          method: 'POST',
+          body: JSON.stringify({ prospect_ids: [...selectedIds] }),
+        });
+        showAlert($('.page-content'), 'Outreach generated successfully', 'success');
+        loadProspects();
+      } catch (err) {
+        showAlert($('.page-content'), 'Outreach error: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Generate Outreach';
+      }
+    }
+
+    async function launchCalls() {
+      if (selectedIds.size === 0) return;
+      if (!confirm(`Launch calls for ${selectedIds.size} prospect(s)?`)) return;
+
+      const btn = $('#btnLaunch');
+      btn.disabled = true;
+      btn.textContent = 'Launching...';
+
+      try {
+        await apiFetch('/b2b/admin/launch-calls', {
+          method: 'POST',
+          body: JSON.stringify({ prospect_ids: [...selectedIds] }),
+        });
+        showAlert($('.page-content'), 'Calls launched successfully', 'success');
+        selectedIds.clear();
+        loadProspects();
+      } catch (err) {
+        showAlert($('.page-content'), 'Launch error: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Launch Calls';
+      }
+    }
+
+    function viewProspect(id) {
+      const p = prospects.find(x => x.id === id);
+      if (!p) return;
+      alert(
+        `Company: ${p.company_name}\n` +
+        `Contact: ${p.contact_name}\n` +
+        `Email: ${p.email}\n` +
+        `Phone: ${p.phone}\n` +
+        `Niche: ${p.niche}\n` +
+        `Location: ${[p.city, p.state].filter(Boolean).join(', ')}\n` +
+        `Status: ${p.status}\n` +
+        `Notes: ${p.notes || 'None'}`
+      );
+    }
+
+    // Discover Modal
+    function openDiscoverModal() {
+      $('#discoverModal').classList.add('active');
+      $('#discoverResult').style.display = 'none';
+    }
+
+    function closeDiscoverModal() {
+      $('#discoverModal').classList.remove('active');
+    }
+
+    document.getElementById('discoverForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = $('#discoverBtn');
+      btn.disabled = true;
+      btn.textContent = 'Discovering...';
+
+      try {
+        const data = await apiFetch('/b2b/admin/discover-prospects', {
+          method: 'POST',
+          body: JSON.stringify({
+            niche: $('#discoverNiche').value,
+            locations: $('#discoverLocations').value.split(',').map(s => s.trim()).filter(Boolean),
+            limit: parseInt($('#discoverLimit').value) || 50,
+          }),
+        });
+
+        const resultEl = $('#discoverResult');
+        resultEl.className = 'alert alert-success';
+        resultEl.textContent = `Found ${data.count || 0} new prospects.`;
+        resultEl.style.display = 'block';
+        loadProspects();
+        loadPipelineStats();
+      } catch (err) {
+        const resultEl = $('#discoverResult');
+        resultEl.className = 'alert alert-error';
+        resultEl.textContent = err.message;
+        resultEl.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Discover';
+      }
+    });
+
+    // Partners
+    async function loadPartners() {
+      try {
+        const partners = await apiFetch('/b2b/admin/partners');
+        if (!partners || partners.length === 0) {
+          $('#partnersTable').innerHTML = '<tr><td colspan="9" style="text-align:center;color:var(--text-muted);padding:2rem;">No partners yet</td></tr>';
+          return;
+        }
+        $('#partnersTable').innerHTML = partners.map(p => `
+          <tr>
+            <td><strong>${p.company_name || '-'}</strong></td>
+            <td>${p.contact_name || '-'}<br><span style="color:var(--text-muted);font-size:0.8rem;">${p.email || ''}</span></td>
+            <td>${p.niche || '-'}</td>
+            <td>${statusBadge(p.status)}</td>
+            <td>${formatNumber(p.total_leads)}</td>
+            <td>${formatNumber(p.calls_made)}</td>
+            <td>${formatNumber(p.appointments)}</td>
+            <td>${formatCurrency(p.revenue)}</td>
+            <td>${formatDate(p.created_at)}</td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        $('#partnersTable').innerHTML = `<tr><td colspan="9" class="alert-error">Error: ${err.message}</td></tr>`;
+      }
+    }
+
+    // Pipeline
+    async function loadPipeline() {
+      try {
+        const data = await apiFetch('/b2b/admin/pipeline');
+        const stages = data.stages || [];
+        const content = $('#pipelineContent');
+
+        if (stages.length === 0) {
+          content.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:2rem;">No pipeline data yet</p>';
+          return;
+        }
+
+        const total = stages.reduce((sum, s) => sum + (s.count || 0), 0) || 1;
+        const colors = ['#6c63ff', '#3b82f6', '#22c55e', '#f59e0b', '#ef4444', '#8b5cf6'];
+
+        content.innerHTML = `
+          <div class="stats-grid" style="margin-bottom:2rem;">
+            ${stages.map(s => `
+              <div class="stat-card">
+                <div class="stat-value">${formatNumber(s.count)}</div>
+                <div class="stat-label">${s.name}</div>
+              </div>
+            `).join('')}
+          </div>
+          <div class="card" style="margin-bottom:2rem;">
+            <h3 style="margin-bottom:0.75rem;">Pipeline Funnel</h3>
+            <div class="pipeline-bar">
+              ${stages.map((s, i) => `<div style="width:${(s.count / total * 100).toFixed(1)}%;background:${colors[i % colors.length]};" title="${s.name}: ${s.count}"></div>`).join('')}
+            </div>
+            <div style="display:flex;gap:1.5rem;margin-top:0.75rem;flex-wrap:wrap;">
+              ${stages.map((s, i) => `
+                <span style="font-size:0.8rem;color:var(--text-secondary);display:flex;align-items:center;gap:0.35rem;">
+                  <span style="width:10px;height:10px;border-radius:2px;background:${colors[i % colors.length]};display:inline-block;"></span>
+                  ${s.name} (${((s.count / total) * 100).toFixed(0)}%)
+                </span>
+              `).join('')}
+            </div>
+          </div>
+          ${data.recent_activity ? `
+            <h3 style="margin-bottom:1rem;">Recent Activity</h3>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Date</th><th>Company</th><th>Event</th><th>Details</th></tr></thead>
+                <tbody>
+                  ${data.recent_activity.map(a => `
+                    <tr>
+                      <td>${formatDateTime(a.date)}</td>
+                      <td>${a.company || '-'}</td>
+                      <td>${statusBadge(a.event)}</td>
+                      <td>${a.details || '-'}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          ` : ''}
+        `;
+      } catch (err) {
+        $('#pipelineContent').innerHTML = `<div class="alert alert-error">Error loading pipeline: ${err.message}</div>`;
+      }
+    }
+
+    // Init
+    loadPipelineStats();
+    loadProspects();
+  </script>
+</body>
+</html>

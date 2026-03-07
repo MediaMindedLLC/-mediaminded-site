@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - MediaMinded.ai</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <style>
+    .dashboard-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .dashboard-header h1 {
+      font-size: 1.5rem;
+    }
+    .section-heading {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 2rem 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .call-transcript {
+      max-height: 200px;
+      overflow-y: auto;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+      white-space: pre-wrap;
+    }
+    audio {
+      height: 32px;
+      width: 100%;
+      max-width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-logo">Media<span>Minded</span>.ai</div>
+    <div class="nav-links">
+      <span id="companyName" style="color:var(--text-secondary);font-size:0.9rem;"></span>
+      <a href="/portal/upload.html" class="btn btn-primary btn-sm">Upload Leads</a>
+      <button class="btn btn-secondary btn-sm" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="dashboard-header">
+      <h1>Partner Dashboard</h1>
+    </div>
+
+    <div id="statsGrid" class="stats-grid">
+      <div class="stat-card"><div class="stat-value" id="statLeads">-</div><div class="stat-label">Total Leads</div></div>
+      <div class="stat-card"><div class="stat-value" id="statCalls">-</div><div class="stat-label">Calls Made</div></div>
+      <div class="stat-card"><div class="stat-value" id="statAppts">-</div><div class="stat-label">Appointments Set</div></div>
+      <div class="stat-card"><div class="stat-value" id="statPipeline">-</div><div class="stat-label">Revenue Pipeline</div></div>
+      <div class="stat-card"><div class="stat-value" id="statRevshare">-</div><div class="stat-label">RevShare Owed</div></div>
+    </div>
+
+    <div class="section-heading">
+      <span>Lead Imports</span>
+      <a href="/portal/upload.html" class="btn btn-primary btn-sm">Upload Leads</a>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Import Name</th>
+            <th>Date</th>
+            <th>Total Leads</th>
+            <th>Processed</th>
+            <th>Appointments</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="importsTable">
+          <tr><td colspan="6" class="loading-overlay"><span class="spinner"></span> Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-heading">
+      <span>Recent Calls</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Lead</th>
+            <th>Phone</th>
+            <th>Date</th>
+            <th>Duration</th>
+            <th>Outcome</th>
+            <th>Recording</th>
+          </tr>
+        </thead>
+        <tbody id="callsTable">
+          <tr><td colspan="6" class="loading-overlay"><span class="spinner"></span> Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="footer">
+    &copy; 2026 MediaMinded.ai &mdash; Powered by LeadPerfected
+  </footer>
+
+  <script src="/assets/app.js"></script>
+  <script>
+    if (!requireAuth()) throw new Error('Not authenticated');
+
+    const user = getUser();
+    const partnerId = getPartnerId();
+    $('#companyName').textContent = user.company_name || user.email;
+
+    async function loadDashboard() {
+      try {
+        const data = await apiFetch(`/b2b/partners/${partnerId}/dashboard`);
+        $('#statLeads').textContent = formatNumber(data.total_leads);
+        $('#statCalls').textContent = formatNumber(data.calls_made);
+        $('#statAppts').textContent = formatNumber(data.appointments_set);
+        $('#statPipeline').textContent = formatCurrency(data.revenue_pipeline);
+        $('#statRevshare').textContent = formatCurrency(data.revshare_owed);
+
+        if (data.recent_calls && data.recent_calls.length > 0) {
+          renderCalls(data.recent_calls);
+        } else {
+          $('#callsTable').innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:2rem;">No calls yet</td></tr>';
+        }
+      } catch (err) {
+        console.error('Dashboard load error:', err);
+      }
+    }
+
+    async function loadImports() {
+      try {
+        const imports = await apiFetch(`/b2b/partners/${partnerId}/imports`);
+        if (!imports || imports.length === 0) {
+          $('#importsTable').innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:2rem;">No imports yet. <a href="/portal/upload.html">Upload your first leads</a></td></tr>';
+          return;
+        }
+        $('#importsTable').innerHTML = imports.map(imp => `
+          <tr>
+            <td>${imp.import_name || '-'}</td>
+            <td>${formatDate(imp.created_at)}</td>
+            <td>${formatNumber(imp.total_leads)}</td>
+            <td>${formatNumber(imp.processed_leads)}</td>
+            <td>${formatNumber(imp.appointments)}</td>
+            <td>${statusBadge(imp.status)}</td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        $('#importsTable').innerHTML = '<tr><td colspan="6" class="alert-error">Failed to load imports</td></tr>';
+      }
+    }
+
+    function renderCalls(calls) {
+      $('#callsTable').innerHTML = calls.map(call => `
+        <tr>
+          <td>${call.lead_name || 'Unknown'}</td>
+          <td>${call.phone || '-'}</td>
+          <td>${formatDateTime(call.called_at)}</td>
+          <td>${call.duration ? call.duration + 's' : '-'}</td>
+          <td>${statusBadge(call.outcome)}</td>
+          <td>${call.recording_url
+            ? `<audio controls preload="none" src="${call.recording_url}"></audio>`
+            : '-'
+          }</td>
+        </tr>
+        ${call.transcript ? `<tr><td colspan="6"><div class="call-transcript">${call.transcript}</div></td></tr>` : ''}
+      `).join('');
+    }
+
+    loadDashboard();
+    loadImports();
+  </script>
+</body>
+</html>
