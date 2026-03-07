@@ -1,0 +1,125 @@
+ <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediaMinded.ai - QR Code</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      @media print {
+        * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          color-adjust: exact !important;
+        }
+        body { background: #0a0a0f !important; }
+      }
+
+      body {
+        background: #0a0a0f;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+
+      .card {
+        background: #13131a;
+        border: 1px solid #2a2a3a;
+        border-radius: 24px;
+        padding: 48px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        box-shadow: 0 0 60px rgba(99, 102, 241, 0.15);
+        max-width: 360px;
+        width: 90vw;
+      }
+
+      .logo-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .brand {
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        color: #fff;
+      }
+
+      .brand span {
+        background: linear-gradient(135deg, #6366f1, #a78bfa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .tagline {
+        font-size: 13px;
+        color: #6b7280;
+        letter-spacing: 0.3px;
+      }
+
+      .qr-wrapper {
+        background: #fff;
+        border-radius: 16px;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .url-pill {
+        background: #1e1e2e;
+        border: 1px solid #2a2a3a;
+        border-radius: 100px;
+        padding: 10px 20px;
+        font-size: 15px;
+        color: #a78bfa;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+      }
+
+      .cta {
+        font-size: 12px;
+        color: #4b5563;
+        text-align: center;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="logo-area">
+        <div class="brand">Media<span>Minded</span>.ai</div>
+        <div class="tagline">Intelligent Marketing Solutions</div>
+      </div>
+
+      <div class="qr-wrapper">
+        <div id="qrcode"></div>
+      </div>
+
+      <div class="url-pill">mediaminded.ai</div>
+
+      <div class="cta">Scan to visit our website</div>
+    </div>
+
+    <script>
+      new QRCode(document.getElementById("qrcode"), {
+        text: "https://mediaminded.ai",
+        width: 220,
+        height: 220,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    </script>
+  </body>
+  </html>
