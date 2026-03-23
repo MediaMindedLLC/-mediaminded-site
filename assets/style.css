@@ -15,10 +15,15 @@
   --warning: #f59e0b;
   --danger: #ef4444;
   --info: #3b82f6;
+  --accent-2: #00d4aa;
+  --accent-soft: rgba(108, 99, 255, 0.1);
   --radius: 8px;
   --radius-lg: 12px;
+  --radius-xl: 16px;
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-accent: 0 0 30px rgba(108, 99, 255, 0.3);
   --transition: 0.2s ease;
+  --transition-slow: 0.4s ease;
 }
 
 *, *::before, *::after {
@@ -537,4 +542,57 @@ input[type="checkbox"] {
     padding: 0.6rem 1rem;
     font-size: 0.8rem;
   }
+}
+
+/* Landing Page Extras */
+.section-tag {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  margin-bottom: 1rem;
+}
+
+.bg-gradient-subtle {
+  background: linear-gradient(180deg, rgba(108, 99, 255, 0.03) 0%, transparent 100%);
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 30px rgba(108, 99, 255, 0.15);
+}
+
+.btn-xl {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+}
+
+/* Animations */
+.animate-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-delay-1 { transition-delay: 0.1s; }
+.animate-delay-2 { transition-delay: 0.2s; }
+.animate-delay-3 { transition-delay: 0.3s; }
+.animate-delay-4 { transition-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(108, 99, 255, 0); }
 }
