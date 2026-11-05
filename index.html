@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MediaMinded.ai — AI Call Center Solutions</title>
 <meta name="description" content="MediaMinded builds AI voice and text agents for call centers and sales teams: let the AI handle every customer conversation end to end, or have it qualify and warm-transfer live calls to your people.">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta name="theme-color" content="#112426">
 <link rel="canonical" href="https://mediaminded.ai/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mediaminded.ai/">
@@ -62,7 +67,9 @@ img{max-width:100%}
 /* nav */
 .nav{position:sticky;top:0;z-index:50;background:rgba(244,247,246,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-.logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.25rem;text-decoration:none;letter-spacing:-0.02em}
+.logo{display:inline-flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.25rem;text-decoration:none;letter-spacing:-0.02em}
+.logo img{width:30px;height:30px;border-radius:7px;display:block}
+.logo .wm{white-space:nowrap}
 .logo span{color:var(--ai)}
 .nav-links{display:flex;gap:28px;align-items:center;list-style:none;margin:0;padding:0}
 .nav-links a{text-decoration:none;font-size:.95rem;color:var(--ink-2);font-weight:500}
@@ -226,7 +233,7 @@ footer.site nav{display:flex;gap:20px;flex-wrap:wrap}
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top">MediaMinded<span>.ai</span></a>
+    <a class="logo" href="#top"><img src="/logo.png" alt="" width="30" height="30"><span class="wm">MediaMinded<span>.ai</span></span></a>
     <button class="menu-btn" aria-expanded="false" aria-controls="navlinks" onclick="toggleMenu(this)">Menu</button>
     <ul class="nav-links" id="navlinks">
       <li><a href="#modes">Two ways to run it</a></li>
@@ -492,7 +499,7 @@ footer.site nav{display:flex;gap:20px;flex-wrap:wrap}
 
 <footer class="site">
   <div class="wrap">
-    <a class="logo" href="#top">MediaMinded<span>.ai</span></a>
+    <a class="logo" href="#top"><img src="/logo.png" alt="" width="30" height="30"><span class="wm">MediaMinded<span>.ai</span></span></a>
     <nav>
       <a href="#modes">Two ways to run it</a>
       <a href="#pricing">Pricing</a>
