@@ -1,724 +1,591 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MediaMinded.ai - AI-Powered Lead Conversion Automations</title>
-  <meta name="description" content="Turn your leads into booked appointments with AI-powered automations. Zero upfront cost. Pure performance model.">
-  <link rel="stylesheet" href="/assets/style.css">
-  <style>
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 7rem 2rem 5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(108,99,255,0.14) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 30% 10%, rgba(0,212,170,0.05) 0%, transparent 50%);
-      pointer-events: none;
-    }
-    .hero-content { position: relative; z-index: 1; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediaMinded.ai — AI Call Center Solutions</title>
+<meta name="description" content="MediaMinded builds AI voice and text agents for call centers and sales teams: let the AI handle every customer conversation end to end, or have it qualify and warm-transfer live calls to your people.">
+<link rel="canonical" href="https://mediaminded.ai/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mediaminded.ai/">
+<meta property="og:title" content="MediaMinded.ai — AI Call Center Solutions">
+<meta property="og:description" content="AI voice and text agents that handle every customer conversation end to end, or warm up leads and live-transfer them to your team.">
+<meta property="og:image" content="https://mediaminded.ai/og-image.jpg">
+<meta property="og:site_name" content="MediaMinded.ai">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F7F6;
+  --paper-2:#E9EFED;
+  --ink:#112426;
+  --ink-2:#3C5456;
+  --ink-3:#6E8486;
+  --line:#CFDBD8;
+  --ai:#0E5E5B;        /* AI agent */
+  --ai-soft:#D6ECE8;
+  --human:#D98C1F;     /* live human */
+  --human-soft:#FBE9CF;
+  --white:#FFFFFF;
+  --radius:14px;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Bricolage Grotesque",Inter,sans-serif;font-weight:600;letter-spacing:-0.015em;line-height:1.08;margin:0}
+h1{font-size:clamp(2.4rem,5.2vw,4.3rem);font-weight:700;letter-spacing:-0.03em}
+h2{font-size:clamp(1.9rem,3.4vw,2.8rem);letter-spacing:-0.025em}
+h3{font-size:1.35rem}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.section{padding:96px 0}
+.section + .section{padding-top:0}
+.lead{font-size:1.2rem;color:var(--ink-2);max-width:60ch}
+.intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:48px}
+.intro p{color:var(--ink-2);max-width:52ch}
+@media (max-width:860px){.intro{grid-template-columns:1fr;gap:16px}}
 
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 1.1rem;
-      border-radius: 24px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      background: var(--accent-soft);
-      color: var(--accent);
-      border: 1px solid rgba(108,99,255,0.2);
-      margin-bottom: 1.5rem;
-      animation: fadeInUp 0.6s ease both;
-    }
-    .hero-tag .pulse {
-      width: 8px; height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: pulse-glow 2s ease infinite;
-    }
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:999px;font-weight:600;font-size:1rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .15s,color .15s,border-color .15s;font-family:inherit}
+.btn-primary{background:var(--ink);color:var(--white)}
+.btn-primary:hover{background:#0A1A1C}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-ghost:hover{background:var(--white)}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--human);outline-offset:3px}
 
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 800;
-      line-height: 1.12;
-      max-width: 850px;
-      margin: 0 auto 1.25rem;
-      letter-spacing: -0.03em;
-      animation: fadeInUp 0.6s ease 0.1s both;
-    }
-    .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(244,247,246,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.25rem;text-decoration:none;letter-spacing:-0.02em}
+.logo span{color:var(--ai)}
+.nav-links{display:flex;gap:28px;align-items:center;list-style:none;margin:0;padding:0}
+.nav-links a{text-decoration:none;font-size:.95rem;color:var(--ink-2);font-weight:500}
+.nav-links a:hover{color:var(--ink)}
+.nav-links .btn{padding:10px 18px;font-size:.92rem}
+.menu-btn{display:none;background:none;border:1.5px solid var(--ink);border-radius:999px;padding:8px 14px;font:inherit;font-weight:600;cursor:pointer}
+@media (max-width:900px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;align-items:flex-start;padding:20px 24px 24px;gap:18px;border-bottom:1px solid var(--line)}
+  .nav-links.open{display:flex}
+  .menu-btn{display:inline-block}
+}
 
-    .hero-sub {
-      font-size: 1.18rem;
-      color: var(--text-secondary);
-      max-width: 620px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
-      animation: fadeInUp 0.6s ease 0.2s both;
-    }
+/* hero */
+.hero{padding:72px 0 88px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+@media (max-width:960px){.hero .wrap{grid-template-columns:1fr;gap:40px}}
+.hero h1{max-width:13ch}
+.hero .lead{margin:24px 0 32px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-note{margin-top:22px;font-size:.92rem;color:var(--ink-3)}
 
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeInUp 0.6s ease 0.3s both;
-    }
+/* mode toggle */
+.mode{display:inline-flex;background:var(--paper-2);padding:4px;border-radius:999px;border:1px solid var(--line);margin-bottom:18px}
+.mode button{font:inherit;font-weight:600;font-size:.9rem;border:0;background:transparent;padding:9px 16px;border-radius:999px;cursor:pointer;color:var(--ink-2)}
+.mode button[aria-pressed="true"]{background:var(--white);color:var(--ink);box-shadow:0 1px 2px rgba(17,36,38,.12)}
 
-    .hero-social-proof {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-      animation: fadeInUp 0.6s ease 0.4s both;
-    }
-    .hero-social-proof .proof-item {
-      text-align: center;
-    }
-    .hero-social-proof .proof-num {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: -0.02em;
-    }
-    .hero-social-proof .proof-label {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-top: 0.15rem;
-    }
+/* call panel */
+.call{background:var(--white);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 24px 60px -30px rgba(17,36,38,.35)}
+.call-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line);font-size:.88rem;color:var(--ink-2)}
+.call-head strong{color:var(--ink);font-weight:600}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ai);margin-right:8px;vertical-align:middle}
+.dot.live{background:#2EAB5B}
+.lines{padding:18px;display:flex;flex-direction:column;gap:10px;height:400px;overflow-y:auto;scroll-behavior:smooth}
+.line{max-width:86%;padding:10px 14px;border-radius:16px;font-size:.95rem;line-height:1.45;opacity:0;transform:translateY(6px)}
+.line.show{opacity:1;transform:none;transition:opacity .35s,transform .35s}
+@media (prefers-reduced-motion:reduce){.line{opacity:1;transform:none}.line.show{transition:none}}
+.line small{display:block;font-size:.72rem;font-weight:600;letter-spacing:.02em;margin-bottom:3px;opacity:.75}
+.line.ai{align-self:flex-start;background:var(--ai-soft);color:#0B3F3D;border-bottom-left-radius:4px}
+.line.lead-l{align-self:flex-end;background:var(--paper-2);color:var(--ink);border-bottom-right-radius:4px}
+.line.human{align-self:flex-start;background:var(--human-soft);color:#5C3A05;border-bottom-left-radius:4px}
+.line.sys{align-self:center;background:transparent;color:var(--ink-3);font-size:.82rem;padding:6px 10px;border:1px dashed var(--line);border-radius:999px}
+.call-foot{display:flex;gap:18px;flex-wrap:wrap;padding:12px 18px;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-3)}
+.call-foot b{color:var(--ink);font-weight:600}
 
-    /* HOW IT WORKS */
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      position: relative;
-    }
-    .process-grid::before {
-      content: '';
-      position: absolute;
-      top: 40px;
-      left: 12%;
-      right: 12%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      opacity: 0.2;
-    }
-    .process-card {
-      text-align: center;
-      padding: 2rem 1.25rem;
-      position: relative;
-    }
-    .process-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 52px; height: 52px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #fff;
-      font-size: 1.2rem;
-      font-weight: 800;
-      margin-bottom: 1.25rem;
-      position: relative;
-      z-index: 1;
-    }
-    .process-card h3 { margin-bottom: 0.6rem; font-size: 1.08rem; font-weight: 700; }
-    .process-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+/* two modes */
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:860px){.modes{grid-template-columns:1fr}}
+.mode-card{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:34px 32px;position:relative;overflow:hidden}
+.mode-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px}
+.mode-card.ai-c::before{background:var(--ai)}
+.mode-card.hu-c::before{background:var(--human)}
+.mode-card .tag{display:inline-block;font-size:.82rem;font-weight:600;padding:5px 11px;border-radius:999px;margin-bottom:16px}
+.ai-c .tag{background:var(--ai-soft);color:var(--ai)}
+.hu-c .tag{background:var(--human-soft);color:#8A5600}
+.mode-card h3{font-size:1.65rem;margin-bottom:10px}
+.mode-card p{color:var(--ink-2);margin-bottom:22px}
+.mode-card ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.mode-card li{padding-left:26px;position:relative;font-size:.98rem}
+.mode-card li::before{content:"";position:absolute;left:0;top:9px;width:14px;height:8px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg);opacity:.7}
+.ai-c li::before{color:var(--ai)}
+.hu-c li::before{color:var(--human)}
+.mode-card .fit{margin-top:26px;padding-top:20px;border-top:1px solid var(--line);font-size:.95rem;color:var(--ink-2)}
+.mode-card .fit b{color:var(--ink);font-weight:600}
+.mix{margin-top:20px;background:var(--ink);color:var(--white);border-radius:20px;padding:30px 32px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center}
+.mix p{color:#C9D8D6;max-width:70ch}
+.mix h3{color:var(--white);margin-bottom:6px}
+.mix .btn-ghost{color:var(--white);border-color:var(--white)}
+.mix .btn-ghost:hover{background:rgba(255,255,255,.1)}
+@media (max-width:760px){.mix{grid-template-columns:1fr}}
 
-    /* CAPABILITIES */
-    .cap-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.25rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .cap-card {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      padding: 1.5rem;
-    }
-    .cap-icon {
-      width: 44px; height: 44px;
-      min-width: 44px;
-      border-radius: var(--radius);
-      background: var(--accent-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-    }
-    .cap-card h4 { font-size: 0.98rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .cap-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55; }
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--ink)}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+.step{padding:28px 24px 28px 0;border-right:1px solid var(--line)}
+.step:last-child{border-right:0}
+@media (max-width:900px){.step{border-right:0;border-bottom:1px solid var(--line);padding-right:0}}
+.step .n{font-family:"Bricolage Grotesque",sans-serif;font-size:2.6rem;font-weight:700;color:var(--ai);line-height:1;margin-bottom:14px}
+.step h3{font-size:1.2rem;margin-bottom:8px}
+.step p{color:var(--ink-2);font-size:.97rem}
 
-    /* RESULTS */
-    .results-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .result-card {
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-    .result-value {
-      font-size: 2.8rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1;
-    }
-    .result-value.accent { color: var(--accent); }
-    .result-value.green { color: var(--accent-2); }
-    .result-value.white { color: var(--text-primary); }
-    .result-label { color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem; font-weight: 500; }
+/* capabilities */
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:960px){.caps{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.caps{grid-template-columns:1fr}}
+.cap{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px}
+.cap h3{font-size:1.15rem;margin-bottom:8px}
+.cap p{color:var(--ink-2);font-size:.96rem}
+.cap .who{display:flex;gap:6px;margin-bottom:14px}
+.pill{font-size:.74rem;font-weight:600;padding:3px 9px;border-radius:999px}
+.pill.ai{background:var(--ai-soft);color:var(--ai)}
+.pill.hu{background:var(--human-soft);color:#8A5600}
 
-    /* NICHES */
-    .niche-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
-      gap: 0.75rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .niche-card {
-      text-align: center;
-      padding: 1.4rem 0.75rem;
-      cursor: default;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      transition: all var(--transition);
-    }
-    .niche-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .niche-icon { font-size: 1.8rem; margin-bottom: 0.5rem; display: block; }
-    .niche-card h4 { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); }
-    .niche-card:hover h4 { color: var(--text-primary); }
+/* results */
+.results{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:40px;align-items:start}
+@media (max-width:860px){.results{grid-template-columns:1fr}}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.stat{border-top:2px solid var(--ink);padding-top:14px}
+.stat .v{font-family:"Bricolage Grotesque",sans-serif;font-size:2.6rem;font-weight:700;letter-spacing:-0.03em;line-height:1}
+.stat .l{color:var(--ink-2);font-size:.95rem;margin-top:8px}
+blockquote{margin:0;background:var(--white);border:1px solid var(--line);border-radius:20px;padding:34px 36px;font-family:"Bricolage Grotesque",sans-serif;font-size:1.45rem;line-height:1.35;letter-spacing:-0.01em}
+blockquote footer{margin-top:20px;font-family:Inter,sans-serif;font-size:.95rem;color:var(--ink-2)}
 
-    /* TESTIMONIAL */
-    .testimonial-card {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 2.5rem;
-      text-align: center;
-      position: relative;
-    }
-    .testimonial-card::before {
-      content: '\201C';
-      position: absolute;
-      top: 0.5rem;
-      left: 1.5rem;
-      font-size: 4rem;
-      color: var(--accent);
-      opacity: 0.3;
-      line-height: 1;
-    }
-    .testimonial-quote {
-      font-size: 1.15rem;
-      line-height: 1.75;
-      color: var(--text-primary);
-      font-style: italic;
-      margin-bottom: 1.5rem;
-    }
-    .testimonial-author { font-weight: 700; font-size: 0.95rem; }
-    .testimonial-role { color: var(--text-muted); font-size: 0.85rem; margin-top: 0.2rem; }
+/* pricing */
+.price{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:860px){.price{grid-template-columns:1fr}}
+.plan{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:34px 32px}
+.plan.dark{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.plan.dark p,.plan.dark li{color:#C9D8D6}
+.plan .big{font-family:"Bricolage Grotesque",sans-serif;font-size:3rem;font-weight:700;letter-spacing:-0.03em;line-height:1;margin:14px 0 6px}
+.plan .sub{font-size:.95rem;color:var(--ink-2);margin-bottom:22px}
+.plan.dark .sub{color:#9FB5B3}
+.plan ul{margin:0;padding-left:18px;color:var(--ink-2);display:grid;gap:8px;font-size:.97rem}
 
-    /* FAQ */
-    .faq-list {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-    }
-    .faq-question {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 0;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--text-primary);
-      background: none;
-      border: none;
-      width: 100%;
-      text-align: left;
-      font-family: inherit;
-      transition: color var(--transition);
-    }
-    .faq-question:hover { color: var(--accent); }
-    .faq-chevron {
-      font-size: 1.2rem;
-      transition: transform var(--transition);
-      color: var(--text-muted);
-      min-width: 24px;
-      text-align: center;
-    }
-    .faq-item.open .faq-chevron { transform: rotate(180deg); }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-      color: var(--text-secondary);
-      font-size: 0.92rem;
-      line-height: 1.7;
-    }
-    .faq-item.open .faq-answer {
-      max-height: 300px;
-      padding-bottom: 1.25rem;
-    }
+/* industries */
+.inds{display:flex;flex-wrap:wrap;gap:10px}
+.ind{padding:12px 18px;border:1px solid var(--line);border-radius:999px;background:var(--white);font-weight:500;font-size:.98rem}
 
-    /* CTA */
-    .cta-section {
-      text-align: center;
-      padding: 6rem 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at center, rgba(108,99,255,0.1) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .cta-content { position: relative; z-index: 1; }
-    .cta-section h2 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.75rem; letter-spacing: -0.03em; }
-    .cta-section p { color: var(--text-secondary); margin-bottom: 2.5rem; font-size: 1.1rem; max-width: 550px; margin-left: auto; margin-right: auto; }
+/* faq */
+.faq{max-width:820px}
+.faq details{border-top:1px solid var(--line);padding:0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 0;font-weight:600;font-size:1.08rem;display:flex;justify-content:space-between;gap:20px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:"Bricolage Grotesque",sans-serif;font-size:1.6rem;font-weight:500;color:var(--ai);line-height:1;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 22px;color:var(--ink-2);max-width:68ch}
 
-    .cta-form {
-      display: flex;
-      gap: 0.75rem;
-      max-width: 480px;
-      margin: 0 auto;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .cta-form input {
-      flex: 1;
-      min-width: 220px;
-      padding: 0.85rem 1.1rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      color: var(--text-primary);
-      font-size: 0.95rem;
-    }
-    .cta-form input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); outline: none; }
-    .cta-form .btn { white-space: nowrap; }
+/* cta */
+.cta{background:var(--ink);color:var(--white);padding:96px 0}
+.cta .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
+@media (max-width:900px){.cta .wrap{grid-template-columns:1fr}}
+.cta h2{color:var(--white)}
+.cta .lead{color:#C9D8D6}
+.cta ul{margin:26px 0 0;padding:0;list-style:none;display:grid;gap:12px;color:#C9D8D6}
+.cta li{padding-left:24px;position:relative}
+.cta li::before{content:"";position:absolute;left:0;top:10px;width:12px;height:7px;border-left:2px solid var(--human);border-bottom:2px solid var(--human);transform:rotate(-45deg)}
+form{background:var(--white);color:var(--ink);border-radius:20px;padding:32px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.f-row{grid-template-columns:1fr}}
+label{display:block;font-size:.88rem;font-weight:600;margin:0 0 6px}
+.field{margin-bottom:16px}
+input,select,textarea{width:100%;font:inherit;font-size:1rem;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+input:focus,select:focus,textarea:focus{border-color:var(--ai);background:var(--white)}
+.choice{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+@media (max-width:560px){.choice{grid-template-columns:1fr}}
+.choice label{margin:0;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;font-weight:500;font-size:.9rem;display:flex;gap:8px;align-items:center;background:var(--paper)}
+.choice input{width:auto;margin:0}
+.choice label:has(input:checked){border-color:var(--ink);background:var(--white)}
+form .btn{width:100%;margin-top:6px}
+.form-note{font-size:.85rem;color:var(--ink-3);margin-top:14px;text-align:center}
 
-    /* MODEL SECTION */
-    .model-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .model-card {
-      text-align: center;
-      padding: 2.5rem 1.5rem;
-    }
-    .model-icon {
-      width: 64px; height: 64px;
-      border-radius: 50%;
-      background: var(--accent-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.25rem;
-      font-size: 1.6rem;
-    }
-    .model-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .model-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
-
-    @media (max-width: 768px) {
-      .hero { padding: 5rem 1rem 3rem; }
-      .hero h1 { font-size: 2rem; }
-      .hero-sub { font-size: 1rem; }
-      .process-grid { grid-template-columns: repeat(2, 1fr); }
-      .process-grid::before { display: none; }
-      .results-grid { grid-template-columns: repeat(2, 1fr); }
-      .model-grid { grid-template-columns: 1fr; }
-      .cta-section h2 { font-size: 1.8rem; }
-      .hero-social-proof { flex-direction: row; gap: 1.5rem; }
-    }
-
-    @media (max-width: 480px) {
-      .process-grid { grid-template-columns: 1fr; }
-      .hero-social-proof .proof-num { font-size: 1.3rem; }
-    }
-  </style>
+/* footer */
+footer.site{padding:36px 0;border-top:1px solid var(--line);font-size:.9rem;color:var(--ink-2)}
+footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
+footer.site a{text-decoration:none}
+footer.site nav{display:flex;gap:20px;flex-wrap:wrap}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-logo">Media<span>Minded</span>.ai</div>
-    <div class="nav-links">
-      <a href="#how-it-works">How It Works</a>
-      <a href="#capabilities">What We Do</a>
-      <a href="#industries">Industries</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">MediaMinded<span>.ai</span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="navlinks" onclick="toggleMenu(this)">Menu</button>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="#modes">Two ways to run it</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="/portal/">Partner login</a></li>
+      <li><a class="btn btn-primary" href="#cta">Book a discovery call</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Your call center, run by AI. Or backed by it.</h1>
+      <p class="lead">We build AI voice and text agents that work your leads and customer calls end to end — or qualify them, warm them up, and live-transfer to your reps the moment they're ready to talk.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#cta">Book a discovery call</a>
+        <a class="btn btn-ghost" href="#modes">Compare the two models</a>
+      </div>
+      <p class="hero-note">Inbound and outbound. Works with your existing CRM and dialer. The AI always identifies itself as AI.</p>
+    </div>
+
+    <div>
+      <div class="mode" role="group" aria-label="Choose how the AI runs the call">
+        <button type="button" aria-pressed="true" data-mode="full" onclick="setMode('full')">AI handles everything</button>
+        <button type="button" aria-pressed="false" data-mode="transfer" onclick="setMode('transfer')">AI warms up, your team closes</button>
+      </div>
+      <div class="call" aria-live="polite">
+        <div class="call-head">
+          <span><span class="dot live"></span><strong>Outbound call</strong> · roofing lead, 11 days old</span>
+          <span id="call-mode-label">Full AI</span>
+        </div>
+        <div class="lines" id="lines"></div>
+        <div class="call-foot">
+          <span>Recorded <b>yes</b></span>
+          <span>Transcribed <b>yes</b></span>
+          <span>Logged to CRM <b>yes</b></span>
+          <span id="foot-outcome">Outcome <b>Appointment booked</b></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TWO MODES -->
+<section class="section" id="modes">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Two ways to run it. One platform underneath.</h2>
+      <p>Every deployment uses the same AI agents, call recording, lead scoring, and CRM integrations. The only question is who finishes the conversation — the AI, or one of your people.</p>
+    </div>
+
+    <div class="modes">
+      <article class="mode-card ai-c">
+        <span class="tag">Full AI</span>
+        <h3>AI handles every customer interaction</h3>
+        <p>The AI calls and texts your leads, answers questions, handles objections, qualifies interest, and books the appointment straight onto your sales calendar. No one on your side touches the phone until the estimate.</p>
+        <ul>
+          <li>Outbound calling and SMS follow-up at any volume</li>
+          <li>Inbound answering, 24/7, with no hold queue</li>
+          <li>Qualification and booking with your real calendar availability</li>
+          <li>Confirmation and no-show reduction sequences</li>
+          <li>Aged-list re-engagement</li>
+        </ul>
+        <p class="fit"><b>Best fit:</b> teams without a call center, high lead volumes, aged lists, or anyone who wants booked appointments without adding headcount.</p>
+      </article>
+
+      <article class="mode-card hu-c">
+        <span class="tag">AI + live transfer</span>
+        <h3>AI warms the lead, then hands it to your team</h3>
+        <p>The AI does the dialing, the waiting, and the first few minutes of every conversation. When a lead is engaged and qualified, it transfers the live call to one of your reps with a spoken intro and the full context on their screen. Your people only talk to people who want to talk.</p>
+        <ul>
+          <li>Reps receive only connected, qualified, interested calls</li>
+          <li>Warm introduction so the handoff feels like one conversation</li>
+          <li>Context pushed to the rep: name, job, timeline, objections already covered</li>
+          <li>Routing by skill, territory, or availability; fallback to booking if no one is free</li>
+          <li>Works with your existing dialer or phone system</li>
+        </ul>
+        <p class="fit"><b>Best fit:</b> call centers and sales floors that want to keep closers on the phone, cut dial time, and protect their talk-time for conversations that matter.</p>
+      </article>
+    </div>
+
+    <div class="mix">
+      <div>
+        <h3>Most clients end up with a mix</h3>
+        <p>Full AI overnight and on weekends, live transfer during floor hours. Full AI on aged lists, live transfer on fresh web leads. The rules are yours to set, and you can change them any time without a rebuild.</p>
+      </div>
+      <a class="btn btn-ghost" href="#cta">Talk through your setup</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="intro">
+      <h2>From discovery call to live calls in about a week</h2>
+      <p>Most deployments go live within 3–5 business days of the discovery call. There is nothing for your team to install.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Discovery call</h3><p>We learn your business, your sales process, your lead sources, and where your reps' time goes today.</p></div>
+      <div class="step"><div class="n">2</div><h3>Build and connect</h3><p>We script the AI for your industry and offers, connect your CRM, calendar, and phone system, and set the transfer rules if you're using live handoff.</p></div>
+      <div class="step"><div class="n">3</div><h3>Work the leads</h3><p>The AI calls, texts, answers, qualifies, and either books the appointment or transfers to a rep. Every call is recorded and transcribed.</p></div>
+      <div class="step"><div class="n">4</div><h3>Close and tune</h3><p>Your team runs the appointments and closes. We review transcripts and outcomes with you and keep tuning scripts and routing.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="section" id="capabilities">
+  <div class="wrap">
+    <div class="intro">
+      <h2>What the platform does</h2>
+      <p>Each capability is available in both models. Tags show which model it matters most for.</p>
+    </div>
+    <div class="caps">
+      <div class="cap"><div class="who"><span class="pill ai">Full AI</span><span class="pill hu">Live transfer</span></div><h3>AI voice calling</h3><p>Natural-sounding agents that call at scale, handle objections, and qualify interest. Outbound campaigns and inbound answering on the same system.</p></div>
+      <div class="cap"><div class="who"><span class="pill hu">Live transfer</span></div><h3>Warm transfer to reps</h3><p>Qualified callers are introduced and transferred live with context on screen. Routing by skill, territory, or who's free. If no one answers, the AI books instead of dropping the lead.</p></div>
+      <div class="cap"><div class="who"><span class="pill ai">Full AI</span><span class="pill hu">Live transfer</span></div><h3>Smart text follow-up</h3><p>SMS sequences that re-engage leads who didn't pick up, confirm appointments, and cut no-shows.</p></div>
+      <div class="cap"><div class="who"><span class="pill ai">Full AI</span></div><h3>Direct calendar booking</h3><p>Qualified leads land on your sales team's calendar with the details already filled in.</p></div>
+      <div class="cap"><div class="who"><span class="pill ai">Full AI</span><span class="pill hu">Live transfer</span></div><h3>Lead scoring and qualification</h3><p>Every interaction is scored so the hottest leads surface first — for the AI to book or for your reps to take.</p></div>
+      <div class="cap"><div class="who"><span class="pill ai">Full AI</span><span class="pill hu">Live transfer</span></div><h3>Full transparency</h3><p>Every call recorded and transcribed. Outcomes, transfer rates, and rep performance in one dashboard.</p></div>
+      <div class="cap"><div class="who"><span class="pill ai">Full AI</span></div><h3>Aged-lead re-engagement</h3><p>We revive lists your team gave up on. Lists over two years old have produced 7%+ appointment rates.</p></div>
+      <div class="cap"><div class="who"><span class="pill ai">Full AI</span><span class="pill hu">Live transfer</span></div><h3>CRM and dialer integration</h3><p>Works alongside the tools you already run. Leads, notes, recordings, and dispositions sync back automatically.</p></div>
+      <div class="cap"><div class="who"><span class="pill ai">Full AI</span><span class="pill hu">Live transfer</span></div><h3>Compliance built in</h3><p>The AI discloses that it's AI on every call, honors do-not-call and opt-out requests, and respects calling windows by time zone.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section" id="results">
+  <div class="wrap">
+    <div class="results">
+      <div>
+        <h2 style="margin-bottom:28px">Results from live deployments</h2>
+        <div class="stats">
+          <div class="stat"><div class="v">7.2%</div><div class="l">Appointment rate across lead lists worked by the AI</div></div>
+          <div class="stat"><div class="v">7%+</div><div class="l">Appointment rate on lists more than two years old</div></div>
+          <div class="stat"><div class="v">3–5</div><div class="l">Business days from discovery call to live</div></div>
+          <div class="stat"><div class="v">100%</div><div class="l">Of calls recorded and transcribed</div></div>
+        </div>
+      </div>
+      <blockquote>
+        “Fourteen appointments in the first week off a list we had written off, and six of them closed. Our reps didn't dial a single one.”
+        <footer>Operations Director, mid-Atlantic home improvement company</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Pricing that follows the model you choose</h2>
+      <p>We'd rather be paid when you win than bill you for software you're still figuring out.</p>
+    </div>
+    <div class="price">
+      <div class="plan dark">
+        <span class="tag" style="font-size:.85rem;font-weight:600;color:#9FB5B3">Full AI — performance partnership</span>
+        <div class="big">$0 upfront</div>
+        <div class="sub">8–12% of closed deals from appointments we book</div>
+        <ul>
+          <li>No setup fees, retainers, or long-term contracts</li>
+          <li>We recommend at least 500 leads to start; we've worked lists from 200 to 50,000+</li>
+          <li>Includes build, calling, texting, booking, and ongoing tuning</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <span class="tag" style="font-size:.85rem;font-weight:600;color:var(--ink-3)">AI + live transfer — call center deployment</span>
+        <div class="big">Scoped to your floor</div>
+        <div class="sub">Priced per connected transfer or as a flat monthly rate, based on seats and call volume</div>
+        <ul>
+          <li>Transfer rules, routing, and rep screens built for your team</li>
+          <li>Integration with your dialer, phone system, and CRM</li>
+          <li>Reporting on transfer rate, rep acceptance, and close rate by source</li>
+          <li>Hybrid setups (Full AI after hours, live transfer during floor hours) available</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="section" id="industries">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Built for high-ticket, appointment-driven sales</h2>
+      <p>Our scripts, objection handling, and qualification logic come from working these industries first-hand.</p>
+    </div>
+    <div class="inds">
+      <span class="ind">Roofing</span><span class="ind">Solar</span><span class="ind">Windows &amp; doors</span><span class="ind">HVAC</span><span class="ind">Pools</span><span class="ind">Fencing</span><span class="ind">Siding</span><span class="ind">Driveways</span><span class="ind">RV dealers</span><span class="ind">Real estate</span><span class="ind">Call centers &amp; BPOs</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Questions we hear on every discovery call</h2>
+    </div>
+    <div class="faq">
+      <details><summary>What's the difference between the two models?</summary><p>In Full AI, the AI handles the entire conversation and books the appointment itself. In AI + live transfer, the AI does the dialing and the first part of the conversation, then transfers qualified, interested callers to one of your reps in real time. You can run either, or both with rules for when each applies.</p></details>
+      <details><summary>How does a live transfer actually work for the lead?</summary><p>It sounds like one continuous call. The AI says it's bringing in a specialist, briefly introduces the lead by name to your rep, and drops off. Your rep's screen already shows who it is, what they need, and what's been covered, so nobody repeats themselves.</p></details>
+      <details><summary>What happens if none of my reps are available?</summary><p>You choose the fallback: the AI books an appointment on your calendar, schedules a callback at a time the lead picks, or sends the lead to a voicemail or text queue. No qualified lead gets dropped because the floor was busy.</p></details>
+      <details><summary>Does the AI tell people it's an AI?</summary><p>Yes, on every call. It also honors do-not-call and opt-out requests immediately and only dials inside permitted calling windows for the lead's time zone.</p></details>
+      <details><summary>Will this work with our CRM and dialer?</summary><p>Yes. The platform runs alongside the tools you already use. Leads, call recordings, transcripts, dispositions, and appointments sync back to your system of record.</p></details>
+      <details><summary>How fast can we go live?</summary><p>Most Full AI deployments are live in 3–5 business days after the discovery call. Live-transfer setups take about the same, plus whatever time your phone system or dialer needs on your side.</p></details>
+      <details><summary>How many leads do we need?</summary><p>For the performance model we recommend at least 500 leads to start, though we've worked lists from 200 to 50,000+. Live-transfer deployments are scoped to your call volume and seat count instead.</p></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- CTA -->
+<section class="cta" id="cta">
+  <div class="wrap">
+    <div>
+      <h2>Book a 15-minute discovery call</h2>
+      <p class="lead" style="margin-top:18px">Tell us how your calls run today. We'll tell you which model fits, what it would cost, and what the first week would look like.</p>
+      <ul>
+        <li>No pitch deck. We look at your actual lead flow.</li>
+        <li>You'll leave with a recommended setup, whether or not you work with us.</li>
+        <li>If it's a fit, you can be live within a week.</li>
+      </ul>
+    </div>
+    <form action="#" method="post" onsubmit="return handleSubmit(event)">
+      <div class="f-row">
+        <div class="field"><label for="name">Name</label><input id="name" name="name" required autocomplete="name"></div>
+        <div class="field"><label for="company">Company</label><input id="company" name="company" required autocomplete="organization"></div>
+      </div>
+      <div class="f-row">
+        <div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required autocomplete="tel"></div>
+      </div>
+      <div class="field">
+        <label for="volume">Monthly leads or calls</label>
+        <select id="volume" name="volume">
+          <option>Under 500</option><option>500–2,000</option><option>2,000–10,000</option><option>10,000+</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Which model are you leaning toward?</label>
+        <div class="choice">
+          <label><input type="radio" name="model" value="full" checked> AI handles everything</label>
+          <label><input type="radio" name="model" value="transfer"> AI + live transfer</label>
+          <label><input type="radio" name="model" value="unsure"> Not sure yet</label>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">Book discovery call</button>
+      <p class="form-note">No spam. We'll reach out to schedule a time that works for you.</p>
+    </form>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <a class="logo" href="#top">MediaMinded<span>.ai</span></a>
+    <nav>
+      <a href="#modes">Two ways to run it</a>
+      <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
-      <a href="/portal/" class="btn btn-primary btn-sm">Partner Login</a>
-    </div>
-  </nav>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/portal/">Partner login</a>
+    </nav>
+    <span>© 2026 MediaMinded.ai — AI call center solutions</span>
+  </div>
+</footer>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-tag"><span class="pulse"></span> AI-Powered Lead Conversion</div>
-      <h1>Turn Your Leads Into <span class="highlight">Booked Appointments</span> on Autopilot</h1>
-      <p class="hero-sub">We build powerful automations that convert your leads into sales-qualified appointments &mdash; so your salespeople show up, estimate, and close. You pay nothing upfront.</p>
-      <div class="hero-buttons">
-        <a href="#cta" class="btn btn-primary btn-xl">Book a Discovery Call</a>
-        <a href="#how-it-works" class="btn btn-secondary btn-lg">See How It Works</a>
-      </div>
-      <div class="hero-social-proof">
-        <div class="proof-item">
-          <div class="proof-num" data-count="12000">0</div>
-          <div class="proof-label">AI Calls Made</div>
-        </div>
-        <div class="proof-item">
-          <div class="proof-num" data-count="340">0</div>
-          <div class="proof-label">Appointments Booked</div>
-        </div>
-        <div class="proof-item">
-          <div class="proof-num">$0</div>
-          <div class="proof-label">Upfront Cost</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<script>
+function toggleMenu(btn){
+  var ul=document.getElementById('navlinks');
+  var open=ul.classList.toggle('open');
+  btn.setAttribute('aria-expanded',open?'true':'false');
+}
+document.querySelectorAll('#navlinks a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('navlinks').classList.remove('open');});});
 
-  <!-- HOW IT WORKS -->
-  <section class="section bg-gradient-subtle" id="how-it-works">
-    <div class="container">
-      <div style="text-align:center"><span class="section-tag">The Process</span></div>
-      <h2 class="section-title">How It Works</h2>
-      <p class="section-subtitle">From your lead list to booked appointments in four simple steps</p>
-      <div class="process-grid">
-        <div class="card process-card animate-in">
-          <div class="process-num">1</div>
-          <h3>Discovery Call</h3>
-          <p>We learn about your business, sales process, and lead sources to design the right automation strategy for you.</p>
-        </div>
-        <div class="card process-card animate-in animate-delay-1">
-          <div class="process-num">2</div>
-          <h3>We Build Your Automations</h3>
-          <p>Custom AI calling sequences, follow-up texts, emails, and scheduling flows &mdash; all tailored to your industry and leads.</p>
-        </div>
-        <div class="card process-card animate-in animate-delay-2">
-          <div class="process-num">3</div>
-          <h3>Your Leads Get Worked</h3>
-          <p>Our AI calls your leads at scale, qualifies interest, handles objections naturally, and books appointments on your calendar.</p>
-        </div>
-        <div class="card process-card animate-in animate-delay-3">
-          <div class="process-num">4</div>
-          <h3>You Close &amp; We Earn</h3>
-          <p>Your sales team runs the appointments and closes deals. We only earn a small percentage when you succeed. Zero risk.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+var shared=[
+  ['ai','AI agent','Hi, is this Mark? This is Jordan calling from Summit Roofing on a recorded line. I’m an AI assistant following up on the roof estimate you requested a couple of weeks ago. Is this still something you’re looking into?'],
+  ['lead-l','Mark','Yeah, actually. We had a leak in the storm last week so it’s kind of urgent now.'],
+  ['ai','AI agent','Sorry to hear that. Is the leak in the main house or a garage, and roughly how old is the roof?'],
+  ['lead-l','Mark','Main house, over the kitchen. Roof’s probably 20 years old. How soon can someone come out?']
+];
+var endings={
+  full:[
+    ['ai','AI agent','We can have an estimator there this week. I have Thursday at 10am or Friday at 2pm open. Which works better for you?'],
+    ['lead-l','Mark','Thursday at 10 works.'],
+    ['ai','AI agent','You’re booked for Thursday at 10am. I’ll text you a confirmation now and a reminder the day before. Is there anything else I can help with?'],
+    ['sys','','Appointment booked · CRM updated · confirmation SMS sent']
+  ],
+  transfer:[
+    ['ai','AI agent','I can get you to one of our roofing specialists right now who can get an estimator scheduled. Give me one second to bring in Dana.'],
+    ['sys','','Transferring to Dana (available, 0 in queue) · lead context pushed to screen'],
+    ['ai','AI agent','Dana, I have Mark on the line. Active leak over the kitchen after last week’s storm, roof around 20 years old, main house, wants someone out this week.'],
+    ['human','Dana · Summit Roofing','Thanks. Hey Mark, Dana here. Sorry about the leak — let’s get someone out there. Are you around Thursday morning?'],
+    ['sys','','Live transfer accepted in 4 seconds · call continues with rep']
+  ]
+};
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var timers=[];
+function render(mode){
+  timers.forEach(clearTimeout);timers=[];
+  var box=document.getElementById('lines');box.innerHTML='';
+  var seq=shared.concat(endings[mode]);
+  seq.forEach(function(item,i){
+    var d=document.createElement('div');
+    d.className='line '+item[0];
+    if(item[1]){var s=document.createElement('small');s.textContent=item[1];d.appendChild(s);}
+    d.appendChild(document.createTextNode(item[2]));
+    box.appendChild(d);
+    if(reduce){d.classList.add('show');}
+    else{timers.push(setTimeout(function(){d.classList.add('show');box.scrollTop=box.scrollHeight;},250+i*650));}
+  });
+  document.getElementById('call-mode-label').textContent= mode==='full'?'Full AI':'AI + live transfer';
+  document.getElementById('foot-outcome').innerHTML= mode==='full'?'Outcome <b>Appointment booked</b>':'Outcome <b>Live transfer to rep</b>';
+}
+function setMode(mode){
+  document.querySelectorAll('.mode button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.mode===mode?'true':'false');});
+  render(mode);
+}
+render('full');
 
-  <!-- CAPABILITIES -->
-  <section class="section" id="capabilities">
-    <div class="container">
-      <div style="text-align:center"><span class="section-tag">Capabilities</span></div>
-      <h2 class="section-title">Powerful Automations, Proven Results</h2>
-      <p class="section-subtitle">Everything you need to turn leads into revenue, fully automated</p>
-      <div class="cap-grid">
-        <div class="card cap-card card-glow animate-in">
-          <div class="cap-icon">&#128222;</div>
-          <div>
-            <h4>AI Voice Calling</h4>
-            <p>Natural-sounding AI agents that call your leads, handle objections, and qualify interest at scale &mdash; hundreds of calls per day.</p>
-          </div>
-        </div>
-        <div class="card cap-card card-glow animate-in animate-delay-1">
-          <div class="cap-icon">&#128172;</div>
-          <div>
-            <h4>Smart Text Follow-Up</h4>
-            <p>Automated SMS sequences that re-engage warm leads, confirm appointments, and reduce no-shows.</p>
-          </div>
-        </div>
-        <div class="card cap-card card-glow animate-in animate-delay-2">
-          <div class="cap-icon">&#128197;</div>
-          <div>
-            <h4>Direct Calendar Booking</h4>
-            <p>When a lead is qualified, they're booked directly onto your sales team's calendar with all the details.</p>
-          </div>
-        </div>
-        <div class="card cap-card card-glow animate-in animate-delay-3">
-          <div class="cap-icon">&#127919;</div>
-          <div>
-            <h4>Lead Scoring &amp; Qualification</h4>
-            <p>AI evaluates every interaction to surface the hottest leads so your team focuses on the highest-probability closes.</p>
-          </div>
-        </div>
-        <div class="card cap-card card-glow animate-in animate-delay-4">
-          <div class="cap-icon">&#128200;</div>
-          <div>
-            <h4>Full Transparency</h4>
-            <p>Every call is recorded and transcribed. See exactly what was said, who's interested, and what's in your pipeline.</p>
-          </div>
-        </div>
-        <div class="card cap-card card-glow animate-in animate-delay-4">
-          <div class="cap-icon">&#9888;&#65039;</div>
-          <div>
-            <h4>Aged Lead Re-Engagement</h4>
-            <p>Got old leads collecting dust? Our AI brings them back to life &mdash; we've seen 7%+ appointment rates on 2+ year old lists.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BUSINESS MODEL -->
-  <section class="section bg-gradient-subtle">
-    <div class="container">
-      <div style="text-align:center"><span class="section-tag">Our Model</span></div>
-      <h2 class="section-title">Pure Performance. Zero Risk.</h2>
-      <p class="section-subtitle">We only win when you win. That's the deal.</p>
-      <div class="model-grid">
-        <div class="card model-card animate-in">
-          <div class="model-icon">&#128176;</div>
-          <h3>$0 Upfront</h3>
-          <p>No setup fees, no monthly retainers, no hidden costs. We invest our technology and time on your behalf.</p>
-        </div>
-        <div class="card model-card animate-in animate-delay-1">
-          <div class="model-icon">&#129309;</div>
-          <h3>Revenue Share Only</h3>
-          <p>We earn a small percentage (8-12%) of closed deals from the appointments we generate. If you don't close, we don't earn.</p>
-        </div>
-        <div class="card model-card animate-in animate-delay-2">
-          <div class="model-icon">&#128640;</div>
-          <h3>Proven Track Record</h3>
-          <p>We've processed thousands of leads for home service companies with consistent appointment conversion and closed revenue.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESULTS -->
-  <section class="section">
-    <div class="container">
-      <div style="text-align:center"><span class="section-tag">Results</span></div>
-      <h2 class="section-title">Real Numbers From Real Partners</h2>
-      <p class="section-subtitle">What our automations deliver, month after month</p>
-      <div class="results-grid">
-        <div class="card result-card animate-in">
-          <div class="result-value accent" data-count="12000">0</div>
-          <div class="result-label">AI Calls Completed</div>
-        </div>
-        <div class="card result-card animate-in animate-delay-1">
-          <div class="result-value green" data-count="340">0</div>
-          <div class="result-label">Appointments Booked</div>
-        </div>
-        <div class="card result-card animate-in animate-delay-2">
-          <div class="result-value white">7.2%</div>
-          <div class="result-label">Appointment Rate</div>
-        </div>
-        <div class="card result-card animate-in animate-delay-3">
-          <div class="result-value accent">$0</div>
-          <div class="result-label">Upfront Cost to Partners</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIAL -->
-  <section class="section bg-gradient-subtle">
-    <div class="container">
-      <div class="card testimonial-card animate-in">
-        <p class="testimonial-quote">We had thousands of old leads sitting in a spreadsheet doing nothing. MediaMinded's AI started calling them and within the first week we had 14 appointments booked. We've closed 6 deals so far from leads we'd written off.</p>
-        <div class="testimonial-author">Operations Director</div>
-        <div class="testimonial-role">Home Improvement Company &mdash; Mid-Atlantic Region</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INDUSTRIES -->
-  <section class="section" id="industries">
-    <div class="container">
-      <div style="text-align:center"><span class="section-tag">Industries</span></div>
-      <h2 class="section-title">Built For Companies That Sell</h2>
-      <p class="section-subtitle">If your business sets appointments and closes deals, we can help</p>
-      <div class="niche-grid">
-        <div class="niche-card animate-in"><span class="niche-icon">&#127968;</span><h4>Roofing</h4></div>
-        <div class="niche-card animate-in animate-delay-1"><span class="niche-icon">&#9728;&#65039;</span><h4>Solar</h4></div>
-        <div class="niche-card animate-in animate-delay-1"><span class="niche-icon">&#128295;</span><h4>Windows &amp; Doors</h4></div>
-        <div class="niche-card animate-in animate-delay-2"><span class="niche-icon">&#10052;&#65039;</span><h4>HVAC</h4></div>
-        <div class="niche-card animate-in animate-delay-2"><span class="niche-icon">&#127946;</span><h4>Pools</h4></div>
-        <div class="niche-card animate-in animate-delay-3"><span class="niche-icon">&#9878;&#65039;</span><h4>Fencing</h4></div>
-        <div class="niche-card animate-in animate-delay-3"><span class="niche-icon">&#127960;&#65039;</span><h4>Siding</h4></div>
-        <div class="niche-card animate-in animate-delay-4"><span class="niche-icon">&#128736;&#65039;</span><h4>Driveways</h4></div>
-        <div class="niche-card animate-in animate-delay-4"><span class="niche-icon">&#128663;</span><h4>RV Dealers</h4></div>
-        <div class="niche-card animate-in animate-delay-4"><span class="niche-icon">&#127969;</span><h4>Real Estate</h4></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section bg-gradient-subtle" id="faq">
-    <div class="container">
-      <div style="text-align:center"><span class="section-tag">FAQ</span></div>
-      <h2 class="section-title">Common Questions</h2>
-      <p class="section-subtitle">Everything you need to know before getting started</p>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question">How does the pricing work? <span class="faq-chevron">&#9660;</span></button>
-          <div class="faq-answer">There's no upfront cost, no monthly fee, and no long-term contract. We work on a pure performance model &mdash; we earn a small revenue share (typically 8-12%) only when you close a deal from an appointment we generated. If we don't produce results, you pay nothing.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">What kind of leads do you work with? <span class="faq-chevron">&#9660;</span></button>
-          <div class="faq-answer">We're most effective with aged or unworked lead lists &mdash; those leads sitting in your CRM or spreadsheet that your team hasn't gotten around to calling. But we also work with fresh inbound leads, web leads, and purchased lists. During the discovery call, we'll assess what you have and build the right strategy.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">Do your AI calls really sound natural? <span class="faq-chevron">&#9660;</span></button>
-          <div class="faq-answer">Yes. We use the latest AI voice technology with natural speech patterns, pausing, and objection handling. Our AI is upfront that it's AI &mdash; transparency builds trust. Every call is recorded and transcribed so you can hear exactly how interactions go.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">How long until I see results? <span class="faq-chevron">&#9660;</span></button>
-          <div class="faq-answer">Most partners see their first booked appointments within the first week of going live. After the discovery call, we typically have automations built and running within 3-5 business days. Results compound as we optimize your sequences based on real call data.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">What if I already have a CRM or dialer? <span class="faq-chevron">&#9660;</span></button>
-          <div class="faq-answer">We work alongside your existing tools, not against them. Our automations feed qualified appointments directly into your workflow. During the discovery call, we'll map out exactly how our system integrates with yours.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">Is there a minimum number of leads required? <span class="faq-chevron">&#9660;</span></button>
-          <div class="faq-answer">We recommend at least 500 leads to start for meaningful results, but we've worked with lists as small as 200 and as large as 50,000+. The discovery call will help us determine what makes sense for your situation.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section" id="cta">
-    <div class="cta-content">
-      <h2>Ready to Fill Your Calendar?</h2>
-      <p>Book a free 15-minute discovery call. We'll learn about your business and show you exactly how our automations can work for you.</p>
-      <div class="cta-form">
-        <input type="email" id="ctaEmail" placeholder="you@company.com" required>
-        <button class="btn btn-primary btn-lg" id="ctaBtn" onclick="submitCTA()">Book Discovery Call</button>
-      </div>
-      <p style="font-size:0.78rem;color:var(--text-muted);margin-top:1rem;">No spam. We'll reach out to schedule a time that works for you.</p>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div style="margin-bottom:0.5rem">
-      <span style="font-weight:700;color:var(--text-secondary);">Media<span style="color:var(--accent);">Minded</span>.ai</span>
-    </div>
-    &copy; 2026 MediaMinded.ai &mdash; AI-Powered Lead Conversion Automations
-  </footer>
-
-  <script src="/assets/app.js"></script>
-  <script>
-    // Scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
-
-    // Counting animation
-    function animateCounters() {
-      document.querySelectorAll('[data-count]').forEach(el => {
-        const target = parseInt(el.dataset.count);
-        const duration = 2000;
-        const start = performance.now();
-        function update(now) {
-          const elapsed = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const current = Math.round(eased * target);
-          el.textContent = current.toLocaleString() + (target >= 1000 ? '+' : '+');
-          if (progress < 1) requestAnimationFrame(update);
-        }
-        requestAnimationFrame(update);
-      });
-    }
-
-    // Trigger counters when hero is visible
-    const heroObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        animateCounters();
-        heroObserver.disconnect();
-      }
-    }, { threshold: 0.3 });
-    const heroProof = document.querySelector('.hero-social-proof');
-    if (heroProof) heroObserver.observe(heroProof);
-
-    // FAQ accordion
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        const wasOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-        if (!wasOpen) item.classList.add('open');
-      });
-    });
-
-    // CTA form
-    function submitCTA() {
-      const email = document.getElementById('ctaEmail').value;
-      if (!email || !email.includes('@')) {
-        document.getElementById('ctaEmail').style.borderColor = 'var(--danger)';
-        return;
-      }
-      const btn = document.getElementById('ctaBtn');
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-
-      fetch('/api/b2b/discovery-request', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'landing_page' })
-      }).then(() => {
-        btn.textContent = 'Request Sent!';
-        btn.style.background = 'var(--success)';
-        document.getElementById('ctaEmail').value = '';
-      }).catch(() => {
-        // Fallback to mailto
-        window.location.href = `mailto:partners@mediaminded.ai?subject=Discovery%20Call%20Request&body=Email:%20${email}`;
-        btn.textContent = 'Book Discovery Call';
-        btn.disabled = false;
-      });
-    }
-
-    // Enter key on email input
-    document.getElementById('ctaEmail').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') { e.preventDefault(); submitCTA(); }
-    });
-  </script>
+function handleSubmit(e){
+  e.preventDefault();
+  var f=e.target;
+  var btn=f.querySelector('button[type=submit]');
+  var note=f.querySelector('.form-note');
+  var data={
+    name:f.name.value.trim(),
+    company:f.company.value.trim(),
+    email:f.email.value.trim(),
+    phone:f.phone.value.trim(),
+    volume:f.volume.value,
+    model:(f.querySelector('input[name=model]:checked')||{}).value,
+    source:'landing_page'
+  };
+  btn.textContent='Sending\u2026';btn.disabled=true;
+  fetch('/api/b2b/discovery-request',{
+    method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
+  }).then(function(r){ if(!r.ok) throw new Error(r.status); return r; })
+  .then(function(){
+    btn.textContent='Request received';
+    note.textContent='Thanks. We\u2019ll reach out shortly to schedule your discovery call.';
+  }).catch(function(){
+    var body='Name: '+data.name+'%0ACompany: '+data.company+'%0AEmail: '+data.email+'%0APhone: '+data.phone+'%0AMonthly leads/calls: '+data.volume+'%0AModel: '+data.model;
+    window.location.href='mailto:partners@mediaminded.ai?subject=Discovery%20Call%20Request&body='+body;
+    btn.textContent='Book discovery call';btn.disabled=false;
+  });
+  return false;
+}
+</script>
 </body>
 </html>
