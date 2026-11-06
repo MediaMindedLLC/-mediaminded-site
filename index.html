@@ -107,6 +107,41 @@ a{color:inherit}
 .line.human{align-self:flex-start;background:var(--human-soft);color:#ffe3b3;border-bottom-left-radius:4px}
 .line.sys{align-self:center;background:transparent;color:var(--text-3);font-size:.8rem;padding:5px 10px;border:1px dashed var(--border);border-radius:999px}
 
+/* sample calls */
+.listen{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:56px;align-items:center}
+@media (max-width:960px){.listen{grid-template-columns:1fr;gap:8px}}
+.vs{--vs-on:var(--ai);--vs-off:#4a4a68;--vs-hover:rgba(0,212,170,.4);background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:0 4px 24px rgba(0,0,0,.4)}
+.vs-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.vs-tabs button{font:inherit;text-align:left;color:var(--text);background:var(--bg-2);border:1.5px solid var(--border);border-radius:12px;padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:2px;transition:border-color .2s,background .2s}
+.vs-tabs button:hover{border-color:var(--text-3)}
+.vs-tabs button[aria-selected="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.vs-t{font-weight:700;font-size:1rem;line-height:1.25}
+.vs-s{font-size:.84rem;color:var(--text-2);line-height:1.3}
+.vs-d{font-size:.75rem;color:var(--text-3);margin-top:4px;font-variant-numeric:tabular-nums}
+.vs-bar{display:flex;align-items:center;gap:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:10px 14px 10px 10px}
+.vs-play{flex:none;width:44px;height:44px;border:0;border-radius:10px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
+.vs-play:hover{background:var(--accent-hover)}
+.vs-play .i-pause,.vs-playing .vs-play .i-play{display:none}
+.vs-playing .vs-play .i-pause{display:block}
+.vs-wave{flex:1;min-width:0;cursor:pointer;touch-action:none;border-radius:6px}
+.vs-wave canvas{display:block;width:100%;height:44px}
+.vs-time{flex:none;min-width:40px;text-align:right;font-size:.8rem;color:var(--text-2);font-variant-numeric:tabular-nums}
+.vs-cap{max-height:0;opacity:0;overflow:hidden;text-align:center;transition:max-height .45s ease,opacity .35s ease,padding .35s ease;padding:0 8px}
+.vs-open .vs-cap{max-height:420px;opacity:1;padding:22px 8px 18px}
+.vs-who{font-size:.78rem;font-weight:700;letter-spacing:.02em;min-height:1.2em;margin-bottom:8px}
+.vs-who.vs-ai{color:var(--ai)}
+.vs-who.vs-caller{color:var(--human)}
+.vs-line{min-height:4.8em;font-size:1.02rem;line-height:1.6;color:var(--text-3)}
+.vs-line span{transition:color .15s}
+.vs-line span.on{color:var(--text)}
+.vs-line.vs-idle{color:var(--text-2);font-style:italic}
+.vs-foot{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-top:12px;font-size:.82rem;color:var(--text-3)}
+.vs-foot a{flex:none;color:var(--text-2);font-weight:600}
+.vs-foot a:hover{color:var(--text)}
+.vs-note{font-size:.8rem;color:var(--text-3);margin-top:12px;text-align:center}
+@media (max-width:480px){.vs{padding:14px}.vs-tabs button{padding:10px 12px}.vs-foot{flex-direction:column;gap:6px}}
+@media (prefers-reduced-motion:reduce){.vs-cap,.vs-line span,.vs-tabs button{transition:none}}
+
 /* two modes */
 .modes{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 @media (max-width:860px){.modes{grid-template-columns:1fr}}
@@ -201,6 +236,7 @@ footer.site nav{display:flex;gap:18px;flex-wrap:wrap}
     <a class="logo" href="#top"><img src="/logo.png" alt="" width="30" height="30"><span class="wm">MediaMinded<span>.ai</span></span></a>
     <button class="menu-btn" aria-expanded="false" aria-controls="navlinks" onclick="toggleMenu(this)">Menu</button>
     <ul class="nav-links" id="navlinks">
+      <li><a href="#listen">Sample calls</a></li>
       <li><a href="#modes">Two models</a></li>
       <li><a href="#how">How it works</a></li>
       <li><a href="#pricing">Pricing</a></li>
@@ -235,6 +271,43 @@ footer.site nav{display:flex;gap:18px;flex-wrap:wrap}
         </div>
         <div class="lines" id="lines"></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="listen">
+  <div class="wrap listen">
+    <div class="h">
+      <h2>Listen to the AI work a call</h2>
+      <p>Two sample calls for a home-services company. Pick one and press play. The transcript follows along as each side speaks.</p>
+    </div>
+    <div>
+      <div class="vs" id="voice-samples">
+        <div class="vs-tabs" role="tablist" aria-label="Sample calls">
+          <button type="button" role="tab" id="vs-tab-outbound" aria-selected="true" aria-controls="vs-panel" data-sample="outbound" data-src="/assets/audio/service-gurus-mark-outbound-appointment" data-duration="115.07" data-foot="AI agent Mark qualifies a new web lead and books a window estimate." data-idle="Dialing the lead…">
+            <span class="vs-t">Outbound Calls</span><span class="vs-s">Lead Qualification</span><span class="vs-d">1:55</span>
+          </button>
+          <button type="button" role="tab" id="vs-tab-inbound" aria-selected="false" aria-controls="vs-panel" tabindex="-1" data-sample="inbound" data-src="/assets/audio/service-gurus-jackie-inbound-order-status" data-duration="117.71" data-foot="AI agent Jackie answers an order-status call and reschedules the install." data-idle="Incoming call…">
+            <span class="vs-t">Inbound Calls</span><span class="vs-s">Customer Service Representative</span><span class="vs-d">1:58</span>
+          </button>
+        </div>
+        <div class="vs-panel" id="vs-panel" role="tabpanel" aria-labelledby="vs-tab-outbound">
+          <div class="vs-bar">
+            <button type="button" class="vs-play" aria-label="Play Outbound Calls sample call">
+              <svg class="i-play" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>
+              <svg class="i-pause" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
+            </button>
+            <div class="vs-wave" role="slider" tabindex="0" aria-label="Seek within Outbound Calls sample call" aria-valuemin="0" aria-valuemax="115" aria-valuenow="0" aria-valuetext="0:00 of 1:55"><canvas aria-hidden="true"></canvas></div>
+            <span class="vs-time">-1:55</span>
+          </div>
+          <div class="vs-cap">
+            <div class="vs-who"></div>
+            <p class="vs-line"></p>
+          </div>
+          <div class="vs-foot"><span class="vs-foot-text">AI agent Mark qualifies a new web lead and books a window estimate.</span><a class="vs-txt" href="/assets/audio/service-gurus-mark-outbound-appointment.txt" target="_blank" rel="noopener">Full transcript</a></div>
+        </div>
+      </div>
+      <p class="vs-note">Scripted demo calls for demonstration purposes. Service Gurus is a fictional company.</p>
     </div>
   </div>
 </section>
@@ -457,5 +530,6 @@ function handleSubmit(e){
   return false;
 }
 </script>
+<script src="/assets/voice-samples.js?v=1" defer></script>
 </body>
 </html>
