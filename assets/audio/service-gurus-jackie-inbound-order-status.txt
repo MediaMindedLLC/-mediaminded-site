@@ -1,0 +1,44 @@
+Jackie: inbound order status and installation date
+
+JACKIE: Thank you for calling Service Gurus, this is Jackie! How can I help you today?
+
+BRIAN: Hi Jackie. I ordered new windows from you guys a few weeks ago, and I wanted to check on the order and find out when they're going to be installed.
+
+JACKIE: Sure, absolutely, I can help with that! Can I get your name, and the address for the project?
+
+BRIAN: Sure. It's Brian Walsh, at fifty-two Birch Lane.
+
+JACKIE: Thank you, Brian! One moment while I pull that up.
+
+JACKIE: Okay, here it is! That's your order for eight windows and one patio door, right?
+
+BRIAN: Yep, that's the one.
+
+JACKIE: Good news! Your windows were finished at the factory last week, and, um, they've already arrived at our warehouse. They passed their quality check, so everything is ready to go!
+
+BRIAN: Oh, great. So when are you guys putting them in?
+
+JACKIE: Your installation is scheduled for, um, Tuesday the seventeenth, with the crew arriving between eight and nine in the morning, and the whole job should only take about a day!
+
+BRIAN: Hmm, Tuesday's tough for me. I have a meeting that morning. Is there anything later in the week?
+
+JACKIE: Sure, let me take a look at the schedule.
+
+JACKIE: Oh, okay, so I do have an opening on Thursday the nineteenth, same eight to nine arrival window. Would that work better for you?
+
+BRIAN: Thursday would be perfect.
+
+JACKIE: You got it! I've moved your installation to Thursday the nineteenth, with the crew arriving between eight and nine! You'll get a text confirmation in just a minute, and then a reminder the day before!
+
+BRIAN: Great. Is there anything I need to do before they get there?
+
+JACKIE: Yeah, just a couple of quick things! Take down any blinds or curtains, and clear about three feet in front of each window and the patio door. And make sure an adult is home to let the crew in and walk through the finished job with them!
+
+BRIAN: Easy enough. And will they take the old windows with them?
+
+JACKIE: Oh yes, they will! The crew hauls away all the old windows, and they clean everything up before they leave! Is there anything else I can help you with today?
+
+BRIAN: No, that's it. Thanks, Jackie. That was easy.
+
+JACKIE: Of course, Brian! Enjoy your new windows! And you have a great day!
+
